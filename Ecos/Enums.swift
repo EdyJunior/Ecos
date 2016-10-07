@@ -6,4 +6,34 @@
 //  Copyright © 2016 Edvaldo Junior. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
+
+enum BodyType: UInt32 {
+    
+    case player = 1
+    case obstacle = 2
+    case limit = 4
+    case toy = 8
+    case trashCan = 16
+    case tap = 32
+    case ground = 64
+    case trash = 128
+}
+
+enum Position: CGFloat {
+    
+    case deepest = 1
+    case back = 2
+    case before = 4
+    case middle = 8
+    case front = 16
+    case top = 32
+    case highlighted = 64
+}
+
+enum State: UInt32 {
+    
+    case timeOver = 1
+    case obstacle = 2
+}
+
