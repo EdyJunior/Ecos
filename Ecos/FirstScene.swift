@@ -14,6 +14,8 @@ class FirstScene: SKScene {
     let background = SKSpriteNode(imageNamed: "BlueBack")
     var character = SKSpriteNode(imageNamed: "GloriaWalking000")
     
+    var playButton = Button(defaultButtonImage: "", activeButtonImage: <#T##String#>)
+    
     override func didMove(to view: SKView) {
         self.backgroundColor = .white
         buildScene()

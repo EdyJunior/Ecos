@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE0EB6EE1DA7C53A00F4554F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EB6ED1DA7C53A00F4554F /* Button.swift */; };
 		CEBE3C151DA698CC004F4937 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE3C141DA698CC004F4937 /* AppDelegate.swift */; };
 		CEBE3C171DA698CC004F4937 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEBE3C161DA698CC004F4937 /* GameScene.sks */; };
 		CEBE3C191DA698CC004F4937 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEBE3C181DA698CC004F4937 /* Actions.sks */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE0EB6ED1DA7C53A00F4554F /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		CEBE3C111DA698CC004F4937 /* Ecos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBE3C141DA698CC004F4937 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEBE3C161DA698CC004F4937 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				CEBE3C1C1DA698CC004F4937 /* GameViewController.swift */,
 				CEBE3C2C1DA69A32004F4937 /* FirstScene.swift */,
 				CEBE3C2E1DA69A91004F4937 /* Enums.swift */,
+				CE0EB6ED1DA7C53A00F4554F /* Button.swift */,
 				CEBE3C1E1DA698CC004F4937 /* Main.storyboard */,
 				CEBE3C211DA698CC004F4937 /* Assets.xcassets */,
 				CEBE3C231DA698CC004F4937 /* LaunchScreen.storyboard */,
@@ -155,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEBE3C1B1DA698CC004F4937 /* GameScene.swift in Sources */,
+				CE0EB6EE1DA7C53A00F4554F /* Button.swift in Sources */,
 				CEBE3C2D1DA69A32004F4937 /* FirstScene.swift in Sources */,
 				CEBE3C2F1DA69A91004F4937 /* Enums.swift in Sources */,
 				CEBE3C1D1DA698CC004F4937 /* GameViewController.swift in Sources */,
@@ -320,6 +324,7 @@
 				CEBE3C2B1DA698CC004F4937 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
