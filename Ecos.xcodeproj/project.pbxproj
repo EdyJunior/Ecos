@@ -16,6 +16,8 @@
 		CE91C5001DAD2E5F0070C38A /* Gloria.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4FA1DAD2E5F0070C38A /* Gloria.atlas */; };
 		CE91C5011DAD2E5F0070C38A /* Gloriosinho.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4FB1DAD2E5F0070C38A /* Gloriosinho.atlas */; };
 		CE91C5021DAD2E5F0070C38A /* WaterTaps.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4FC1DAD2E5F0070C38A /* WaterTaps.atlas */; };
+		CE91C5041DAD353F0070C38A /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91C5031DAD353F0070C38A /* InfoScene.swift */; };
+		CE91C5081DAD42410070C38A /* InfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91C5071DAD42410070C38A /* InfoLabel.swift */; };
 		CEBE3C151DA698CC004F4937 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE3C141DA698CC004F4937 /* AppDelegate.swift */; };
 		CEBE3C171DA698CC004F4937 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEBE3C161DA698CC004F4937 /* GameScene.sks */; };
 		CEBE3C191DA698CC004F4937 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEBE3C181DA698CC004F4937 /* Actions.sks */; };
@@ -38,6 +40,8 @@
 		CE91C4FA1DAD2E5F0070C38A /* Gloria.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Gloria.atlas; sourceTree = "<group>"; };
 		CE91C4FB1DAD2E5F0070C38A /* Gloriosinho.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Gloriosinho.atlas; sourceTree = "<group>"; };
 		CE91C4FC1DAD2E5F0070C38A /* WaterTaps.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = WaterTaps.atlas; sourceTree = "<group>"; };
+		CE91C5031DAD353F0070C38A /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoScene.swift; sourceTree = "<group>"; };
+		CE91C5071DAD42410070C38A /* InfoLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoLabel.swift; sourceTree = "<group>"; };
 		CEBE3C111DA698CC004F4937 /* Ecos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBE3C141DA698CC004F4937 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEBE3C161DA698CC004F4937 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -68,6 +72,7 @@
 			children = (
 				CEBE3C1A1DA698CC004F4937 /* GameScene.swift */,
 				CEBE3C2C1DA69A32004F4937 /* FirstScene.swift */,
+				CE91C5031DAD353F0070C38A /* InfoScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -78,6 +83,7 @@
 				CEBE3C2E1DA69A91004F4937 /* Enums.swift */,
 				CE0EB6ED1DA7C53A00F4554F /* Button.swift */,
 				CE91C4F21DAD1B6B0070C38A /* MenuButton.swift */,
+				CE91C5071DAD42410070C38A /* InfoLabel.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -212,10 +218,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE91C5081DAD42410070C38A /* InfoLabel.swift in Sources */,
 				CEBE3C1B1DA698CC004F4937 /* GameScene.swift in Sources */,
 				CE0EB6EE1DA7C53A00F4554F /* Button.swift in Sources */,
 				CE91C4F31DAD1B6B0070C38A /* MenuButton.swift in Sources */,
 				CEBE3C2D1DA69A32004F4937 /* FirstScene.swift in Sources */,
+				CE91C5041DAD353F0070C38A /* InfoScene.swift in Sources */,
 				CEBE3C2F1DA69A91004F4937 /* Enums.swift in Sources */,
 				CEBE3C1D1DA698CC004F4937 /* GameViewController.swift in Sources */,
 				CEBE3C151DA698CC004F4937 /* AppDelegate.swift in Sources */,

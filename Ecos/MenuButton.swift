@@ -16,7 +16,8 @@ class MenuButton: Button {
     init(defaultButtonImage: String, activeButtonImage: String, labelName: String, buttonAction: ((_ button: Button) -> Void)? = nil) {
         
         label = SKLabelNode(text: labelName)
-        super.init(defaultButtonImage: defaultButtonImage, activeButtonImage: activeButtonImage, Type: .menuBtn)
+        
+        super.init(defaultButtonImage: defaultButtonImage, activeButtonImage: activeButtonImage, buttonAction: buttonAction, Type: .menuBtn)
     }
     
     func setSizeAndPosition(_ size: CGSize, position: CGPoint, labelSize lSize: CGFloat, labelPosition lPosition: CGPoint) {

@@ -11,9 +11,6 @@ import SpriteKit
 
 class FirstScene: SKScene {
     
-    let background = SKSpriteNode(imageNamed: "blueBack")
-    var character = SKSpriteNode()
-
     var playButton = MenuButton(defaultButtonImage: "play1", activeButtonImage: "play1", labelName: "Jogar!")
     var configButton = MenuButton(defaultButtonImage: "config", activeButtonImage: "config", labelName: "Configurar")
     var learnButton = MenuButton(defaultButtonImage: "learn", activeButtonImage: "learn", labelName: "Aprender")
@@ -27,6 +24,7 @@ class FirstScene: SKScene {
     
     func buildScene() {
         
+        let background = SKSpriteNode(imageNamed: "blueBack")
         background.size = size
         background.zPosition = Position.deepest.rawValue
         background.position = CGPoint(x: size.width / 2, y: size.height / 2)
@@ -39,8 +37,8 @@ class FirstScene: SKScene {
     
     func createButtons() {
         
-        let sizePlayButton = CGSize(width: background.size.width * 0.3, height: background.size.height * 0.5)
-        let sizeButtons = CGSize(width: background.size.width * 0.1, height: background.size.height * 0.15)
+        let sizePlayButton = CGSize(width: size.width * 0.3, height: size.height * 0.5)
+        let sizeButtons = CGSize(width: size.width * 0.1, height: size.height * 0.15)
         let positionPlay = CGPoint(x: frame.width * 0.16, y: frame.height * 0.5)
         let positionLearn = CGPoint(x: frame.width * 0.45, y: frame.height * 0.25)
         let positionConfig = CGPoint(x: frame.width * 0.7, y: frame.height * 0.25)
@@ -50,9 +48,9 @@ class FirstScene: SKScene {
         let labelPositionButtons = CGPoint(x: 0, y: -sizeButtons.height)
         
         playButton.setSizeAndPosition(sizePlayButton, position: positionPlay, labelSize: sizePlayButton.height * 0.3, labelPosition: labelPositionPlay)
-        learnButton.setSizeAndPosition(sizeButtons, position: positionLearn, labelSize: sizeButtons.height * 0.6, labelPosition: labelPositionButtons)
-        configButton.setSizeAndPosition(sizeButtons, position: positionConfig, labelSize: sizeButtons.height * 0.6, labelPosition: labelPositionButtons)
-        infoButton.setSizeAndPosition(sizeButtons, position: positionInfo, labelSize: sizeButtons.height * 0.6, labelPosition: labelPositionButtons)
+        learnButton.setSizeAndPosition(sizeButtons, position: positionLearn, labelSize: sizeButtons.height * 0.4, labelPosition: labelPositionButtons)
+        configButton.setSizeAndPosition(sizeButtons, position: positionConfig, labelSize: sizeButtons.height * 0.4, labelPosition: labelPositionButtons)
+        infoButton.setSizeAndPosition(sizeButtons, position: positionInfo, labelSize: sizeButtons.height * 0.4, labelPosition: labelPositionButtons)
         
         playButton.touchableArea.zPosition = Position.top.rawValue
         learnButton.touchableArea.zPosition = Position.top.rawValue
@@ -72,7 +70,8 @@ class FirstScene: SKScene {
     
     func createCharacter() {
         
-        character = SKSpriteNode(imageNamed: "Gloria0")
+        //TODO: o personagem mostrado na primeira tela será o que foi escolhido da última vez pelo usuário
+        let character = SKSpriteNode(imageNamed: "Gloria0")
         character.size = CGSize(width: size.width * 0.2, height: size.height * 0.5)
         character.position = CGPoint(x: size.width * 0.7, y: size.height * 0.65)
         character.zPosition = Position.front.rawValue
@@ -83,14 +82,13 @@ class FirstScene: SKScene {
         for textureName in atlas.textureNames {
             frames.append(atlas.textureNamed(textureName))
         }
-        let action = (SKAction.repeatForever(
+        character.run(SKAction.repeatForever(
             SKAction.animate(with: frames,
                              timePerFrame: 0.3,
                              resize: false,
                              restore: true)
             )
         )
-        character.run(action)
         addChild(character)
     }
     
@@ -108,6 +106,8 @@ class FirstScene: SKScene {
     
     func touchInfo(_ button: Button) {
         print("Info")
+        let infoScene = InfoScene(size: size)
+        view?.presentScene(infoScene, transition: .flipVertical(withDuration: 0.5))
     }
     
     
