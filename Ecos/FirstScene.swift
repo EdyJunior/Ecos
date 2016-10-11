@@ -12,6 +12,7 @@ import SpriteKit
 class FirstScene: SKScene {
     
     let background = SKSpriteNode(imageNamed: "blueBack")
+    var character = SKSpriteNode()
 
     var playButton = MenuButton(defaultButtonImage: "play1", activeButtonImage: "play1", labelName: "Jogar!")
     var configButton = MenuButton(defaultButtonImage: "config", activeButtonImage: "config", labelName: "Configurar")
@@ -19,27 +20,31 @@ class FirstScene: SKScene {
     var infoButton = MenuButton(defaultButtonImage: "info", activeButtonImage: "info", labelName: "Info")
     
     override func didMove(to view: SKView) {
+        
         self.backgroundColor = .white
         buildScene()
     }
     
     func buildScene() {
+        
         background.size = size
-        background.zPosition = Position.front.rawValue
+        background.zPosition = Position.deepest.rawValue
         background.position = CGPoint(x: size.width / 2, y: size.height / 2)
         background.alpha = 0.75
         addChild(background)
         
         createButtons()
+        createCharacter()
     }
     
     func createButtons() {
+        
         let sizePlayButton = CGSize(width: background.size.width * 0.3, height: background.size.height * 0.5)
         let sizeButtons = CGSize(width: background.size.width * 0.1, height: background.size.height * 0.15)
-        let positionPlay = CGPoint(x: frame.width * 0.16, y: frame.height * 0.55)
-        let positionLearn = CGPoint(x: frame.width * 0.45, y: frame.height * 0.3)
-        let positionConfig = CGPoint(x: frame.width * 0.7, y: frame.height * 0.3)
-        let positionInfo = CGPoint(x: frame.width * 0.9, y: frame.height * 0.3)
+        let positionPlay = CGPoint(x: frame.width * 0.16, y: frame.height * 0.5)
+        let positionLearn = CGPoint(x: frame.width * 0.45, y: frame.height * 0.25)
+        let positionConfig = CGPoint(x: frame.width * 0.7, y: frame.height * 0.25)
+        let positionInfo = CGPoint(x: frame.width * 0.9, y: frame.height * 0.25)
         
         let labelPositionPlay = CGPoint(x: 0, y: -sizePlayButton.height * 0.8)
         let labelPositionButtons = CGPoint(x: 0, y: -sizeButtons.height)
@@ -65,6 +70,30 @@ class FirstScene: SKScene {
         addChild(infoButton)
     }
     
+    func createCharacter() {
+        
+        character = SKSpriteNode(imageNamed: "Gloria0")
+        character.size = CGSize(width: size.width * 0.2, height: size.height * 0.5)
+        character.position = CGPoint(x: size.width * 0.7, y: size.height * 0.65)
+        character.zPosition = Position.front.rawValue
+        
+        let atlas = SKTextureAtlas(named: "Gloria")
+        var frames = [SKTexture]()
+        
+        for textureName in atlas.textureNames {
+            frames.append(atlas.textureNamed(textureName))
+        }
+        let action = (SKAction.repeatForever(
+            SKAction.animate(with: frames,
+                             timePerFrame: 0.3,
+                             resize: false,
+                             restore: true)
+            )
+        )
+        character.run(action)
+        addChild(character)
+    }
+    
     func touchPlay(_ button: Button) {
         print("Play")
     }
@@ -80,4 +109,6 @@ class FirstScene: SKScene {
     func touchInfo(_ button: Button) {
         print("Info")
     }
+    
+    
 }

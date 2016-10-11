@@ -26,7 +26,6 @@ class MenuButton: Button {
         label.fontSize = lSize
         label.position = lPosition
         self.touchableArea.addChild(label)
-        
     }
     
     required init(coder aDecoder: NSCoder) {
