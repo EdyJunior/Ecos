@@ -18,6 +18,7 @@ enum BodyType: UInt32 {
     case tap = 32
     case ground = 64
     case trash = 128
+    case menuBtn = 256
 }
 
 enum Position: CGFloat {

@@ -12,12 +12,11 @@ import SpriteKit
 class FirstScene: SKScene {
     
     let background = SKSpriteNode(imageNamed: "blueBack")
-    var character = SKSpriteNode(imageNamed: "GloriaWalking000")
-    
-    var playButton = Button(defaultButtonImage: "play1", activeButtonImage: "play1")
-    var configButton = Button(defaultButtonImage: "config", activeButtonImage: "config")
-    var learnButton = Button(defaultButtonImage: "learn", activeButtonImage: "learn")
-    var infoButton = Button(defaultButtonImage: "info", activeButtonImage: "info")
+
+    var playButton = MenuButton(defaultButtonImage: "play1", activeButtonImage: "play1", labelName: "Jogar!")
+    var configButton = MenuButton(defaultButtonImage: "config", activeButtonImage: "config", labelName: "Configurar")
+    var learnButton = MenuButton(defaultButtonImage: "learn", activeButtonImage: "learn", labelName: "Aprender")
+    var infoButton = MenuButton(defaultButtonImage: "info", activeButtonImage: "info", labelName: "Info")
     
     override func didMove(to view: SKView) {
         self.backgroundColor = .white
@@ -35,17 +34,20 @@ class FirstScene: SKScene {
     }
     
     func createButtons() {
-        let sizePlayButton = CGSize(width: background.size.width * 0.4, height: background.size.height * 0.5)
+        let sizePlayButton = CGSize(width: background.size.width * 0.3, height: background.size.height * 0.5)
         let sizeButtons = CGSize(width: background.size.width * 0.1, height: background.size.height * 0.15)
-        let positionPlay = CGPoint(x: frame.width * 0.2, y: frame.height * 0.5)
-        let positionLearn = CGPoint(x: frame.width * 0.4, y: frame.height * 0.3)
-        let positionConfig = CGPoint(x: frame.width * 0.65, y: frame.height * 0.3)
+        let positionPlay = CGPoint(x: frame.width * 0.16, y: frame.height * 0.55)
+        let positionLearn = CGPoint(x: frame.width * 0.45, y: frame.height * 0.3)
+        let positionConfig = CGPoint(x: frame.width * 0.7, y: frame.height * 0.3)
         let positionInfo = CGPoint(x: frame.width * 0.9, y: frame.height * 0.3)
         
-        playButton.setSizeAndPosition(sizePlayButton, position: positionPlay, areaFactor: 1)
-        learnButton.setSizeAndPosition(sizeButtons, position: positionLearn, areaFactor: 1)
-        configButton.setSizeAndPosition(sizeButtons, position: positionConfig, areaFactor: 1)
-        infoButton.setSizeAndPosition(sizeButtons, position: positionInfo, areaFactor: 1)
+        let labelPositionPlay = CGPoint(x: 0, y: -sizePlayButton.height * 0.8)
+        let labelPositionButtons = CGPoint(x: 0, y: -sizeButtons.height)
+        
+        playButton.setSizeAndPosition(sizePlayButton, position: positionPlay, labelSize: sizePlayButton.height * 0.3, labelPosition: labelPositionPlay)
+        learnButton.setSizeAndPosition(sizeButtons, position: positionLearn, labelSize: sizeButtons.height * 0.6, labelPosition: labelPositionButtons)
+        configButton.setSizeAndPosition(sizeButtons, position: positionConfig, labelSize: sizeButtons.height * 0.6, labelPosition: labelPositionButtons)
+        infoButton.setSizeAndPosition(sizeButtons, position: positionInfo, labelSize: sizeButtons.height * 0.6, labelPosition: labelPositionButtons)
         
         playButton.touchableArea.zPosition = Position.top.rawValue
         learnButton.touchableArea.zPosition = Position.top.rawValue
