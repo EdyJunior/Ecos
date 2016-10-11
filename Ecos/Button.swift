@@ -13,6 +13,7 @@ class Button: SKNode {
 
     var defaultButton: SKSpriteNode
     var activeButton: SKSpriteNode
+    var touchableArea: SKSpriteNode
     var action: ((_ button: Button) -> Void)?
     var type: BodyType?
     var enabled: Bool = true
@@ -21,6 +22,7 @@ class Button: SKNode {
         
         defaultButton = SKSpriteNode(imageNamed: defaultButtonImage)
         activeButton = SKSpriteNode(imageNamed: activeButtonImage)
+        touchableArea = SKSpriteNode()
         activeButton.isHidden = true
         action = buttonAction
         type = Type
@@ -28,8 +30,6 @@ class Button: SKNode {
         super.init()
         
         isUserInteractionEnabled = true
-        addChild(defaultButton)
-        addChild(activeButton)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -38,11 +38,12 @@ class Button: SKNode {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if action != nil && enabled {
-            
-            activeButton.isHidden = false
-            defaultButton.isHidden = true
-            action!(self)
+        if touchableArea.contains((touches.first?.location(in: self))!) {
+            if action != nil && enabled {
+                activeButton.isHidden = false
+                defaultButton.isHidden = true
+                action!(self)
+            }
         }
     }
     
@@ -68,11 +69,16 @@ class Button: SKNode {
         defaultButton.run(action)
     }
     
-    func setSizeAndPosition(_ size: CGSize, position: CGPoint) {
+    func setSizeAndPosition(_ size: CGSize, position: CGPoint, areaFactor factor: CGFloat) {
         
         defaultButton.size = size
-        defaultButton.position = position
         activeButton.size = size
-        activeButton.position = position
+        
+        touchableArea = SKSpriteNode()
+        touchableArea.size = CGSize(width: size.width * factor, height: size.height * factor)
+        touchableArea.position = position
+        touchableArea.addChild(defaultButton)
+        touchableArea.addChild(activeButton)
+        addChild(touchableArea)
     }
 }
