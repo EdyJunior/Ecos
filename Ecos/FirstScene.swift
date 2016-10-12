@@ -94,6 +94,8 @@ class FirstScene: SKScene {
     
     func touchPlay(_ button: Button) {
         print("Play")
+        let preGameScene = PreGameScene(size: size)
+        view?.presentScene(preGameScene, transition: .doorsOpenVertical(withDuration: 0.5))
     }
     
     func touchConfig(_ button: Button) {

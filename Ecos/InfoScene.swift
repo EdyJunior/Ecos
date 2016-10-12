@@ -10,6 +10,8 @@ import UIKit
 import SpriteKit
 
 class InfoScene: SKScene {
+    
+    let collaborators = ["Desenvolvedores", "Daniel", "Edvaldo", "Gustavo", "Designers", "Daniel", "Douglas", "Gustavo", "Músico", "Péricles"]
 
     override func didMove(to view: SKView) {
         
@@ -32,47 +34,29 @@ class InfoScene: SKScene {
     
     func spreadLabels() {
         
-        //TODO: Fazer isso de um jeito inteligente, com um vetor de nomes
-     
-        let developers = InfoLabel(text: "Desenvolvedores")
-        developers.set(fontSize: size.height * 0.06, position: CGPoint(x: size.width/2, y: size.height * 0.93), fontColor: .black, zPosition: .front)
-        addChild(developers)
+        var i: CGFloat = CGFloat(0.93)
         
-        let daniel = InfoLabel(text: "Daniel")
-        daniel.set(fontSize: size.height * 0.05, position: CGPoint(x: size.width/2, y: size.height * 0.83), fontColor: .white, zPosition: .front)
-        addChild(daniel)
+        var valuesHeight = [CGFloat]()
+        while !i.isLess(than: CGFloat(0)) {
+            valuesHeight.append(CGFloat(i))
+            i.subtract(CGFloat(0.10))
+        }
+        let valuesCollaborators: [CGFloat] = [valuesHeight[0], valuesHeight[4], valuesHeight[8]]
+        i = valuesHeight.first!
+        var count: Int = 1
         
-        let edy = InfoLabel(text: "Edvaldo")
-        edy.set(fontSize: size.height * 0.05, position: CGPoint(x: size.width/2, y: size.height * 0.73), fontColor: .white, zPosition: .front)
-        addChild(edy)
-        
-        let gustavo = InfoLabel(text: "Gustavo")
-        gustavo.set(fontSize: size.height * 0.05, position: CGPoint(x: size.width/2, y: size.height * 0.63), fontColor: .white, zPosition: .front)
-        addChild(gustavo)
-        
-        let designers = InfoLabel(text: "Designers")
-        designers.set(fontSize: size.height * 0.06, position: CGPoint(x: size.width/2, y: size.height * 0.53), fontColor: .black, zPosition: .front)
-        addChild(designers)
-        
-        let daniel2 = InfoLabel(text: "Daniel")
-        daniel2.set(fontSize: size.height * 0.05, position: CGPoint(x: size.width/2, y: size.height * 0.43), fontColor: .white, zPosition: .front)
-        addChild(daniel2)
-        
-        let gustavo2 = InfoLabel(text: "Gustavo")
-        gustavo2.set(fontSize: size.height * 0.05, position: CGPoint(x: size.width/2, y: size.height * 0.33), fontColor: .white, zPosition: .front)
-        addChild(gustavo2)
-        
-        let douglas = InfoLabel(text: "Douglas")
-        douglas.set(fontSize: size.height * 0.05, position: CGPoint(x: size.width/2, y: size.height * 0.23), fontColor: .white, zPosition: .front)
-        addChild(douglas)
-        
-        let musician = InfoLabel(text: "Músico")
-        musician.set(fontSize: size.height * 0.06, position: CGPoint(x: size.width/2, y: size.height * 0.13), fontColor: .black, zPosition: .front)
-        addChild(musician)
-        
-        let pericles = InfoLabel(text: "Péricles")
-        pericles.set(fontSize: size.height * 0.05, position: CGPoint(x: size.width/2, y: size.height * 0.03), fontColor: .white, zPosition: .front)
-        addChild(pericles)
+        for name in collaborators {
+            let collaborator = InfoLabel(text: name)
+            let multi: CGFloat = valuesCollaborators.contains(i) ? CGFloat(0.06) : CGFloat(0.05)
+            
+            let color: UIColor = (multi.isEqual(to: CGFloat(0.06)) ? .black : .white)
+            
+            collaborator.set(fontSize: size.height * multi, position: CGPoint(x: size.width/2, y: size.height * i), fontColor: color, zPosition: .front)
+            addChild(collaborator)
+            
+            i = valuesHeight[count]
+            count += count < valuesHeight.count - 1 ? 1 : 0
+        }
     }
     
     func createBackButton() {
@@ -88,14 +72,12 @@ class InfoScene: SKScene {
         backButton.setSizeAndPosition(sizeButton, position: positionButton, labelSize: labelSize, labelPosition: labelPosition)
         
         backButton.zPosition = Position.front.rawValue
-        //backButton.action = backToMenu
         addChild(backButton)
     }
     
     func backToMenu(button: Button) {
         
-        print("VOLTRA")
         let first = FirstScene(size: size)
-        view?.presentScene(first, transition: .flipHorizontal(withDuration: 0.5))
+        view?.presentScene(first, transition: .flipVertical (withDuration: 0.5))
     }
 }
