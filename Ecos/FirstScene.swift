@@ -107,10 +107,9 @@ class FirstScene: SKScene {
     }
     
     func touchInfo(_ button: Button) {
+        
         print("Info")
         let infoScene = InfoScene(size: size)
         view?.presentScene(infoScene, transition: .flipVertical(withDuration: 0.5))
     }
-    
-    
 }

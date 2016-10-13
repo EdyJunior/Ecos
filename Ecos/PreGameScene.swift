@@ -14,18 +14,18 @@ class PreGameScene: SKScene {
     var lastScoreLabel = InfoLabel()
     var charactersNameLabel = InfoLabel()
     
-    //var characterShowed = SKSpriteNode()
     var spritePicker: SpritePicker!
     
     let labelsColor = UIColor.init(red: 23/255, green: 136/255, blue: 23/255, alpha: 1)
     
     override func didMove(to view: SKView) {
+        
+        self.backgroundColor = .white
         buildScene()
     }
     
     func buildScene() {
         
-        self.backgroundColor = .white
         let background = SKSpriteNode(imageNamed: "greenBack")
         background.zPosition = Position.deepest.rawValue
         background.size = size
@@ -36,7 +36,7 @@ class PreGameScene: SKScene {
         createStartButton()
         createBackButton()
         createLabels()
-        createCharacters()
+        createSpritePicker()
     }
     
     func createStartButton() {
@@ -103,7 +103,7 @@ class PreGameScene: SKScene {
         addChild(charactersNameLabel)
     }
     
-    func createCharacters() {
+    func createSpritePicker() {
         
         let charactersNames = ["Gloria", "Gloriosinho"]
         var characters = [SKSpriteNode]()
