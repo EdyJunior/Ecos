@@ -62,6 +62,21 @@ class FirstScene: SKScene {
         configButton.action = touchConfig
         infoButton.action = touchInfo
         
+        configButton.defaultButton.run(SKAction.repeatForever(SKAction.rotate(byAngle: 1, duration: 0.01)))
+        learnButton.defaultButton.run(SKAction.repeatForever(SKAction.sequence(
+            [SKAction.moveBy(x: 0, y: size.height * 0.1, duration: 0.5),
+             SKAction.moveBy(x: 0, y: -size.height * 0.1, duration: 0.5)]
+        )))
+        infoButton.defaultButton.run(SKAction.repeatForever(SKAction.sequence(
+            [SKAction.moveBy(x: size.height * 0.05, y: 0, duration: 0.5),
+             SKAction.moveBy(x: -size.height * 0.1, y: 0, duration: 1),
+             SKAction.moveBy(x: size.height * 0.05, y: 0, duration: 0.5)]
+        )))
+        playButton.defaultButton.run(SKAction.repeatForever(SKAction.sequence(
+            [SKAction.scale(by: size.width / 600, duration: 1),
+             SKAction.scale(by: 600 / size.width, duration: 1)]
+        )))
+        
         addChild(playButton)
         addChild(learnButton)
         addChild(configButton)
@@ -93,7 +108,7 @@ class FirstScene: SKScene {
     }
     
     func touchPlay(_ button: Button) {
-        print("Play")
+        
         let preGameScene = PreGameScene(size: (view?.bounds.size)!)
         view?.presentScene(preGameScene, transition: .doorsOpenVertical(withDuration: 0.5))
     }
@@ -108,7 +123,6 @@ class FirstScene: SKScene {
     
     func touchInfo(_ button: Button) {
         
-        print("Info")
         let infoScene = InfoScene(size: size)
         view?.presentScene(infoScene, transition: .flipVertical(withDuration: 0.5))
     }

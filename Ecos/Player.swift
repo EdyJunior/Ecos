@@ -17,7 +17,7 @@ class Player: SKSpriteNode {
     
     var walkingFrames: [SKTexture]!
     
-    var trashBag: TrashBag!
+    var trashBag = TrashBag(withContent: [])
     
     func initialize(_ size: CGSize, position: CGPoint, zPosition: CGFloat, scene: GameScene) {
         
@@ -44,7 +44,6 @@ class Player: SKSpriteNode {
         for textureName in atlas.textureNames{
             frames.append(atlas.textureNamed(textureName))
         }
-        
         return frames
     }
 
