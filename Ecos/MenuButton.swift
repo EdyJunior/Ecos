@@ -11,21 +11,19 @@ import SpriteKit
 
 class MenuButton: Button {
     
-    var label: SKLabelNode!
+    var label: InfoLabel!
     
     init(defaultButtonImage: String, activeButtonImage: String, labelName: String, buttonAction: ((_ button: Button) -> Void)? = nil) {
         
-        label = SKLabelNode(text: labelName)
+        label = InfoLabel(text: labelName)
         
         super.init(defaultButtonImage: defaultButtonImage, activeButtonImage: activeButtonImage, buttonAction: buttonAction, Type: .menuBtn)
     }
     
-    func setSizeAndPosition(_ size: CGSize, position: CGPoint, labelSize lSize: CGFloat, labelPosition lPosition: CGPoint) {
+    func setSizeAndPosition(_ size: CGSize, position: CGPoint, labelSize lSize: CGFloat, labelPosition lPosition: CGPoint, labelColor: UIColor = .white) {
         super.setSizeAndPosition(size, position: position, areaFactor: 1)
         
-        label.fontName = "DK Amoebica"
-        label.fontSize = lSize
-        label.position = lPosition
+        label.set(fontSize: lSize, position: lPosition, fontColor: labelColor, zPosition: .front)
         self.touchableArea.addChild(label)
     }
     

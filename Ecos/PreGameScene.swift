@@ -10,30 +10,45 @@ import SpriteKit
 
 class PreGameScene: SKScene {
 
-    var maxScoreLabel = SKLabelNode()
-    var lastScoreLabel = SKLabelNode()
+    var bestScoreLabel = InfoLabel()
+    var lastScoreLabel = InfoLabel()
+    var charactersNameLabel = InfoLabel()
+    
     var characterShowed = SKSpriteNode()
+    
+    let labelsColor = UIColor.init(red: 23/255, green: 136/255, blue: 23/255, alpha: 1)
     
     override func didMove(to view: SKView) {
         buildScene()
     }
     
     func buildScene() {
-        //self.backgroundColor = .white
+        
+        self.backgroundColor = .white
+        let background = SKSpriteNode(imageNamed: "greenBack")
+        background.zPosition = Position.deepest.rawValue
+        background.size = size
+        background.position = CGPoint(x: size.width/2, y: size.height/2)
+        addChild(background)
+        
         createStartButton()
         createBackButton()
+        createLabels()
+        createCharacters()
     }
     
     func createStartButton() {
         
-        let buttonStartSize = CGSize(width: size.width * 0.25, height: size.height * 0.4)
+        let buttonStartSize = CGSize(width: size.width * 0.25, height: size.height * 0.45)
         let buttonStartPosition = CGPoint(x: size.width * 0.85, y: size.height * 0.45)
         
-        let labelStartSize = buttonStartSize.height * 0.15
+        let labelStartSize = buttonStartSize.height * 0.1
         let labelStartposition = CGPoint(x: 0, y: -buttonStartSize.height * 0.65)
         
         let startButton = MenuButton(defaultButtonImage: "play2", activeButtonImage: "play2", labelName: "Começar", buttonAction: touchedStart)
-        startButton.setSizeAndPosition(buttonStartSize, position: buttonStartPosition, labelSize: labelStartSize, labelPosition: labelStartposition)
+        startButton.setSizeAndPosition(buttonStartSize, position: buttonStartPosition, labelSize: labelStartSize, labelPosition: labelStartposition, labelColor: labelsColor)
+        startButton.touchableArea.zPosition = Position.top.rawValue
+        
         addChild(startButton)
     }
     
@@ -55,7 +70,7 @@ class PreGameScene: SKScene {
         
         backButton.setSizeAndPosition(sizeButton, position: positionButton, labelSize: labelSize, labelPosition: labelPosition)
         
-        backButton.zPosition = Position.front.rawValue
+        backButton.touchableArea.zPosition = Position.top.rawValue
         addChild(backButton)
     }
     
@@ -63,5 +78,35 @@ class PreGameScene: SKScene {
         
         let first = FirstScene(size: size)
         view?.presentScene(first, transition: .doorsCloseVertical(withDuration: 0.5))
+    }
+    
+    func createLabels() {
+        
+        let labelsSize = size.height * 0.05
+        
+        let lastScorePos = CGPoint(x: size.width * 0.35, y: size.height * 0.85)
+        let bestScorePos = CGPoint(x: size.width * 0.75, y: size.height * 0.85)
+        let charactersNamePos = CGPoint(x: size.width * 0.4, y: size.height * 0.1)
+        
+        lastScoreLabel = InfoLabel(text: "Última pontuação:  0")
+        lastScoreLabel.set(fontSize: labelsSize, position: lastScorePos, fontColor: labelsColor, zPosition: .front)
+        addChild(lastScoreLabel)
+        
+        bestScoreLabel = InfoLabel(text: "Melhor pontuação:  0")
+        bestScoreLabel.set(fontSize: labelsSize, position: bestScorePos, fontColor: labelsColor, zPosition: .front)
+        addChild(bestScoreLabel)
+        
+        charactersNameLabel = InfoLabel(text: "Nome:  Glória")
+        charactersNameLabel.set(fontSize: labelsSize, position: charactersNamePos, fontColor: labelsColor, zPosition: .front)
+        addChild(charactersNameLabel)
+    }
+    
+    func createCharacters() {
+        
+        characterShowed = SKSpriteNode(imageNamed: "Gloria0")
+        characterShowed.size = CGSize(width: size.width * 0.25, height: size.height * 0.5)
+        characterShowed.position = CGPoint(x: size.width * 0.4, y: size.height * 0.5)
+        characterShowed.zPosition = Position.front.rawValue
+        addChild(characterShowed)
     }
 }
