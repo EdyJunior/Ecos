@@ -14,7 +14,8 @@ class PreGameScene: SKScene {
     var lastScoreLabel = InfoLabel()
     var charactersNameLabel = InfoLabel()
     
-    var characterShowed = SKSpriteNode()
+    //var characterShowed = SKSpriteNode()
+    var spritePicker: SpritePicker!
     
     let labelsColor = UIColor.init(red: 23/255, green: 136/255, blue: 23/255, alpha: 1)
     
@@ -29,6 +30,7 @@ class PreGameScene: SKScene {
         background.zPosition = Position.deepest.rawValue
         background.size = size
         background.position = CGPoint(x: size.width/2, y: size.height/2)
+        background.alpha = 0.75
         addChild(background)
         
         createStartButton()
@@ -103,10 +105,19 @@ class PreGameScene: SKScene {
     
     func createCharacters() {
         
-        characterShowed = SKSpriteNode(imageNamed: "Gloria0")
-        characterShowed.size = CGSize(width: size.width * 0.25, height: size.height * 0.5)
-        characterShowed.position = CGPoint(x: size.width * 0.4, y: size.height * 0.5)
-        characterShowed.zPosition = Position.front.rawValue
-        addChild(characterShowed)
+        let charactersNames = ["Gloria", "Gloriosinho"]
+        var characters = [SKSpriteNode]()
+        
+        for name in charactersNames {
+            let character = SKSpriteNode(imageNamed: "\(name)0")
+            character.size = CGSize(width: size.width * 0.25, height: size.height * 0.5)
+            character.position = CGPoint(x: 0, y: 0)
+            character.zPosition = Position.front.rawValue
+            characters.append(character)
+        }
+        
+        spritePicker = SpritePicker(withView: view!, withSprites: characters)
+        spritePicker.position = CGPoint(x: size.width * 0.4, y: size.height * 0.5)
+        addChild(spritePicker)
     }
 }
