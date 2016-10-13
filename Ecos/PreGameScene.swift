@@ -51,13 +51,18 @@ class PreGameScene: SKScene {
         startButton.setSizeAndPosition(buttonStartSize, position: buttonStartPosition, labelSize: labelStartSize, labelPosition: labelStartposition, labelColor: labelsColor)
         startButton.touchableArea.zPosition = Position.top.rawValue
         
+        startButton.defaultButton.run(SKAction.repeatForever(SKAction.sequence(
+            [SKAction.scale(by: size.width / 600, duration: 1),
+             SKAction.scale(by: 600 / size.width, duration: 1)]
+        )))
+        
         addChild(startButton)
     }
     
     func touchedStart(button: Button) {
         
         let gameScene = GameScene(size: size)
-        view?.presentScene(gameScene, transition: .push(with: .right, duration: 0.5))
+        view?.presentScene(gameScene, transition: .push(with: .left, duration: 0.5))
     }
     
     func createBackButton() {

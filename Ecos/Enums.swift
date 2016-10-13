@@ -14,7 +14,7 @@ enum BodyType: UInt32 {
     case obstacle = 2
     case limit = 4
     case toy = 8
-    case trashCan = 16
+    case door = 16
     case tap = 32
     case ground = 64
     case trash = 128

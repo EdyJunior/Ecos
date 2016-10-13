@@ -8,18 +8,29 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    private var scoreLabel: SKLabelNode!
+    private var playerNameLabel: SKLabelNode!
+
+    var gameCamera = SKCameraNode()
+    var gameOver = false
+    var won = false
+    var isTutoring = false
+    //var gamedata: HighScore?
+    
+    var landscape: Landscape!
+    var player: Player!
     
     override func didMove(to view: SKView) {
         buildScene()
     }
     
     func buildScene() {
-        self.backgroundColor = .blue
+        
+        self.backgroundColor = .white
         createBackButton()
+        createLandscape()
     }
     
     func createBackButton() {
@@ -41,7 +52,33 @@ class GameScene: SKScene {
     func backToMenu(button: Button) {
         
         let preGameScene = PreGameScene(size: size)
-        view?.presentScene(preGameScene, transition: .push(with: .left, duration: 0.5))
+        view?.presentScene(preGameScene, transition: .push(with: .right, duration: 0.5))
+    }
+    
+    func createLabels() {
+        
+        //let
+    }
+    
+    func createLandscape() {
+        
+        var rooms = [Room]()
+        
+        var posR = CGPoint.zero
+        let sizeR = CGSize(width: size.width * 3, height: size.height)
+        let offset = sizeR.width
+        
+        for i in 1...10 {
+            let room = Room(imageNamed: "Room\(i)")
+            room.initialize(size: sizeR, position: posR)
+            posR.x += offset
+            rooms.append(room)
+        }
+        
+        landscape = Landscape(withView: view!, withRooms: rooms)
+        landscape.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        landscape.zPosition = Position.deepest.rawValue
+        addChild(landscape)
     }
     
     override func update(_ currentTime: TimeInterval) {
