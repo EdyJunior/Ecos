@@ -75,6 +75,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE7E30281DB6878B00E83A43 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				CEBE3C211DA698CC004F4937 /* Assets.xcassets */,
+				CEBE3C141DA698CC004F4937 /* AppDelegate.swift */,
+				CEBE3C1C1DA698CC004F4937 /* GameViewController.swift */,
+				CEBE3C1E1DA698CC004F4937 /* Main.storyboard */,
+				CEBE3C231DA698CC004F4937 /* LaunchScreen.storyboard */,
+				CEBE3C261DA698CC004F4937 /* Info.plist */,
+				CE91C4F41DAD1DBD0070C38A /* DK Amoebica.otf */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
 		CE91C4F01DAD1AA80070C38A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,13 +159,7 @@
 				CE91C4F61DAD2E490070C38A /* Atlas */,
 				CE91C4F11DAD1AC40070C38A /* Util */,
 				CE91C4F01DAD1AA80070C38A /* Scenes */,
-				CEBE3C211DA698CC004F4937 /* Assets.xcassets */,
-				CEBE3C141DA698CC004F4937 /* AppDelegate.swift */,
-				CEBE3C1C1DA698CC004F4937 /* GameViewController.swift */,
-				CEBE3C1E1DA698CC004F4937 /* Main.storyboard */,
-				CEBE3C231DA698CC004F4937 /* LaunchScreen.storyboard */,
-				CEBE3C261DA698CC004F4937 /* Info.plist */,
-				CE91C4F41DAD1DBD0070C38A /* DK Amoebica.otf */,
+				CE7E30281DB6878B00E83A43 /* Others */,
 			);
 			path = Ecos;
 			sourceTree = "<group>";

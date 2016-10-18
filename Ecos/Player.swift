@@ -11,18 +11,21 @@ import SpriteKit
 
 class Player: SKSpriteNode {
     
-    var velocity = CGFloat(10)
+    var velocity = CGFloat(200)
     var jumping = false
-    let impulse = CGVector(dx: 1200, dy: 1300)
+    let impulse = CGVector(dx: 0, dy: 500)
     
     var walkingFrames: [SKTexture]!
     
     var trashBag = TrashBag(withContent: [])
     
+    var newPosition = CGPoint()
+    
     func initialize(_ size: CGSize, position: CGPoint, zPosition: CGFloat, scene: GameScene) {
         
         self.size = size
         self.position = position
+        self.newPosition = position
         self.zPosition = zPosition
         
         physicsBody = SKPhysicsBody(rectangleOf: size)
@@ -53,9 +56,11 @@ class Player: SKSpriteNode {
     
     func walk() {
         
+        let step: CGFloat = (scene?.size.width)!/5
+        
         run(SKAction.repeatForever(SKAction.group(
-            [SKAction.animate(with: walkingFrames, timePerFrame: 0.3),
-             SKAction.moveBy(x: velocity, y: 0, duration: 0.1)]
+            [SKAction.animate(with: walkingFrames, timePerFrame: 0),
+             SKAction.moveBy(x: step, y: 0, duration: Double(step)/Double(velocity))]
         )), withKey: "WalkingAnimation")
     }
     
