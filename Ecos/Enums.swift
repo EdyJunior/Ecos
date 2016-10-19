@@ -17,6 +17,7 @@ enum BodyType: UInt32 {
     case door = 16
     case tap = 32
     case ground = 64
+    case ceil = 65
     case trash = 128
     case menuBtn = 256
 }

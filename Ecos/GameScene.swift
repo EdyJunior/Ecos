@@ -70,20 +70,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createLandscape() {
         
-        var rooms = [Room]()
+//        var rooms = [Room]()
+//        
+//        var posR = CGPoint.zero
+//        let sizeR = CGSize(width: size.width * 3, height: size.height)
+//        let offset = sizeR.width
+//        
+//        for i in 1...10 {
+//            let room = Room(imageNamed: "Room\(i)")
+//            room.initialize(size: sizeR, position: posR)
+//            posR.x += offset
+//            rooms.append(room)
+//        }
         
-        var posR = CGPoint.zero
-        let sizeR = CGSize(width: size.width * 3, height: size.height)
-        let offset = sizeR.width
-        
-        for i in 1...10 {
-            let room = Room(imageNamed: "Room\(i)")
-            room.initialize(size: sizeR, position: posR)
-            posR.x += offset
-            rooms.append(room)
-        }
-        
-        landscape = Landscape(withView: view!, withRooms: rooms)
+        landscape = Landscape(sceneSize: size)
         landscape.position = CGPoint(x: size.width / 2, y: size.height / 2)
         landscape.zPosition = Position.deepest.rawValue
         addChild(landscape)
@@ -91,7 +91,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createPlayer() {
         
-        let sizePlayer = CGSize(width: size.width * 0.2, height: size.height * 0.5)
+        let sizePlayer = CGSize(width: size.width * 0.15, height: size.height * 0.4)
         let positonPlayer = CGPoint(x: size.width/2, y: size.height/2)
         
         player = Player(imageNamed: "Gloria0")
@@ -100,7 +100,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        player.jump()
+        
+        if !player.jumping {
+            player.jump()
+            player.jumping = true
+        }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -108,15 +112,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
         
-        if (firstBody.categoryBitMask == BodyType.door.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue) {
+        if firstBody.categoryBitMask == BodyType.door.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
             firstBody.categoryBitMask = 0
             print("Render")
             landscape.render()
         }
-        if (firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.door.rawValue) {
+        if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.door.rawValue {
             secondBody.categoryBitMask = 0
             print("Render")
             landscape.render()
+        }
+        
+        if (firstBody.categoryBitMask == BodyType.ground.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue) ||
+           (firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.ground.rawValue){
+            player.jumping = false
         }
     }
     

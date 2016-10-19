@@ -53,7 +53,7 @@ class Button: SKNode {
         var frames = [SKTexture]()
         
         let numImages = textures.textureNames.count
-        for i in 1...numImages {
+        for i in 0..<numImages {
             
             let TextureName = "\(imgName)\(i)"
             frames.append(textures.textureNamed(TextureName))

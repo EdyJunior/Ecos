@@ -11,9 +11,9 @@ import SpriteKit
 
 class Player: SKSpriteNode {
     
-    var velocity = CGFloat(200)
+    var velocity = CGFloat(170)
     var jumping = false
-    let impulse = CGVector(dx: 0, dy: 500)
+    let impulse = CGVector(dx: 0, dy: 280)
     
     var walkingFrames: [SKTexture]!
     
@@ -58,10 +58,8 @@ class Player: SKSpriteNode {
         
         let step: CGFloat = (scene?.size.width)!/5
         
-        run(SKAction.repeatForever(SKAction.group(
-            [SKAction.animate(with: walkingFrames, timePerFrame: 0),
-             SKAction.moveBy(x: step, y: 0, duration: Double(step)/Double(velocity))]
-        )), withKey: "WalkingAnimation")
+        run(SKAction.repeatForever(SKAction.animate(with: walkingFrames, timePerFrame: 0.3)), withKey: "WalkingAnimation")
+        run(SKAction.repeatForever(SKAction.moveBy(x: step, y: 0, duration: Double(step)/Double(velocity))), withKey: "WalkingMovement")
     }
     
     func jump() {

@@ -33,8 +33,6 @@ class Room: SKSpriteNode {
         let ground = SKSpriteNode()
         ground.size = CGSize(width: size.width, height: size.height * factor)
         ground.position = CGPoint(x: 0, y: -size.height * 0.25)
-        ground.color = .purple
-        ground.alpha = 0.6
         ground.zPosition = Position.front.rawValue
         
         ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
@@ -45,5 +43,19 @@ class Room: SKSpriteNode {
         ground.physicsBody?.contactTestBitMask = BodyType.player.rawValue
         ground.physicsBody?.collisionBitMask = BodyType.player.rawValue
         self.addChild(ground)
+        
+        let ceil = SKSpriteNode()
+        ceil.size = CGSize(width: size.width, height: size.height * factor)
+        ceil.position = CGPoint(x: 0, y: size.height * 0.55)
+        ceil.zPosition = Position.front.rawValue
+        
+        ceil.physicsBody = SKPhysicsBody(rectangleOf: ceil.size)
+        ceil.physicsBody?.affectedByGravity = false
+        ceil.physicsBody?.allowsRotation = false
+        ceil.physicsBody?.isDynamic = false
+        ceil.physicsBody?.categoryBitMask = BodyType.ceil.rawValue
+        ceil.physicsBody?.contactTestBitMask = 0
+        ceil.physicsBody?.collisionBitMask = BodyType.player.rawValue
+        self.addChild(ceil)
     }
 }

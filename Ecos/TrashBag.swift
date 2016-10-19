@@ -41,11 +41,9 @@ class TrashBag: SKNode {
         
         for garbage in content {
             garbage.removeAllActions()
-            garbage.run(SKAction.sequence([SKAction.group([SKAction.move(to: trashCan.position, duration: 0.5),
-                                                           SKAction.rotate(byAngle: 720, duration: 0.5)]),
-                                           SKAction.run({
-                                               self.removeAllChildren()
-                                           })]))
+            garbage.run(SKAction.sequence([SKAction.group([SKAction.move(to: trashCan.position, duration: 0.5), SKAction.rotate(byAngle: 720, duration: 0.5)]),
+                SKAction.run({self.removeAllChildren()})
+            ]))
             nextPosition.x = 0
         }
     }
