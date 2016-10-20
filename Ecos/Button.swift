@@ -77,6 +77,10 @@ class Button: SKNode {
         touchableArea = SKSpriteNode()
         touchableArea.size = CGSize(width: size.width * factor, height: size.height * factor)
         touchableArea.position = position
+        
+//        touchableArea.color = .blue
+//        touchableArea.alpha = 0.5
+        
         touchableArea.addChild(defaultButton)
         touchableArea.addChild(activeButton)
         addChild(touchableArea)

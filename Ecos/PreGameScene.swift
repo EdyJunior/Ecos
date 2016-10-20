@@ -16,7 +16,7 @@ class PreGameScene: SKScene {
     
     var spritePicker: SpritePicker!
     
-    let labelsColor = UIColor.init(red: 23/255, green: 136/255, blue: 23/255, alpha: 1)
+    //let labelsColor = UIColor.init(red: 23/255, green: 136/255, blue: 23/255, alpha: 1)
     
     override func didMove(to view: SKView) {
         
@@ -48,7 +48,7 @@ class PreGameScene: SKScene {
         let labelStartposition = CGPoint(x: 0, y: -buttonStartSize.height * 0.65)
         
         let startButton = MenuButton(defaultButtonImage: "play2", activeButtonImage: "play2", labelName: "Começar", buttonAction: touchedStart)
-        startButton.setSizeAndPosition(buttonStartSize, position: buttonStartPosition, labelSize: labelStartSize, labelPosition: labelStartposition, labelColor: labelsColor)
+        startButton.setSizeAndPosition(buttonStartSize, position: buttonStartPosition, labelSize: labelStartSize, labelPosition: labelStartposition, labelColor: niceGreen)
         startButton.touchableArea.zPosition = Position.top.rawValue
         
         startButton.defaultButton.run(SKAction.repeatForever(SKAction.sequence(
@@ -96,15 +96,15 @@ class PreGameScene: SKScene {
         let charactersNamePos = CGPoint(x: size.width * 0.4, y: size.height * 0.1)
         
         lastScoreLabel = InfoLabel(text: "Última pontuação:  0")
-        lastScoreLabel.set(fontSize: labelsSize, position: lastScorePos, fontColor: labelsColor, zPosition: .front)
+        lastScoreLabel.set(fontSize: labelsSize, position: lastScorePos, fontColor: niceGreen, zPosition: .front)
         addChild(lastScoreLabel)
         
         bestScoreLabel = InfoLabel(text: "Melhor pontuação:  0")
-        bestScoreLabel.set(fontSize: labelsSize, position: bestScorePos, fontColor: labelsColor, zPosition: .front)
+        bestScoreLabel.set(fontSize: labelsSize, position: bestScorePos, fontColor: niceGreen, zPosition: .front)
         addChild(bestScoreLabel)
         
         charactersNameLabel = InfoLabel(text: "Nome:  Glória")
-        charactersNameLabel.set(fontSize: labelsSize, position: charactersNamePos, fontColor: labelsColor, zPosition: .front)
+        charactersNameLabel.set(fontSize: labelsSize, position: charactersNamePos, fontColor: niceGreen, zPosition: .front)
         addChild(charactersNameLabel)
     }
     
@@ -115,7 +115,7 @@ class PreGameScene: SKScene {
         
         for name in charactersNames {
             let character = SKSpriteNode(imageNamed: "\(name)0")
-            character.size = CGSize(width: size.width * 0.25, height: size.height * 0.5)
+            character.size = CGSize(width: size.width * 0.2, height: size.height * 0.5)
             character.position = CGPoint(x: 0, y: 0)
             character.zPosition = Position.front.rawValue
             characters.append(character)

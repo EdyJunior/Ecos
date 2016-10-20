@@ -10,8 +10,13 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    private var scoreLabel: SKLabelNode!
-    private var playerNameLabel: SKLabelNode!
+    private var scoreLabel: InfoLabel!
+    private var playerNameLabel: InfoLabel!
+    private var score: Int = 0 {
+        didSet {
+            scoreLabel.text = "\(score)"
+        }
+    }
     
     var backButton: MenuButton!
 
@@ -35,54 +40,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func buildScene() {
         
         self.backgroundColor = .white
-        createBackButton()
+        
         createLandscape()
-        createLabels()
         createPlayer()
-    }
-    
-    func createBackButton() {
-        
-        backButton = MenuButton(defaultButtonImage: "backButton", activeButtonImage: "backButton", labelName: "Voltar", buttonAction: backToMenu)
-        
-        let sizeButton = CGSize(width: size.width * 0.07, height: size.width * 0.07)
-        let labelSize = sizeButton.width / 3
-        
-        let positionButton = CGPoint(x: size.width * 0.05, y: size.height * 0.9)
-        let labelPosition = CGPoint(x: 0, y: -sizeButton.width)
-        
-        backButton.setSizeAndPosition(sizeButton, position: positionButton, labelSize: labelSize, labelPosition: labelPosition)
-        
-        backButton.zPosition = Position.front.rawValue
-        addChild(backButton)
-    }
-    
-    func backToMenu(button: Button) {
-        
-        let preGameScene = PreGameScene(size: size)
-        view?.presentScene(preGameScene, transition: .push(with: .right, duration: 0.5))
-    }
-    
-    func createLabels() {
-        
-        //let
+        createLabels()
+        createBackButton()
     }
     
     func createLandscape() {
-        
-//        var rooms = [Room]()
-//        
-//        var posR = CGPoint.zero
-//        let sizeR = CGSize(width: size.width * 3, height: size.height)
-//        let offset = sizeR.width
-//        
-//        for i in 1...10 {
-//            let room = Room(imageNamed: "Room\(i)")
-//            room.initialize(size: sizeR, position: posR)
-//            posR.x += offset
-//            rooms.append(room)
-//        }
-        
+    
         landscape = Landscape(sceneSize: size)
         landscape.position = CGPoint(x: size.width / 2, y: size.height / 2)
         landscape.zPosition = Position.deepest.rawValue
@@ -99,12 +65,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.walk()
     }
     
+    func createLabels() {
+        
+        scoreLabel = InfoLabel(text: "0")
+        scoreLabel.set(fontSize: size.height * 0.15, position: CGPoint(x: player.position.x + size.width * 0.4, y: player.position.y - size.height * 0.45) , fontColor: niceGreen, zPosition: Position.middle)
+        addChild(scoreLabel)
+        
+        playerNameLabel = InfoLabel(text: "Glória")
+        playerNameLabel.set(fontSize: size.height * 0.15, position: CGPoint(x: player.position.x, y: player.position.y - size.height * 0.45) , fontColor: niceGreen, zPosition: Position.middle)
+        addChild(playerNameLabel)
+    }
+    
+    func createBackButton() {
+        
+        //TODO: Posicionar o backButton em um lugar difícil de ser clicado acidentalmente
+        
+        backButton = MenuButton(defaultButtonImage: "backButton", activeButtonImage: "backButton", labelName: "Voltar", buttonAction: backToMenu)
+        
+        let sizeButton = CGSize(width: size.width * 0.07, height: size.width * 0.07)
+        let labelSize = sizeButton.width / 3
+        
+        let positionButton = CGPoint(x: size.width * 0.05, y: player.position.y - size.height * 0.35)
+        let labelPosition = CGPoint(x: 0, y: -sizeButton.width)
+        
+        backButton.setSizeAndPosition(sizeButton, position: positionButton, labelSize: labelSize, labelPosition: labelPosition, labelColor: niceGreen)
+        
+        backButton.zPosition = Position.front.rawValue
+        addChild(backButton)
+    }
+    
+    func backToMenu(button: Button) {
+        
+        let preGameScene = PreGameScene(size: size)
+        view?.presentScene(preGameScene, transition: .push(with: .right, duration: 0.5))
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if !player.jumping {
-            player.jump()
-            player.jumping = true
-        }
+//        if !player.jumping {
+//            player.jump()
+//            player.jumping = true
+//        }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -114,12 +115,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if firstBody.categoryBitMask == BodyType.door.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
             firstBody.categoryBitMask = 0
-            print("Render")
             landscape.render()
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.door.rawValue {
             secondBody.categoryBitMask = 0
-            print("Render")
             landscape.render()
         }
         
@@ -129,11 +128,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func updateScore(scoreToAdd: ScoreTable) {
+        score += scoreToAdd.rawValue
+    }
+    
     override func update(_ currentTime: TimeInterval) {
 
         gameCamera.position.x = player.position.x
-        backButton.position.x = size.width * 0.05 + player.position.x - size.width/2
+        playerNameLabel.position.x = player.position.x
+        backButton.position.x = player.position.x - size.width * 0.45
+        scoreLabel.position.x = player.position.x + size.width * 0.40
     }
-    
-    
 }

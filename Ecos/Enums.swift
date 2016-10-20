@@ -39,3 +39,12 @@ enum State: UInt32 {
     case obstacle = 2
 }
 
+enum ScoreTable: Int {
+    
+    case waterTap = 2
+    case can = 1
+    case tvset = 3
+    case lamp = 4
+}
+
+let niceGreen = UIColor.init(red: 23/255, green: 136/255, blue: 23/255, alpha: 1)

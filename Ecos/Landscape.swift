@@ -34,7 +34,7 @@ class Landscape: SKNode {
             self.addChild(rooms[currentIndex + 2])
             currentIndex += 1
         }
-        if currentIndex - 2 >= 0 {
+        if currentIndex - 1 > 0 {
             rooms[currentIndex - 2].removeFromParent()
         }
     }
@@ -134,10 +134,17 @@ class Landscape: SKNode {
         
         let sizeTap = CGSize(width: sceneSize.width * 0.1, height: sceneSize.height * 0.2)
         
-        let waterTap = Button(defaultButtonImage: "WaterTap0", activeButtonImage: "WaterTap0")
+        let waterTap = Button(defaultButtonImage: "WaterTap0", activeButtonImage: "WaterTap0", buttonAction: touchWaterTap)
         waterTap.setSizeAndPosition(sizeTap, position: tapPosition, areaFactor: 1.5)
         waterTap.animate("WaterTaps", imgName: "WaterTap")
         waterTap.zPosition = Position.before.rawValue
         return waterTap
+    }
+    
+    func touchWaterTap(waterTap: Button) {
+        
+        let gameScene = self.scene as! GameScene
+        gameScene.updateScore(scoreToAdd: ScoreTable.waterTap)
+        waterTap.action = nil
     }
 }
