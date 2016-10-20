@@ -30,8 +30,6 @@ class Landscape: SKNode {
     
     func render() {
         
-        print("ci = \(currentIndex)")
-        
         if currentIndex + 2 < rooms.count {
             self.addChild(rooms[currentIndex + 2])
             currentIndex += 1
@@ -43,7 +41,6 @@ class Landscape: SKNode {
     
     func createRooms() {
         
-        var rooms = [Room]()
         var i = 0
         
         var posR = CGPoint.zero
