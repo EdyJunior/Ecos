@@ -127,6 +127,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             landscape.render()
         }
         
+        if firstBody.categoryBitMask == BodyType.obstacle.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
+            print("OBSTACulo")
+        }
+        if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.obstacle.rawValue {
+            print("OBSTACulo")
+        }
+        
         if (firstBody.categoryBitMask == BodyType.ground.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue) ||
            (firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.ground.rawValue){
             player.jumping = false

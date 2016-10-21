@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE0EB6EE1DA7C53A00F4554F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EB6ED1DA7C53A00F4554F /* Button.swift */; };
 		CE3BB84E1DBA991E001286EE /* Bathroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3BB84D1DBA991E001286EE /* Bathroom.swift */; };
+		CE3BB8501DBAB588001286EE /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3BB84F1DBAB588001286EE /* Dog.swift */; };
 		CE740AC01DAE87EC00EB141D /* PreGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE740ABF1DAE87EC00EB141D /* PreGameScene.swift */; };
 		CE91C4F31DAD1B6B0070C38A /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91C4F21DAD1B6B0070C38A /* MenuButton.swift */; };
 		CE91C4F51DAD1DBD0070C38A /* DK Amoebica.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4F41DAD1DBD0070C38A /* DK Amoebica.otf */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		CE0EB6ED1DA7C53A00F4554F /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		CE3BB84D1DBA991E001286EE /* Bathroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bathroom.swift; sourceTree = "<group>"; };
+		CE3BB84F1DBAB588001286EE /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		CE740ABF1DAE87EC00EB141D /* PreGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreGameScene.swift; sourceTree = "<group>"; };
 		CE91C4F21DAD1B6B0070C38A /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		CE91C4F41DAD1DBD0070C38A /* DK Amoebica.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Amoebica.otf"; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				CEA77CCB1DB01EB7005ECCC7 /* Room.swift */,
 				CE3BB84D1DBA991E001286EE /* Bathroom.swift */,
 				CEADC5F21DB99A1600EAAB18 /* Landscape.swift */,
+				CE3BB84F1DBAB588001286EE /* Dog.swift */,
 			);
 			name = "Game Classes";
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				CEA77CC71DAFFFD5005ECCC7 /* Player.swift in Sources */,
 				CEBE3C2D1DA69A32004F4937 /* FirstScene.swift in Sources */,
 				CE91C5041DAD353F0070C38A /* InfoScene.swift in Sources */,
+				CE3BB8501DBAB588001286EE /* Dog.swift in Sources */,
 				CE740AC01DAE87EC00EB141D /* PreGameScene.swift in Sources */,
 				CEBE3C2F1DA69A91004F4937 /* Enums.swift in Sources */,
 				CEADC5F31DB99A1600EAAB18 /* Landscape.swift in Sources */,

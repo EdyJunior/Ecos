@@ -95,6 +95,12 @@ class Landscape: SKNode {
         let room6 = Room(imageNamed: "Room6")
         room6.initialize(size: sizeR, position: posR)
         
+        let dog = Dog(defaultButtonImage: "dog0", activeButtonImage: "dog0")
+        dog.action = dog.touchDog
+        dog.setSizeAndPosition(CGSize(width: sceneSize.width * 0.1, height: sceneSize.height * 0.15), position: CGPoint(x: 0, y: -sceneSize.height * 0.2), areaFactor: 1.5)
+        dog.initialize()
+        room6.addChild(dog)
+        
         posR.x += offset
         rooms.append(room6)
         
@@ -123,7 +129,7 @@ class Landscape: SKNode {
         let room10 = Bathroom(imageNamed: "Room10")
         room10.initialize(size: sizeR, position: posR)
         room10.addTap(tapPosition: tapPosition, sizeTap: sizeTap)
-        room10.addTrashCan(trashImage: "ChildsTrashCan", trashCanPosition: trashCanPosition, sizeTrashCan: sizeTrashCan)
+        room10.addTrashCan(trashImage: "GrandmasTrashCan", trashCanPosition: trashCanPosition, sizeTrashCan: sizeTrashCan)
         
         posR.x += offset
         rooms.append(room10)

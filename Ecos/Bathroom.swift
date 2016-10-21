@@ -49,6 +49,5 @@ class Bathroom: Room {
             gameScene.updateScore(scoreToAdd: ScoreTable.trash)
         }
         gameScene.player.trashBag?.throwAway(trashCan: trashCan)
-        print("TRASHCAN = \(gameScene.player.trashBag!.children.count)")
     }
 }
