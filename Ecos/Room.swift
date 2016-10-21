@@ -58,4 +58,50 @@ class Room: SKSpriteNode {
         ceil.physicsBody?.collisionBitMask = BodyType.player.rawValue
         self.addChild(ceil)
     }
+    
+    func createTrash() -> [Button] {
+        
+        var trashSizeTable: Dictionary = [Int : [CGFloat]]()
+        trashSizeTable[0] = [0.03, 0.06]
+        trashSizeTable[1] = [0.03, 0.09]
+        trashSizeTable[2] = [0.02, 0.02]
+        
+        var trashNameTable: Dictionary = [Int : String]()
+        trashNameTable[0] = "Can"
+        trashNameTable[1] = "Bottle"
+        trashNameTable[2] = "PaperBall"
+        
+        let quantity = Int(arc4random_uniform(3))
+        var trashArray = [Button]()
+        
+        for _ in 0...quantity {
+            let key = Int(arc4random_uniform(2))
+            let sizeTrash = CGSize(width: size.width * trashSizeTable[key]![0] / 3.0 , height: size.width * trashSizeTable[key]![1] / 3.0)
+            let garbagePosition = CGPoint(x: size.width * (CGFloat(arc4random_uniform(10)) / 10.0 - 0.45) / 3.0, y: -size.height * 0.1)
+            let image: String = trashNameTable[key]!
+            
+            let garbage = Button(defaultButtonImage: image, activeButtonImage: image, buttonAction: touchTrash)
+            garbage.setSizeAndPosition(sizeTrash, position: garbagePosition, areaFactor: 1.5)
+            garbage.zPosition = Position.before.rawValue
+            
+            trashArray.append(garbage)
+        }
+        
+        return trashArray
+    }
+    
+    func touchTrash(trash: Button) {
+        
+        let gameScene = self.scene as! GameScene
+        gameScene.player.trashBag!.push(garbage: trash)
+        gameScene.updateScore(scoreToAdd: ScoreTable.trash)
+        trash.action = nil
+    }
+    
+    func addTrash() {
+        
+        for trash in createTrash() {
+            self.addChild(trash)
+        }
+    }
 }
