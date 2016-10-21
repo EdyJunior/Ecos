@@ -45,10 +45,10 @@ class Bathroom: Room {
     func touchTrashCan(trashCan: Button) {
         
         let gameScene = self.scene as! GameScene
-        gameScene.updateScore(scoreToAdd: ScoreTable.trashCan)
-        //gameScene.player.trashBag?.throwAway(trashCan: trashCan)
-        print("TRASHCAN")
+        for _ in gameScene.player.trashBag!.children {
+            gameScene.updateScore(scoreToAdd: ScoreTable.trash)
+        }
+        gameScene.player.trashBag?.throwAway(trashCan: trashCan)
+        print("TRASHCAN = \(gameScene.player.trashBag!.children.count)")
     }
-    
-    
 }

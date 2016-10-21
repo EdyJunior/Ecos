@@ -56,12 +56,25 @@ class TrashBag: SKNode {
     
     func throwAway(trashCan: Button) {
         
-        for garbage in content {
-            garbage.removeAllActions()
-            garbage.run(SKAction.sequence([SKAction.group([SKAction.move(to: trashCan.touchableArea.position, duration: 0.5), SKAction.rotate(byAngle: 720, duration: 0.5)]),
-                SKAction.run({self.removeAllChildren()})
+        let upDown = SKAction.sequence(
+            [SKAction.moveBy(x: size * 0.3, y: size * 0.6, duration: 0.5),
+             SKAction.moveBy(x: size * 0.1, y: 0, duration: 0.2),
+             SKAction.moveBy(x: size * 0.2, y: -size * 0.2, duration: 0.3)]
+        )
+        var duration: CGFloat = 0.1
+        
+        for garb in self.children {
+            let garbage = garb as! Button
+            garbage.touchableArea.removeAllActions()
+            garbage.touchableArea.run(SKAction.sequence(
+                [SKAction.wait(forDuration: TimeInterval(duration)),
+                 SKAction.group(
+                    [upDown,
+                     SKAction.rotate(byAngle: 400, duration: 1)]),
+                SKAction.run({self.removeChildren(in: [garbage])})
             ]))
-            nextPosition.x = 0
+            duration += 0.2
         }
+        nextPosition.x = -self.size * 0.5
     }
 }
