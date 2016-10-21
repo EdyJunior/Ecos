@@ -10,9 +10,9 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    private var scoreLabel: InfoLabel!
-    private var playerNameLabel: InfoLabel!
-    private var score: Int = 0 {
+    var scoreLabel: InfoLabel!
+    var playerNameLabel: InfoLabel!
+    var score: Int = 0 {
         didSet {
             scoreLabel.text = "\(score)"
         }
