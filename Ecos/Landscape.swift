@@ -2,16 +2,17 @@
 //  Landscape.swift
 //  Ecos
 //
-//  Created by Edvaldo Junior on 13/10/16.
+//  Created by Edvaldo Junior on 20/10/16.
 //  Copyright © 2016 Edvaldo Junior. All rights reserved.
 //
 
 import SpriteKit
 
 class Landscape: SKNode {
-
+    
     var rooms = [Room]()
     var waterTaps = [Button]()
+    var trash = [Button]()
     var currentIndex = 0
     var sceneSize = CGSize()
     
@@ -146,5 +147,43 @@ class Landscape: SKNode {
         let gameScene = self.scene as! GameScene
         gameScene.updateScore(scoreToAdd: ScoreTable.waterTap)
         waterTap.action = nil
+    }
+    
+    func createTrash(trashPosition: CGPoint) -> [Button] {
+
+        var trashSizeTable: Dictionary = [Int : [CGFloat]]()
+        trashSizeTable[0] = [0.05, 0.10]
+        trashSizeTable[1] = [0.05, 0.15]
+        trashSizeTable[2] = [0.05, 0.05]
+        
+        var trashNameTable: Dictionary = [Int : String]()
+        trashNameTable[0] = "can"
+        trashNameTable[1] = "bottle"
+        trashNameTable[2] = "paperBall"
+        
+        let quantity = Int(arc4random_uniform(2))
+        var trashArray = [Button]()
+        
+        for _ in 0...quantity {
+            let key = Int(arc4random_uniform(2))
+            let sizeTrash = CGSize(width: sceneSize.width * trashSizeTable[key]![0] , height: sceneSize.width * trashSizeTable[key]![1])
+            let garbagePosition = CGPoint(x: scene!.size.width * (0.05 + CGFloat(arc4random_uniform(10) / 10)), y: scene!.size.height * 0.35)
+            let image: String = trashNameTable[key]!
+            
+            let garbage = Button(defaultButtonImage: image, activeButtonImage: image, buttonAction: touchTrash)
+            garbage.setSizeAndPosition(sizeTrash, position: garbagePosition, areaFactor: 1.5)
+            garbage.zPosition = Position.front.rawValue
+            
+            trashArray.append(garbage)
+        }
+        
+        return trashArray
+    }
+    
+    func touchTrash(trash: Button) {
+        
+        let gameScene = self.scene as! GameScene
+        gameScene.updateScore(scoreToAdd: ScoreTable.trash)
+        trash.action = nil
     }
 }

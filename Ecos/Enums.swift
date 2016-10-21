@@ -42,7 +42,7 @@ enum State: UInt32 {
 enum ScoreTable: Int {
     
     case waterTap = 2
-    case can = 1
+    case trash = 1
     case tvset = 3
     case lamp = 4
 }

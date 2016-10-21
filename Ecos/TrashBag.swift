@@ -11,11 +11,11 @@ import SpriteKit
 
 class TrashBag: SKNode {
     
-    var content = [SKSpriteNode]()
+    var content = [Button]()
     var currentIndex = 0
     var nextPosition = CGPoint()
     
-    init(withContent content: [SKSpriteNode]) {
+    init(withContent content: [Button]) {
         
         self.content = content
         super.init()
@@ -25,23 +25,21 @@ class TrashBag: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func push(garbage: SKSpriteNode) {
+    func push(garbage: Button) {
         
-        garbage.removeAllActions()
-        garbage.run(SKAction.sequence([SKAction.group([SKAction.move(to: self.position, duration: 0.5),
-                                                       SKAction.rotate(byAngle: 720, duration: 0.5)]),
-                                       SKAction.run({ 
-                                           garbage.position = self.nextPosition
-                                           self.addChild(garbage)
-                                       })]))
+        garbage.touchableArea.removeAllActions()
+        garbage.touchableArea.run(SKAction.sequence([SKAction.group([SKAction.move(to: self.position, duration: 0.5), SKAction.rotate(byAngle: 720, duration: 0.5)]), SKAction.run({
+                garbage.touchableArea.position = self.nextPosition
+                self.addChild(garbage)
+            })]))
         nextPosition.x += (scene?.size.width)! * 0.02
     }
     
-    func throwAway(trashCan: SKSpriteNode) {
+    func throwAway(trashCan: Button) {
         
         for garbage in content {
             garbage.removeAllActions()
-            garbage.run(SKAction.sequence([SKAction.group([SKAction.move(to: trashCan.position, duration: 0.5), SKAction.rotate(byAngle: 720, duration: 0.5)]),
+            garbage.run(SKAction.sequence([SKAction.group([SKAction.move(to: trashCan.touchableArea.position, duration: 0.5), SKAction.rotate(byAngle: 720, duration: 0.5)]),
                 SKAction.run({self.removeAllChildren()})
             ]))
             nextPosition.x = 0
