@@ -39,7 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func buildScene() {
         
-        self.backgroundColor = .white
+        self.backgroundColor = .black
         
         createLandscape()
         createPlayer()
@@ -50,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createLandscape() {
     
         landscape = Landscape(sceneSize: size)
-        landscape.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        landscape.position = CGPoint(x: size.width / 2 + size.width * 1.3, y: size.height / 2)
         landscape.zPosition = Position.deepest.rawValue
         addChild(landscape)
     }
@@ -62,6 +62,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         player = Player(imageNamed: "Gloria0")
         player.initialize(sizePlayer, position: positonPlayer, zPosition: Position.middle.rawValue, scene: self)
+        
+        player.trashBag = TrashBag(sceneSize: size)
+        player.trashBag?.position = CGPoint(x: size.width * 0.25, y: size.height * 0.15)
+        addChild(player.trashBag!)
+        
         player.walk()
     }
     
@@ -72,7 +77,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(scoreLabel)
         
         playerNameLabel = InfoLabel(text: "Glória")
-        playerNameLabel.set(fontSize: size.height * 0.15, position: CGPoint(x: player.position.x, y: player.position.y - size.height * 0.45) , fontColor: niceGreen, zPosition: Position.middle)
+        playerNameLabel.set(fontSize: size.height * 0.15, position: CGPoint(x: player.position.x + size.width * 0.15, y: player.position.y - size.height * 0.45) , fontColor: niceGreen, zPosition: Position.middle)
         addChild(playerNameLabel)
     }
     
@@ -85,7 +90,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let sizeButton = CGSize(width: size.width * 0.07, height: size.width * 0.07)
         let labelSize = sizeButton.width / 3
         
-        let positionButton = CGPoint(x: size.width * 0.05, y: player.position.y - size.height * 0.35)
+        let positionButton = CGPoint(x: size.width * 0.05, y: player.position.y + size.height * 0.35)
         let labelPosition = CGPoint(x: 0, y: -sizeButton.width)
         
         backButton.setSizeAndPosition(sizeButton, position: positionButton, labelSize: labelSize, labelPosition: labelPosition, labelColor: niceGreen)
@@ -135,8 +140,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
 
         gameCamera.position.x = player.position.x
-        playerNameLabel.position.x = player.position.x
-        backButton.position.x = player.position.x - size.width * 0.45
+        playerNameLabel.position.x = player.position.x + size.width * 0.15
+        backButton.position.x = player.position.x + size.width * 0.35
         scoreLabel.position.x = player.position.x + size.width * 0.40
+        player.trashBag?.position.x = player.position.x - size.width * 0.25
     }
 }

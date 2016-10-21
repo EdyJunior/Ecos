@@ -57,6 +57,11 @@ class Landscape: SKNode {
         //Cômodo 1
         let room1 = Room(imageNamed: "Room1")
         room1.initialize(size: sizeR, position: posR)
+        
+        for trash in createTrash() {
+            room1.addChild(trash)
+        }
+        
         posR.x += offset
         rooms.append(room1)
         
@@ -126,6 +131,12 @@ class Landscape: SKNode {
         posR.x += offset
         rooms.append(room10)
         
+        for i in 1..<rooms.count {
+            for trash in createTrash() {
+                rooms[i].addChild(trash)
+            }
+        }
+        
         //Inicia renderizando apenas 2 dos 10 cômodos
         self.addChild(rooms[0])
         self.addChild(rooms[1])
@@ -149,30 +160,30 @@ class Landscape: SKNode {
         waterTap.action = nil
     }
     
-    func createTrash(trashPosition: CGPoint) -> [Button] {
+    func createTrash() -> [Button] {
 
         var trashSizeTable: Dictionary = [Int : [CGFloat]]()
-        trashSizeTable[0] = [0.05, 0.10]
-        trashSizeTable[1] = [0.05, 0.15]
-        trashSizeTable[2] = [0.05, 0.05]
+        trashSizeTable[0] = [0.03, 0.06]
+        trashSizeTable[1] = [0.03, 0.09]
+        trashSizeTable[2] = [0.02, 0.02]
         
         var trashNameTable: Dictionary = [Int : String]()
-        trashNameTable[0] = "can"
-        trashNameTable[1] = "bottle"
-        trashNameTable[2] = "paperBall"
+        trashNameTable[0] = "Can"
+        trashNameTable[1] = "Bottle"
+        trashNameTable[2] = "PaperBall"
         
-        let quantity = Int(arc4random_uniform(2))
+        let quantity = Int(arc4random_uniform(3))
         var trashArray = [Button]()
         
         for _ in 0...quantity {
             let key = Int(arc4random_uniform(2))
             let sizeTrash = CGSize(width: sceneSize.width * trashSizeTable[key]![0] , height: sceneSize.width * trashSizeTable[key]![1])
-            let garbagePosition = CGPoint(x: scene!.size.width * (0.05 + CGFloat(arc4random_uniform(10) / 10)), y: scene!.size.height * 0.35)
+            let garbagePosition = CGPoint(x: sceneSize.width * (CGFloat(arc4random_uniform(10)) / 10.0 - 0.45), y: -sceneSize.height * 0.1)
             let image: String = trashNameTable[key]!
             
             let garbage = Button(defaultButtonImage: image, activeButtonImage: image, buttonAction: touchTrash)
             garbage.setSizeAndPosition(sizeTrash, position: garbagePosition, areaFactor: 1.5)
-            garbage.zPosition = Position.front.rawValue
+            garbage.zPosition = Position.before.rawValue
             
             trashArray.append(garbage)
         }
@@ -183,6 +194,7 @@ class Landscape: SKNode {
     func touchTrash(trash: Button) {
         
         let gameScene = self.scene as! GameScene
+        gameScene.player.trashBag!.push(garbage: trash)
         gameScene.updateScore(scoreToAdd: ScoreTable.trash)
         trash.action = nil
     }

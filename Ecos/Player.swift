@@ -17,7 +17,7 @@ class Player: SKSpriteNode {
     
     var walkingFrames: [SKTexture]!
     
-    var trashBag = TrashBag(withContent: [])
+    var trashBag: TrashBag?
     
     var newPosition = CGPoint()
     
