@@ -42,30 +42,28 @@ class Landscape: SKNode {
     
     func createRooms() {
         
-        var i = 0
-        
         var posR = CGPoint.zero
         let sizeR = CGSize(width: sceneSize.width * 3, height: sceneSize.height)
         let offset = sizeR.width
         
+        let sizeTap = CGSize(width: sizeR.width * 0.035, height: sizeR.height * 0.2)
         let tapPosition = CGPoint(x: -sizeR.width * 0.3, y: sizeR.height * 0.35)
         
-        for _ in 0...2 {
-            waterTaps.append(createWaterTap(tapPosition: tapPosition))
-        }
-        
+        let sizeTrashCan = CGSize(width: sizeR.width * 0.025, height: sizeR.height * 0.15)
+        let trashCanPosition = CGPoint(x: sizeR.width * 0.4, y: sizeR.height * 0.06)
+
         //Cômodo 1
         let room1 = Room(imageNamed: "Room1")
         room1.initialize(size: sizeR, position: posR)
+        
         posR.x += offset
         rooms.append(room1)
         
         //Cômodo 2
-        let room2 = Room(imageNamed: "Room2")
+        let room2 = Bathroom(imageNamed: "Room2")
         room2.initialize(size: sizeR, position: posR)
-        
-        room2.addChild(waterTaps[i])
-        i += 1
+        room2.addTap(tapPosition: tapPosition, sizeTap: sizeTap)
+        room2.addTrashCan(trashImage: "ChildsTrashCan", trashCanPosition: trashCanPosition, sizeTrashCan: sizeTrashCan)
         
         posR.x += offset
         rooms.append(room2)
@@ -73,15 +71,15 @@ class Landscape: SKNode {
         //Cômodo 3
         let room3 = Room(imageNamed: "Room3")
         room3.initialize(size: sizeR, position: posR)
+        
         posR.x += offset
         rooms.append(room3)
         
         //Cômodo 4
-        let room4 = Room(imageNamed: "Room4")
+        let room4 = Bathroom(imageNamed: "Room4")
         room4.initialize(size: sizeR, position: posR)
-        
-        room4.addChild(waterTaps[i])
-        i += 1
+        room4.addTap(tapPosition: tapPosition, sizeTap: sizeTap)
+        room4.addTrashCan(trashImage: "ChildsTrashCan", trashCanPosition: trashCanPosition, sizeTrashCan: sizeTrashCan)
         
         posR.x += offset
         rooms.append(room4)
@@ -89,39 +87,43 @@ class Landscape: SKNode {
         //Cômodo 5
         let room5 = Room(imageNamed: "Room5")
         room5.initialize(size: sizeR, position: posR)
+        
         posR.x += offset
         rooms.append(room5)
         
         //Cômodo 6
         let room6 = Room(imageNamed: "Room6")
         room6.initialize(size: sizeR, position: posR)
+        
         posR.x += offset
         rooms.append(room6)
         
         //Cômodo 7
         let room7 = Room(imageNamed: "Room7")
         room7.initialize(size: sizeR, position: posR)
+        
         posR.x += offset
         rooms.append(room7)
         
         //Cômodo 8
         let room8 = Room(imageNamed: "Room8")
         room8.initialize(size: sizeR, position: posR)
+        
         posR.x += offset
         rooms.append(room8)
         
         //Cômodo 9
         let room9 = Room(imageNamed: "Room9")
         room9.initialize(size: sizeR, position: posR)
+        
         posR.x += offset
         rooms.append(room9)
         
         //Cômodo 10
-        let room10 = Room(imageNamed: "Room10")
+        let room10 = Bathroom(imageNamed: "Room10")
         room10.initialize(size: sizeR, position: posR)
-        
-        room10.addChild(waterTaps[i])
-        i += 1
+        room10.addTap(tapPosition: tapPosition, sizeTap: sizeTap)
+        room10.addTrashCan(trashImage: "ChildsTrashCan", trashCanPosition: trashCanPosition, sizeTrashCan: sizeTrashCan)
         
         posR.x += offset
         rooms.append(room10)
@@ -134,24 +136,4 @@ class Landscape: SKNode {
         self.addChild(rooms[0])
         self.addChild(rooms[1])
     }
-    
-    func createWaterTap(tapPosition: CGPoint) -> Button {
-        
-        let sizeTap = CGSize(width: sceneSize.width * 0.1, height: sceneSize.height * 0.2)
-        
-        let waterTap = Button(defaultButtonImage: "WaterTap0", activeButtonImage: "WaterTap0", buttonAction: touchWaterTap)
-        waterTap.setSizeAndPosition(sizeTap, position: tapPosition, areaFactor: 1.5)
-        waterTap.animate("WaterTaps", imgName: "WaterTap")
-        waterTap.zPosition = Position.before.rawValue
-        return waterTap
-    }
-    
-    func touchWaterTap(waterTap: Button) {
-        
-        let gameScene = self.scene as! GameScene
-        gameScene.updateScore(scoreToAdd: ScoreTable.waterTap)
-        waterTap.action = nil
-    }
-    
-    
 }
