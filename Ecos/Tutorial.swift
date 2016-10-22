@@ -69,7 +69,7 @@ class Tutorial: NSObject {
         button.touchableArea.removeChildren(in: [hand, text])
         scene.removeChildren(in: [blackBack])
         button.touchableArea.zPosition = self.zPos
-        self.action!(button)
+        self.action?(button)
         scene.player.walk()
     }
     

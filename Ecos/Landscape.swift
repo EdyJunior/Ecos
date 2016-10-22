@@ -17,6 +17,7 @@ class Landscape: SKNode {
     var sceneSize = CGSize()
     var tutorial: Tutorial?
     var firstBathroom = Bathroom()
+    var dog: Dog?
     
     init(sceneSize: CGSize) {
         
@@ -76,6 +77,12 @@ class Landscape: SKNode {
         let room3 = Room(imageNamed: "Room3")
         room3.initialize(size: sizeR, position: posR)
         
+        dog = Dog(defaultButtonImage: "dog0", activeButtonImage: "dog0")
+        dog!.action = dog!.touchDog
+        dog!.setSizeAndPosition(CGSize(width: sceneSize.width * 0.1, height: sceneSize.height * 0.15), position: CGPoint(x: -sceneSize.width, y: -sceneSize.height * 0.15), areaFactor: 1.5)
+        dog!.initialize()
+        room3.addChild(dog!)
+        
         posR.x += offset
         rooms.append(room3)
         
@@ -99,11 +106,11 @@ class Landscape: SKNode {
         let room6 = Room(imageNamed: "Room6")
         room6.initialize(size: sizeR, position: posR)
         
-        let dog = Dog(defaultButtonImage: "dog0", activeButtonImage: "dog0")
-        dog.action = dog.touchDog
-        dog.setSizeAndPosition(CGSize(width: sceneSize.width * 0.1, height: sceneSize.height * 0.15), position: CGPoint(x: 0, y: -sceneSize.height * 0.2), areaFactor: 1.5)
-        dog.initialize()
-        room6.addChild(dog)
+        let secondDog = Dog(defaultButtonImage: "dog0", activeButtonImage: "dog0")
+        secondDog.action = secondDog.touchDog
+        secondDog.setSizeAndPosition(CGSize(width: sceneSize.width * 0.1, height: sceneSize.height * 0.15), position: CGPoint(x: 0, y: -sceneSize.height * 0.15), areaFactor: 1.5)
+        secondDog.initialize()
+        room6.addChild(secondDog)
         
         posR.x += offset
         rooms.append(room6)
@@ -149,11 +156,25 @@ class Landscape: SKNode {
     
     func createTutorials() {
         
-        //let firstBathroom = rooms[1] as! Bathroom
         let waterTapPosition = firstBathroom.waterTap!.touchableArea.position
         let waterTapTrigger = CGPoint(x: waterTapPosition.x - sceneSize.width * 0.15, y: 0)
         
         tutorial = Tutorial(withScene: self.scene as! GameScene)
         tutorial?.tutorialTrigger(triggerPosition: waterTapTrigger, buttonType: .tapTrigger, room: firstBathroom)
+        
+        let garbagePosition = rooms[1].firstGarbage!.touchableArea.position
+        let garbageTrigger = CGPoint(x: garbagePosition.x - sceneSize.width * 0.15, y: 0)
+        
+        tutorial?.tutorialTrigger(triggerPosition: garbageTrigger, buttonType: .trashTrigger, room: rooms[1])
+        
+        let trashCanPosition = firstBathroom.trashCan!.touchableArea.position
+        let trashCanTrigger = CGPoint(x: trashCanPosition.x - sceneSize.width * 0.15, y: 0)
+        
+        tutorial?.tutorialTrigger(triggerPosition: trashCanTrigger, buttonType: .trashCanTrigger, room: rooms[1])
+        
+        let dogPosition = dog!.touchableArea.position
+        let dogTrigger = CGPoint(x: dogPosition.x - sceneSize.width * 0.045, y: 0)
+        
+        tutorial?.tutorialTrigger(triggerPosition: dogTrigger, buttonType: .dogTrigger, room: rooms[2])
     }
 }

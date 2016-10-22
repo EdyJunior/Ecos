@@ -13,7 +13,7 @@ class Player: SKSpriteNode {
     
     var velocity = CGFloat(170)
     var jumping = false
-    let impulse = CGVector(dx: 0, dy: 280)
+    let impulse = CGVector(dx: 0, dy: 300)
     
     var walkingFrames: [SKTexture]!
     

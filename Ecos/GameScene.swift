@@ -106,14 +106,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         view?.presentScene(preGameScene, transition: .push(with: .right, duration: 0.5))
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-//        if !player.jumping {
-//            player.jump()
-//            player.jumping = true
-//        }
-    }
-    
     func didBegin(_ contact: SKPhysicsContact) {
         
         let firstBody = contact.bodyA
@@ -153,6 +145,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             landscape.tutorial?.start(button: landscape.firstBathroom.waterTap!, text: "Desligue a torneira!")
         }
         
+        if firstBody.categoryBitMask == BodyType.trashTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
+            print("trashTrigger")
+            firstBody.categoryBitMask = 0
+            landscape.tutorial?.start(button: landscape.rooms[1].firstGarbage!, text: "Apanhe o lixo!")
+        }
+        if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.trashTrigger.rawValue {
+            print("trashTrigger")
+            secondBody.categoryBitMask = 0
+            landscape.tutorial?.start(button: landscape.rooms[1].firstGarbage!, text: "Apanhe o lixo!")
+        }
+        
+        if firstBody.categoryBitMask == BodyType.trashCanTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
+            print("trashCanTrigger")
+            firstBody.categoryBitMask = 0
+            landscape.tutorial?.start(button: landscape.firstBathroom.trashCan!, text: "Jogue o lixo na lixeira!")
+        }
+        if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.trashCanTrigger.rawValue {
+            print("trashCanTrigger")
+            secondBody.categoryBitMask = 0
+            landscape.tutorial?.start(button: landscape.firstBathroom.trashCan!, text: "Jogue o lixo na lixeira!")
+        }
+        
+        if firstBody.categoryBitMask == BodyType.dogTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
+            print("dogTrigger")
+            firstBody.categoryBitMask = 0
+            landscape.tutorial?.start(button: landscape.dog!, text: "Pule o cachorro!")
+        }
+        if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.dogTrigger.rawValue {
+            print("dogTrigger")
+            secondBody.categoryBitMask = 0
+            landscape.tutorial?.start(button: landscape.dog!, text: "Pule o cachorro!")
+        }
     }
     
     func updateScore(scoreToAdd: ScoreTable) {
