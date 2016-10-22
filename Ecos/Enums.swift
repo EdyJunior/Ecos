@@ -15,11 +15,13 @@ enum BodyType: UInt32 {
     case limit = 4
     case toy = 8
     case door = 16
-    case tap = 32
+    case tapTrigger = 32
+    case trashTrigger = 33
+    case dogTrigger = 34
+    case trashCanTrigger = 35
     case ground = 64
     case ceil = 65
     case trash = 128
-    case menuBtn = 256
 }
 
 enum Position: CGFloat {

@@ -10,17 +10,20 @@ import SpriteKit
 
 class Bathroom: Room {
 
+    var waterTap: Button?
+    var trashCan: Button?
+    
     func addTap(tapPosition: CGPoint, sizeTap: CGSize) {
         self.addChild(createWaterTap(tapPosition: tapPosition, sizeTap: sizeTap))
     }
     
     func createWaterTap(tapPosition: CGPoint, sizeTap: CGSize) -> Button {
         
-        let waterTap = Button(defaultButtonImage: "WaterTap0", activeButtonImage: "WaterTap0", buttonAction: touchWaterTap)
-        waterTap.setSizeAndPosition(sizeTap, position: tapPosition, areaFactor: 1.5)
-        waterTap.animate("WaterTaps", imgName: "WaterTap")
-        waterTap.zPosition = Position.before.rawValue
-        return waterTap
+        waterTap = Button(defaultButtonImage: "WaterTap0", activeButtonImage: "WaterTap0", buttonAction: touchWaterTap)
+        waterTap!.setSizeAndPosition(sizeTap, position: tapPosition, areaFactor: 1.5)
+        waterTap!.animate("WaterTaps", imgName: "WaterTap")
+        waterTap!.zPosition = Position.before.rawValue
+        return waterTap!
     }
     
     func touchWaterTap(waterTap: Button) {
@@ -36,10 +39,10 @@ class Bathroom: Room {
     
     func createTrashCan(trashImage: String, trashCanPosition: CGPoint, sizeTrashCan: CGSize) -> Button {
         
-        let trashCan = Button(defaultButtonImage: trashImage, activeButtonImage: trashImage, buttonAction: touchTrashCan)
-        trashCan.setSizeAndPosition(sizeTrashCan, position: trashCanPosition, areaFactor: 1.5)
-        trashCan.zPosition = Position.before.rawValue
-        return trashCan
+        trashCan = Button(defaultButtonImage: trashImage, activeButtonImage: trashImage, buttonAction: touchTrashCan)
+        trashCan!.setSizeAndPosition(sizeTrashCan, position: trashCanPosition, areaFactor: 1.5)
+        trashCan!.zPosition = Position.before.rawValue
+        return trashCan!
     }
     
     func touchTrashCan(trashCan: Button) {

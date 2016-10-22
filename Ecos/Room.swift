@@ -11,7 +11,8 @@ import SpriteKit
 class Room: SKSpriteNode {
     
     let factor: CGFloat = 0.01
-
+    var firstGarbage: Button?
+    
     func initialize(size: CGSize, position: CGPoint) {
         
         self.position = position
@@ -74,6 +75,8 @@ class Room: SKSpriteNode {
         let quantity = Int(arc4random_uniform(3))
         var trashArray = [Button]()
         
+        var min = 2 * size.width
+        
         for _ in 0...quantity {
             let key = Int(arc4random_uniform(2))
             let sizeTrash = CGSize(width: size.width * trashSizeTable[key]![0] / 3.0 , height: size.width * trashSizeTable[key]![1] / 3.0)
@@ -83,6 +86,11 @@ class Room: SKSpriteNode {
             let garbage = Button(defaultButtonImage: image, activeButtonImage: image, buttonAction: touchTrash)
             garbage.setSizeAndPosition(sizeTrash, position: garbagePosition, areaFactor: 1.5)
             garbage.zPosition = Position.before.rawValue
+            
+            if garbage.touchableArea.position.x < min {
+                self.firstGarbage = garbage
+                min = garbage.touchableArea.position.x
+            }
             
             trashArray.append(garbage)
         }

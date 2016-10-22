@@ -23,7 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gameCamera = SKCameraNode()
     var gameOver = false
     var won = false
-    var isTutoring = false
+    var isTutoring = true
     //var gamedata: HighScore?
     
     var landscape: Landscape!
@@ -53,6 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         landscape.position = CGPoint(x: size.width / 2 + size.width * 1.3, y: size.height / 2)
         landscape.zPosition = Position.deepest.rawValue
         addChild(landscape)
+        landscape.createTutorials()
     }
     
     func createPlayer() {
@@ -138,6 +139,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
            (firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.ground.rawValue){
             player.jumping = false
         }
+        
+        //Tutorials Triggers
+        
+        if firstBody.categoryBitMask == BodyType.tapTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
+            print("tapTrigger")
+            firstBody.categoryBitMask = 0
+            landscape.tutorial?.start(button: landscape.firstBathroom.waterTap!, text: "Desligue a torneira!")
+        }
+        if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.tapTrigger.rawValue {
+            print("tapTrigger")
+            secondBody.categoryBitMask = 0
+            landscape.tutorial?.start(button: landscape.firstBathroom.waterTap!, text: "Desligue a torneira!")
+        }
+        
     }
     
     func updateScore(scoreToAdd: ScoreTable) {

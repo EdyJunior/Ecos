@@ -17,7 +17,7 @@ class MenuButton: Button {
         
         label = InfoLabel(text: labelName)
         
-        super.init(defaultButtonImage: defaultButtonImage, activeButtonImage: activeButtonImage, buttonAction: buttonAction, Type: .menuBtn)
+        super.init(defaultButtonImage: defaultButtonImage, activeButtonImage: activeButtonImage, buttonAction: buttonAction)
     }
     
     func setSizeAndPosition(_ size: CGSize, position: CGPoint, labelSize lSize: CGFloat, labelPosition lPosition: CGPoint, labelColor: UIColor = .white) {

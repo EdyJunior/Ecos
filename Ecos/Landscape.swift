@@ -15,6 +15,8 @@ class Landscape: SKNode {
     var trash = [Button]()
     var currentIndex = 0
     var sceneSize = CGSize()
+    var tutorial: Tutorial?
+    var firstBathroom = Bathroom()
     
     init(sceneSize: CGSize) {
         
@@ -67,6 +69,8 @@ class Landscape: SKNode {
         
         posR.x += offset
         rooms.append(room2)
+        
+        firstBathroom = room2
         
         //Cômodo 3
         let room3 = Room(imageNamed: "Room3")
@@ -141,5 +145,15 @@ class Landscape: SKNode {
         //Inicia renderizando apenas 2 dos 10 cômodos
         self.addChild(rooms[0])
         self.addChild(rooms[1])
+    }
+    
+    func createTutorials() {
+        
+        //let firstBathroom = rooms[1] as! Bathroom
+        let waterTapPosition = firstBathroom.waterTap!.touchableArea.position
+        let waterTapTrigger = CGPoint(x: waterTapPosition.x - sceneSize.width * 0.15, y: 0)
+        
+        tutorial = Tutorial(withScene: self.scene as! GameScene)
+        tutorial?.tutorialTrigger(triggerPosition: waterTapTrigger, buttonType: .tapTrigger, room: firstBathroom)
     }
 }

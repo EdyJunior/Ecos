@@ -57,9 +57,9 @@ class TrashBag: SKNode {
     func throwAway(trashCan: Button) {
         
         let upDown = SKAction.sequence(
-            [SKAction.moveBy(x: size * 0.3, y: size * 0.6, duration: 0.5),
+            [SKAction.moveBy(x: size * 0.3, y: size * 0.7, duration: 0.6),
              SKAction.moveBy(x: size * 0.1, y: 0, duration: 0.2),
-             SKAction.moveBy(x: size * 0.2, y: -size * 0.2, duration: 0.3)]
+             SKAction.moveBy(x: size * 0.2, y: -size * 0.1, duration: 0.2)]
         )
         var duration: CGFloat = 0.1
         
