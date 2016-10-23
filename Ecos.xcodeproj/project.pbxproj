@@ -22,6 +22,8 @@
 		CE91C5021DAD2E5F0070C38A /* WaterTaps.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4FC1DAD2E5F0070C38A /* WaterTaps.atlas */; };
 		CE91C5041DAD353F0070C38A /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91C5031DAD353F0070C38A /* InfoScene.swift */; };
 		CE91C5081DAD42410070C38A /* InfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91C5071DAD42410070C38A /* InfoLabel.swift */; };
+		CE94CCCC1DBC4A6900F3F4B4 /* LearnScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94CCCB1DBC4A6900F3F4B4 /* LearnScene.swift */; };
+		CE94CCCE1DBC4DF100F3F4B4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94CCCD1DBC4DF100F3F4B4 /* Card.swift */; };
 		CEA77CC51DAFF501005ECCC7 /* SpritePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA77CC41DAFF501005ECCC7 /* SpritePicker.swift */; };
 		CEA77CC71DAFFFD5005ECCC7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA77CC61DAFFFD5005ECCC7 /* Player.swift */; };
 		CEA77CCA1DB002FF005ECCC7 /* TrashBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA77CC91DB002FF005ECCC7 /* TrashBag.swift */; };
@@ -53,6 +55,8 @@
 		CE91C4FC1DAD2E5F0070C38A /* WaterTaps.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = WaterTaps.atlas; sourceTree = "<group>"; };
 		CE91C5031DAD353F0070C38A /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoScene.swift; sourceTree = "<group>"; };
 		CE91C5071DAD42410070C38A /* InfoLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoLabel.swift; sourceTree = "<group>"; };
+		CE94CCCB1DBC4A6900F3F4B4 /* LearnScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnScene.swift; sourceTree = "<group>"; };
+		CE94CCCD1DBC4DF100F3F4B4 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		CEA77CC41DAFF501005ECCC7 /* SpritePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpritePicker.swift; sourceTree = "<group>"; };
 		CEA77CC61DAFFFD5005ECCC7 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		CEA77CC91DB002FF005ECCC7 /* TrashBag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashBag.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 				CEBE3C2C1DA69A32004F4937 /* FirstScene.swift */,
 				CE91C5031DAD353F0070C38A /* InfoScene.swift */,
 				CE740ABF1DAE87EC00EB141D /* PreGameScene.swift */,
+				CE94CCCB1DBC4A6900F3F4B4 /* LearnScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 				CE91C4F21DAD1B6B0070C38A /* MenuButton.swift */,
 				CE91C5071DAD42410070C38A /* InfoLabel.swift */,
 				CEA77CC41DAFF501005ECCC7 /* SpritePicker.swift */,
+				CE94CCCD1DBC4DF100F3F4B4 /* Card.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 				CE0EB6EE1DA7C53A00F4554F /* Button.swift in Sources */,
 				CE91C4F31DAD1B6B0070C38A /* MenuButton.swift in Sources */,
 				CE3BB84E1DBA991E001286EE /* Bathroom.swift in Sources */,
+				CE94CCCE1DBC4DF100F3F4B4 /* Card.swift in Sources */,
 				CEA77CC71DAFFFD5005ECCC7 /* Player.swift in Sources */,
 				CEBE3C2D1DA69A32004F4937 /* FirstScene.swift in Sources */,
 				CE91C5041DAD353F0070C38A /* InfoScene.swift in Sources */,
@@ -269,6 +276,7 @@
 				CEADC5F31DB99A1600EAAB18 /* Landscape.swift in Sources */,
 				CEBE3C1D1DA698CC004F4937 /* GameViewController.swift in Sources */,
 				CEA77CCA1DB002FF005ECCC7 /* TrashBag.swift in Sources */,
+				CE94CCCC1DBC4A6900F3F4B4 /* LearnScene.swift in Sources */,
 				CEBE3C151DA698CC004F4937 /* AppDelegate.swift in Sources */,
 				CEA77CC51DAFF501005ECCC7 /* SpritePicker.swift in Sources */,
 			);
