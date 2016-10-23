@@ -19,7 +19,7 @@ class PreGameScene: SKScene {
     override func didMove(to view: SKView) {
         
         self.backgroundColor = .white
-        previousName = defaults.object(forKey: "PreviousCharacter") as! String
+        previousName = defaults.object(forKey: Key.previousCharacter.rawValue) as! String
         buildScene()
     }
     
@@ -60,7 +60,7 @@ class PreGameScene: SKScene {
     
     func touchedStart(button: Button) {
         
-        defaults.set(charactersNameLabel.text, forKey: "PreviousCharacter")
+        defaults.set(charactersNameLabel.text, forKey: Key.previousCharacter.rawValue)
         
         let gameScene = GameScene(size: size)
         view?.presentScene(gameScene, transition: .push(with: .left, duration: 0.5))
@@ -96,11 +96,27 @@ class PreGameScene: SKScene {
         let bestScorePos = CGPoint(x: size.width * 0.75, y: size.height * 0.85)
         let charactersNamePos = CGPoint(x: size.width * 0.4, y: size.height * 0.1)
         
-        lastScoreLabel = InfoLabel(text: "Última pontuação:  0")
+        var lastScore = String()
+        if defaults.object(forKey: Key.lastScore.rawValue) == nil{
+            defaults.set(0, forKey: Key.lastScore.rawValue)
+            lastScore = "0"
+        } else {
+            lastScore = "\(defaults.object(forKey: Key.lastScore.rawValue) as! Int)"
+        }
+        
+        lastScoreLabel = InfoLabel(text: "Última pontuação:  \(lastScore)")
         lastScoreLabel.set(fontSize: labelsSize, position: lastScorePos, fontColor: niceGreen, zPosition: .front)
         addChild(lastScoreLabel)
         
-        bestScoreLabel = InfoLabel(text: "Melhor pontuação:  0")
+        var bestScore = String()
+        if defaults.object(forKey: Key.bestScore.rawValue) == nil{
+            defaults.set(0, forKey: Key.bestScore.rawValue)
+            bestScore = "0"
+        } else {
+            bestScore = "\(defaults.object(forKey: Key.bestScore.rawValue) as! Int)"
+        }
+        
+        bestScoreLabel = InfoLabel(text: "Melhor pontuação:  \(bestScore)")
         bestScoreLabel.set(fontSize: labelsSize, position: bestScorePos, fontColor: niceGreen, zPosition: .front)
         addChild(bestScoreLabel)
         

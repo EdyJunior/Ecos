@@ -17,6 +17,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score: Int = 0 {
         didSet {
             scoreLabel.text = "\(score)"
+            defaults.set(score, forKey: Key.lastScore.rawValue)
+            guard let currentBest = defaults.object(forKey: Key.bestScore.rawValue) as? Int else {
+                return
+            }
+            if score > currentBest {
+                defaults.set(score, forKey: Key.bestScore.rawValue)
+            }
         }
     }
     
@@ -34,7 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         
         physicsWorld.contactDelegate = self
-        playerName = defaults.object(forKey: "PreviousCharacter") as! String
+        playerName = defaults.object(forKey: Key.previousCharacter.rawValue) as! String
         buildScene()
         self.camera = self.gameCamera
         gameCamera.position.y = player.position.y

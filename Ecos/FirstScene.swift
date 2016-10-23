@@ -19,8 +19,8 @@ class FirstScene: SKScene {
     override func didMove(to view: SKView) {
         
         self.backgroundColor = .white
-        if defaults.object(forKey: "PreviousCharacter") == nil {
-            defaults.set("Gloria", forKey: "PreviousCharacter")
+        if defaults.object(forKey: Key.previousCharacter.rawValue) == nil {
+            defaults.set("Gloria", forKey: Key.previousCharacter.rawValue)
         }
         buildScene()
     }
@@ -88,7 +88,7 @@ class FirstScene: SKScene {
     
     func createCharacter() {
         
-        let name = defaults.object(forKey: "PreviousCharacter") as! String
+        let name = defaults.object(forKey: Key.previousCharacter.rawValue) as! String
         let imageName = name + "0"
         let character = SKSpriteNode(imageNamed: imageName)
         character.size = CGSize(width: size.width * 0.2, height: size.height * 0.5)
