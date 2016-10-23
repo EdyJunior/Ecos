@@ -12,16 +12,23 @@ import SpriteKit
 class SpritePicker: SKNode, UIGestureRecognizerDelegate {
 
     var sprites = [SKSpriteNode]()
+    var names = [String]()
+    var labels = [InfoLabel]()
     var view = SKView()
     var currentIndex = 0
     
-    init(withView view: SKView, withSprites sprites: [SKSpriteNode]) {
+    init(withView view: SKView, withSprites sprites: [SKSpriteNode], withNames names: [String], inSprite: String = "") {
+        
         self.view = view
         self.sprites = sprites
+        self.names = names
         
         super.init()
         
         createGestures()
+        if !inSprite.isEmpty  {
+            currentIndex = names.index(of: inSprite)!
+        }
         self.addChild(sprites[currentIndex])
     }
     
@@ -31,21 +38,21 @@ class SpritePicker: SKNode, UIGestureRecognizerDelegate {
     
     func swipedRight(_ sender:UISwipeGestureRecognizer){
         
-        //Aplicar actions para dar efeito de pickerView horizontal
+        //TODO: Aplicar actions para dar efeito de pickerView horizontal
         if currentIndex < sprites.count - 1 {
-            self.removeAllChildren()
-            self.addChild(sprites[currentIndex + 1])
             currentIndex += 1
+            updateSprite()
+            updateLabels()
         }
     }
     
     func swipedLeft(_ sender:UISwipeGestureRecognizer){
         
-        //Aplicar actions para dar efeito de pickerView horizontal
+        //TODO: Aplicar actions para dar efeito de pickerView horizontal
         if currentIndex > 0 {
-            self.removeAllChildren()
-            self.addChild(sprites[currentIndex - 1])
             currentIndex -= 1
+            updateSprite()
+            updateLabels()
         }
     }
     
@@ -58,5 +65,22 @@ class SpritePicker: SKNode, UIGestureRecognizerDelegate {
         let swipeLeft:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(SpritePicker.swipedLeft(_:)))
         swipeLeft.direction = .left
         view.addGestureRecognizer(swipeLeft)
+    }
+    
+    func linkLabels(labels: [InfoLabel]) {
+        self.labels = labels
+    }
+    
+    func updateLabels() {
+        
+        for label in labels {
+            label.text = names[currentIndex]
+        }
+    }
+    
+    func updateSprite() {
+        
+        self.removeAllChildren()
+        self.addChild(sprites[currentIndex])
     }
 }

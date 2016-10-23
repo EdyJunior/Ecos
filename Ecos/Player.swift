@@ -14,6 +14,7 @@ class Player: SKSpriteNode {
     var velocity = CGFloat(170)
     var jumping = false
     let impulse = CGVector(dx: 0, dy: 300)
+    var character = String()
     
     var walkingFrames: [SKTexture]!
     
@@ -21,12 +22,13 @@ class Player: SKSpriteNode {
     
     var newPosition = CGPoint()
     
-    func initialize(_ size: CGSize, position: CGPoint, zPosition: CGFloat, scene: GameScene) {
+    func initialize(_ size: CGSize, position: CGPoint, zPosition: CGFloat, scene: GameScene, character: String) {
         
         self.size = size
         self.position = position
         self.newPosition = position
         self.zPosition = zPosition
+        self.character = character
         
         physicsBody = SKPhysicsBody(rectangleOf: size)
         physicsBody?.allowsRotation = false
@@ -49,7 +51,7 @@ class Player: SKSpriteNode {
 
     func setArrays() {
         
-        self.walkingFrames = self.getTextures("Gloria")//Walking//
+        self.walkingFrames = self.getTextures(character)//Walking//
         //        self.jumpingFrames = self.getTextures("Jumping")
         //        self.idlingFrames = self.getTextures("Idling")
     }

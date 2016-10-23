@@ -51,3 +51,5 @@ enum ScoreTable: Int {
 }
 
 let niceGreen = UIColor.init(red: 23/255, green: 136/255, blue: 23/255, alpha: 1)
+
+let defaults = UserDefaults.standard

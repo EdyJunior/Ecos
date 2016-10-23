@@ -50,10 +50,7 @@ class Tutorial: NSObject {
         button.touchableArea.addChild(hand)
         button.touchableArea.addChild(self.text)
         scene.addChild(blackBack)
-        
-//        scene.playerNameLabel.zPosition = Position.front.rawValue
-//        scene.scoreLabel.zPosition = Position.front.rawValue
-        
+       
         self.zPos = button.zPosition
         button.zPosition = Position.highlighted.rawValue
         

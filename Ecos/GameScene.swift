@@ -12,6 +12,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var scoreLabel: InfoLabel!
     var playerNameLabel: InfoLabel!
+    var playerName = String()
+    
     var score: Int = 0 {
         didSet {
             scoreLabel.text = "\(score)"
@@ -32,6 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         
         physicsWorld.contactDelegate = self
+        playerName = defaults.object(forKey: "PreviousCharacter") as! String
         buildScene()
         self.camera = self.gameCamera
         gameCamera.position.y = player.position.y
@@ -61,8 +64,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let sizePlayer = CGSize(width: size.width * 0.15, height: size.height * 0.4)
         let positonPlayer = CGPoint(x: size.width/2, y: size.height/2)
         
-        player = Player(imageNamed: "Gloria0")
-        player.initialize(sizePlayer, position: positonPlayer, zPosition: Position.middle.rawValue, scene: self)
+        player = Player(imageNamed: "\(playerName)0")
+        player.initialize(sizePlayer, position: positonPlayer, zPosition: Position.middle.rawValue, scene: self, character: playerName)
         
         player.trashBag = TrashBag(sceneSize: size)
         player.trashBag?.position = CGPoint(x: size.width * 0.25, y: size.height * 0.15)
@@ -77,8 +80,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.set(fontSize: size.height * 0.15, position: CGPoint(x: player.position.x + size.width * 0.4, y: player.position.y - size.height * 0.45) , fontColor: niceGreen, zPosition: Position.middle)
         addChild(scoreLabel)
         
-        playerNameLabel = InfoLabel(text: "Glória")
-        playerNameLabel.set(fontSize: size.height * 0.15, position: CGPoint(x: player.position.x + size.width * 0.15, y: player.position.y - size.height * 0.45) , fontColor: niceGreen, zPosition: Position.middle)
+        
+        if playerName == "Gloria" {
+            playerName = "Glória"
+        } else if playerName == "Gloriosinho" {
+            playerName = "Gloriosinho"
+        }
+        playerNameLabel = InfoLabel(text: playerName)
+        playerNameLabel.set(fontSize: size.height * 0.1, position: CGPoint(x: player.position.x + size.width * 0.15, y: player.position.y - size.height * 0.45) , fontColor: niceGreen, zPosition: Position.middle)
         addChild(playerNameLabel)
     }
     

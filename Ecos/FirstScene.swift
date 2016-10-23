@@ -19,6 +19,9 @@ class FirstScene: SKScene {
     override func didMove(to view: SKView) {
         
         self.backgroundColor = .white
+        if defaults.object(forKey: "PreviousCharacter") == nil {
+            defaults.set("Gloria", forKey: "PreviousCharacter")
+        }
         buildScene()
     }
     
@@ -85,13 +88,14 @@ class FirstScene: SKScene {
     
     func createCharacter() {
         
-        //TODO: o personagem mostrado na primeira tela será o que foi escolhido da última vez pelo usuário
-        let character = SKSpriteNode(imageNamed: "Gloria0")
+        let name = defaults.object(forKey: "PreviousCharacter") as! String
+        let imageName = name + "0"
+        let character = SKSpriteNode(imageNamed: imageName)
         character.size = CGSize(width: size.width * 0.2, height: size.height * 0.5)
         character.position = CGPoint(x: size.width * 0.7, y: size.height * 0.65)
         character.zPosition = Position.front.rawValue
         
-        let atlas = SKTextureAtlas(named: "Gloria")
+        let atlas = SKTextureAtlas(named: name)
         var frames = [SKTexture]()
         
         for textureName in atlas.textureNames {

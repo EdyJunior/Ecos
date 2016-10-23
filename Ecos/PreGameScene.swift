@@ -13,14 +13,13 @@ class PreGameScene: SKScene {
     var bestScoreLabel = InfoLabel()
     var lastScoreLabel = InfoLabel()
     var charactersNameLabel = InfoLabel()
-    
+    var previousName = String()
     var spritePicker: SpritePicker!
-    
-    //let labelsColor = UIColor.init(red: 23/255, green: 136/255, blue: 23/255, alpha: 1)
-    
+        
     override func didMove(to view: SKView) {
         
         self.backgroundColor = .white
+        previousName = defaults.object(forKey: "PreviousCharacter") as! String
         buildScene()
     }
     
@@ -60,6 +59,8 @@ class PreGameScene: SKScene {
     }
     
     func touchedStart(button: Button) {
+        
+        defaults.set(charactersNameLabel.text, forKey: "PreviousCharacter")
         
         let gameScene = GameScene(size: size)
         view?.presentScene(gameScene, transition: .push(with: .left, duration: 0.5))
@@ -103,7 +104,7 @@ class PreGameScene: SKScene {
         bestScoreLabel.set(fontSize: labelsSize, position: bestScorePos, fontColor: niceGreen, zPosition: .front)
         addChild(bestScoreLabel)
         
-        charactersNameLabel = InfoLabel(text: "Nome:  Glória")
+        charactersNameLabel = InfoLabel(text: previousName)
         charactersNameLabel.set(fontSize: labelsSize, position: charactersNamePos, fontColor: niceGreen, zPosition: .front)
         addChild(charactersNameLabel)
     }
@@ -121,8 +122,9 @@ class PreGameScene: SKScene {
             characters.append(character)
         }
         
-        spritePicker = SpritePicker(withView: view!, withSprites: characters)
+        spritePicker = SpritePicker(withView: view!, withSprites: characters, withNames: charactersNames, inSprite: previousName)
         spritePicker.position = CGPoint(x: size.width * 0.4, y: size.height * 0.5)
+        spritePicker.linkLabels(labels: [charactersNameLabel])
         addChild(spritePicker)
     }
 }
