@@ -51,10 +51,16 @@ enum ScoreTable: Int {
 }
 
 enum Key: String {
+    
     case lastScore = "LastScore"
     case bestScore = "BestScore"
     case previousCharacter = "PreviousCharacter"
-    //let lastScore = "LastScore"
+    
+    case waterTapCard = "tapCard"
+    case trashCard = "trashCard"
+    case trashCanCard = "canCard"
+    case tvCard = "tvCard"
+    case lampCard = "lampCard"
 }
 
 let niceGreen = UIColor.init(red: 23/255, green: 136/255, blue: 23/255, alpha: 1)

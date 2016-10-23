@@ -122,7 +122,9 @@ class FirstScene: SKScene {
     }
     
     func touchLearn(_ button: Button) {
-        print("Learn")
+        
+        let learnScene = LearnScene(size: (view?.bounds.size)!)
+        view?.presentScene(learnScene, transition: .fade(withDuration: 0.5))
     }
     
     func touchInfo(_ button: Button) {

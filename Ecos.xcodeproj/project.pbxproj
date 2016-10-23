@@ -12,6 +12,8 @@
 		CE3BB8501DBAB588001286EE /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3BB84F1DBAB588001286EE /* Dog.swift */; };
 		CE3BB8521DBAC81E001286EE /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3BB8511DBAC81E001286EE /* Tutorial.swift */; };
 		CE740AC01DAE87EC00EB141D /* PreGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE740ABF1DAE87EC00EB141D /* PreGameScene.swift */; };
+		CE7D902B1DBD318100675764 /* PListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D902A1DBD318100675764 /* PListManager.swift */; };
+		CE7D902D1DBD396800675764 /* CardList.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE7D902C1DBD396800675764 /* CardList.plist */; };
 		CE91C4F31DAD1B6B0070C38A /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91C4F21DAD1B6B0070C38A /* MenuButton.swift */; };
 		CE91C4F51DAD1DBD0070C38A /* DK Amoebica.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4F41DAD1DBD0070C38A /* DK Amoebica.otf */; };
 		CE91C4FD1DAD2E5F0070C38A /* Ball.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4F71DAD2E5F0070C38A /* Ball.atlas */; };
@@ -45,6 +47,8 @@
 		CE3BB84F1DBAB588001286EE /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		CE3BB8511DBAC81E001286EE /* Tutorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		CE740ABF1DAE87EC00EB141D /* PreGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreGameScene.swift; sourceTree = "<group>"; };
+		CE7D902A1DBD318100675764 /* PListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListManager.swift; sourceTree = "<group>"; };
+		CE7D902C1DBD396800675764 /* CardList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CardList.plist; sourceTree = "<group>"; };
 		CE91C4F21DAD1B6B0070C38A /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		CE91C4F41DAD1DBD0070C38A /* DK Amoebica.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Amoebica.otf"; sourceTree = "<group>"; };
 		CE91C4F71DAD2E5F0070C38A /* Ball.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ball.atlas; sourceTree = "<group>"; };
@@ -93,8 +97,9 @@
 				CEBE3C1C1DA698CC004F4937 /* GameViewController.swift */,
 				CEBE3C1E1DA698CC004F4937 /* Main.storyboard */,
 				CEBE3C231DA698CC004F4937 /* LaunchScreen.storyboard */,
-				CEBE3C261DA698CC004F4937 /* Info.plist */,
 				CE91C4F41DAD1DBD0070C38A /* DK Amoebica.otf */,
+				CEBE3C261DA698CC004F4937 /* Info.plist */,
+				CE7D902C1DBD396800675764 /* CardList.plist */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 				CE91C5071DAD42410070C38A /* InfoLabel.swift */,
 				CEA77CC41DAFF501005ECCC7 /* SpritePicker.swift */,
 				CE94CCCD1DBC4DF100F3F4B4 /* Card.swift */,
+				CE7D902A1DBD318100675764 /* PListManager.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 				CEBE3C221DA698CC004F4937 /* Assets.xcassets in Resources */,
 				CE91C5011DAD2E5F0070C38A /* Gloriosinho.atlas in Resources */,
 				CE91C4FF1DAD2E5F0070C38A /* Dog.atlas in Resources */,
+				CE7D902D1DBD396800675764 /* CardList.plist in Resources */,
 				CE91C4FD1DAD2E5F0070C38A /* Ball.atlas in Resources */,
 				CEBE3C251DA698CC004F4937 /* LaunchScreen.storyboard in Resources */,
 				CE91C5021DAD2E5F0070C38A /* WaterTaps.atlas in Resources */,
@@ -278,6 +285,7 @@
 				CEA77CCA1DB002FF005ECCC7 /* TrashBag.swift in Sources */,
 				CE94CCCC1DBC4A6900F3F4B4 /* LearnScene.swift in Sources */,
 				CEBE3C151DA698CC004F4937 /* AppDelegate.swift in Sources */,
+				CE7D902B1DBD318100675764 /* PListManager.swift in Sources */,
 				CEA77CC51DAFF501005ECCC7 /* SpritePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

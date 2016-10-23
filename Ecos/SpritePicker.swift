@@ -11,13 +11,13 @@ import SpriteKit
 
 class SpritePicker: SKNode, UIGestureRecognizerDelegate {
 
-    var sprites = [SKSpriteNode]()
+    var sprites = [SKNode]()
     var names = [String]()
     var labels = [InfoLabel]()
     var view = SKView()
     var currentIndex = 0
     
-    init(withView view: SKView, withSprites sprites: [SKSpriteNode], withNames names: [String], inSprite: String = "") {
+    init(withView view: SKView, withSprites sprites: [SKNode], withNames names: [String], inSprite: String = "") {
         
         self.view = view
         self.sprites = sprites
