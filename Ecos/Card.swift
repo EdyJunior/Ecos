@@ -15,8 +15,10 @@ class Card: Button {
     init(defaultButtonImage: String, activeButtonImage: String, locked: Bool) {
         
         self.locked = locked
-        
         super.init(defaultButtonImage: defaultButtonImage, activeButtonImage: activeButtonImage)
+        if locked {
+            lockCard()
+        }
     }
     
     required init(coder aDecoder: NSCoder) {

@@ -14,6 +14,7 @@ class LearnScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        backgroundColor = .black
         createCardPicker()
         createBackButton()
     }
@@ -24,19 +25,18 @@ class LearnScene: SKScene {
         var cards = [Button]()
         
         for nameCard in cardsNames {
-            var locked: Bool
+
             let sizeCard = CGSize(width: self.size.width * 0.2, height: self.size.height * 0.8)
-            if defaults.object(forKey: nameCard) == nil {
+            let card: Card
+            
+            if let value = defaults.object(forKey: nameCard) {
+                let locked = value as! Bool
+                card = Card(defaultButtonImage: nameCard, activeButtonImage: nameCard, locked: locked)
+            } else {
                 defaults.set(true, forKey: nameCard)
+                card = Card(defaultButtonImage: nameCard, activeButtonImage: nameCard, locked: true)
             }
-            locked = defaults.object(forKey: nameCard) as! Bool
-            
-            let card = Card(defaultButtonImage: nameCard, activeButtonImage: nameCard, locked: locked)
             card.setSizeAndPosition(sizeCard, position: CGPoint.zero, areaFactor: 1)
-            
-            if locked {
-                card.lockCard()
-            }
             cards.append(card)
         }
         

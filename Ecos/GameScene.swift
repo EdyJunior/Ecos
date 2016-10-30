@@ -33,8 +33,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gameOver = false
     var won = false
     var isTutoring = true
-    //var gamedata: HighScore?
-    
     var landscape: Landscape!
     var player: Player!
     
@@ -42,9 +40,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.contactDelegate = self
         playerName = defaults.object(forKey: Key.previousCharacter.rawValue) as! String
-        buildScene()
         self.camera = self.gameCamera
-        gameCamera.position.y = player.position.y
+        buildScene()
     }
     
     func buildScene() {
@@ -75,8 +72,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.initialize(sizePlayer, position: positonPlayer, zPosition: Position.middle.rawValue, scene: self, character: playerName)
         
         player.trashBag = TrashBag(sceneSize: size)
-        player.trashBag?.position = CGPoint(x: size.width * 0.25, y: size.height * 0.15)
-        addChild(player.trashBag!)
+        player.trashBag?.position = CGPoint(x: -size.width * 0.25, y: -size.height * 0.35)
+        gameCamera.position.y = size.height * 0.05
+        player.addChild(gameCamera)
+        self.gameCamera.addChild(player.trashBag!)
         
         player.walk()
     }
@@ -84,9 +83,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createLabels() {
         
         scoreLabel = InfoLabel(text: "0")
-        scoreLabel.set(fontSize: size.height * 0.15, position: CGPoint(x: player.position.x + size.width * 0.4, y: player.position.y - size.height * 0.45) , fontColor: niceGreen, zPosition: Position.middle)
-        addChild(scoreLabel)
-        
+        scoreLabel.set(fontSize: size.height * 0.15, position: CGPoint(x: size.width * 0.43, y: -size.height * 0.45), fontColor: niceGreen, zPosition: Position.middle)
+        self.gameCamera.addChild(scoreLabel)
         
         if playerName == "Gloria" {
             playerName = "Glória"
@@ -94,8 +92,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             playerName = "Gloriosinho"
         }
         playerNameLabel = InfoLabel(text: playerName)
-        playerNameLabel.set(fontSize: size.height * 0.1, position: CGPoint(x: player.position.x + size.width * 0.15, y: player.position.y - size.height * 0.45) , fontColor: niceGreen, zPosition: Position.middle)
-        addChild(playerNameLabel)
+        playerNameLabel.set(fontSize: size.height * 0.1, position: CGPoint(x: size.width * 0.15, y: -size.height * 0.45) , fontColor: niceGreen, zPosition: Position.middle)
+        self.gameCamera.addChild(playerNameLabel)
     }
     
     func createBackButton() {
@@ -107,13 +105,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let sizeButton = CGSize(width: size.width * 0.07, height: size.width * 0.07)
         let labelSize = sizeButton.width / 3
         
-        let positionButton = CGPoint(x: size.width * 0.05, y: player.position.y + size.height * 0.35)
+        let positionButton = CGPoint(x: size.width * 0.35, y: size.height * 0.35)
         let labelPosition = CGPoint(x: 0, y: -sizeButton.width)
         
         backButton.setSizeAndPosition(sizeButton, position: positionButton, labelSize: labelSize, labelPosition: labelPosition, labelColor: niceGreen)
         
         backButton.zPosition = Position.front.rawValue
-        addChild(backButton)
+        self.gameCamera.addChild(backButton)
     }
     
     func backToMenu(button: Button) {
@@ -197,14 +195,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func updateScore(scoreToAdd: ScoreTable) {
         score += scoreToAdd.rawValue
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-
-        gameCamera.position.x = player.position.x
-        playerNameLabel.position.x = player.position.x + size.width * 0.15
-        backButton.position.x = player.position.x + size.width * 0.35
-        scoreLabel.position.x = player.position.x + size.width * 0.40
-        player.trashBag?.position.x = player.position.x - size.width * 0.25
     }
 }
