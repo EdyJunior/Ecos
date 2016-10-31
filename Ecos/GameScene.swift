@@ -27,7 +27,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var backButton: MenuButton!
+    var pauseButton: MenuButton!
+    var blackBack = SKSpriteNode(imageNamed: "blackBack")
 
     var gameCamera = SKCameraNode()
     var gameOver = false
@@ -51,7 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createLandscape()
         createPlayer()
         createLabels()
-        createBackButton()
+        createPauseButton()
     }
     
     func createLandscape() {
@@ -96,11 +97,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameCamera.addChild(playerNameLabel)
     }
     
-    func createBackButton() {
+    func createPauseButton() {
         
         //TODO: Posicionar o backButton em um lugar difícil de ser clicado acidentalmente
         
-        backButton = MenuButton(defaultButtonImage: "backButton", activeButtonImage: "backButton", labelName: "Voltar", buttonAction: backToMenu)
+        pauseButton = MenuButton(defaultButtonImage: "backButton", activeButtonImage: "backButton", labelName: "Pausar", buttonAction: pauseGame)
         
         let sizeButton = CGSize(width: size.width * 0.07, height: size.width * 0.07)
         let labelSize = sizeButton.width / 3
@@ -108,16 +109,54 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let positionButton = CGPoint(x: size.width * 0.35, y: size.height * 0.35)
         let labelPosition = CGPoint(x: 0, y: -sizeButton.width)
         
-        backButton.setSizeAndPosition(sizeButton, position: positionButton, labelSize: labelSize, labelPosition: labelPosition, labelColor: niceGreen)
+        pauseButton.setSizeAndPosition(sizeButton, position: positionButton, labelSize: labelSize, labelPosition: labelPosition, labelColor: niceGreen)
         
-        backButton.zPosition = Position.front.rawValue
-        self.gameCamera.addChild(backButton)
+        pauseButton.zPosition = Position.front.rawValue
+        self.gameCamera.addChild(pauseButton)
     }
     
-    func backToMenu(button: Button) {
+    func pauseGame(button: Button) {
+        
+        self.isPaused = true
+        
+        blackBack.alpha = 0.7
+        blackBack.size = size
+        blackBack.position = CGPoint(x: 0, y: 0)
+        blackBack.zPosition = Position.front.rawValue
+        
+        let sizeButton = CGSize(width: size.width * 0.6, height: size.width * 0.15)
+        let resumePos = CGPoint(x: 0, y: scene!.size.height/5)
+        let backPos = CGPoint(x: 0, y: -scene!.size.height/5)
+        
+        let back = Button(defaultButtonImage: "voltar", activeButtonImage: "voltar", buttonAction: backButton)
+        back.setSizeAndPosition(sizeButton, position: backPos, areaFactor: 1)
+        back.name = "Back"
+        back.touchableArea.zPosition = Position.highlighted.rawValue
+        
+        let resume = Button(defaultButtonImage: "jogar", activeButtonImage: "jogar", buttonAction: resumeButton)
+        resume.setSizeAndPosition(sizeButton, position: resumePos, areaFactor: 1)
+        resume.name = "Resume"
+        resume.touchableArea.zPosition = Position.highlighted.rawValue
+        
+        let container = SKNode()
+        
+        container.addChild(resume)
+        container.addChild(back)
+        container.addChild(blackBack)
+        gameCamera.addChild(container)
+    }
+    
+    func backButton(button: Button) {
         
         let preGameScene = PreGameScene(size: size)
         view?.presentScene(preGameScene, transition: .push(with: .right, duration: 0.5))
+    }
+    
+    func resumeButton(button: Button) {
+        
+        let buttonParent = button.parent
+        buttonParent?.removeFromParent()
+        self.isPaused = false
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
