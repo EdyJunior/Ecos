@@ -9,8 +9,6 @@
 import SpriteKit
 
 class LearnScene: SKScene {
-
-    var cardPicker: SpritePicker?
     
     override func didMove(to view: SKView) {
         
@@ -26,23 +24,25 @@ class LearnScene: SKScene {
         
         for nameCard in cardsNames {
 
-            let sizeCard = CGSize(width: self.size.width * 0.2, height: self.size.height * 0.8)
-            let card: Card
+            let sizeCard = CGSize(width: self.size.width * 0.5, height: self.size.height * 0.8)
+            let card: Card = Card(defaultButtonImage: nameCard, activeButtonImage: nameCard)
+            card.setSizeAndPosition(sizeCard, position: CGPoint.zero, areaFactor: 1)
             
             if let value = defaults.object(forKey: nameCard) {
                 let locked = value as! Bool
-                card = Card(defaultButtonImage: nameCard, activeButtonImage: nameCard, locked: locked)
+                if locked {
+                    card.lockCard()
+                }
             } else {
                 defaults.set(true, forKey: nameCard)
-                card = Card(defaultButtonImage: nameCard, activeButtonImage: nameCard, locked: true)
+                card.lockCard()
             }
-            card.setSizeAndPosition(sizeCard, position: CGPoint.zero, areaFactor: 1)
             cards.append(card)
         }
         
-        cardPicker = SpritePicker(withView: view!, withSprites: cards, withNames: cardsNames)
-        cardPicker!.position = CGPoint(x: size.width * 0.4, y: size.height * 0.5)
-        addChild(cardPicker!)
+        let cardPicker = SpritePicker(withView: view!, withSprites: cards, withNames: cardsNames)
+        cardPicker.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        addChild(cardPicker)
     }
     
     func createBackButton() {
@@ -67,33 +67,3 @@ class LearnScene: SKScene {
         view?.presentScene(first, transition: .doorsCloseVertical(withDuration: 0.5))
     }
 }
-
-
-
-
-
-
-
-
-
-
-/*
- if let plist = Plist(name: "CardList") {
- let dict = plist.getMutablePlistFile()!
- do {
- try plist.addValuesToPlistFile(dictionary: dict)
- } catch {
- print(error)
- }
- 
- print(plist.getValuesInPlistFile())
- } else {
- print("Unable to get Plist")
- }
- */
-
-//        if let path = Bundle.main.path(forResource: "CardList", ofType: "plist") {
-//            if let dic = NSDictionary(contentsOfFile: path) as? [String: String] {
-//                print("\n\nOBJECT = \(dic["CloseWaterTapCard"])")
-//            }
-//        }

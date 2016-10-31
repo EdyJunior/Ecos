@@ -10,15 +10,15 @@ import SpriteKit
 
 class Card: Button {
 
-    var locked: Bool!
+    //var locked: Bool!
     
-    init(defaultButtonImage: String, activeButtonImage: String, locked: Bool) {
+    init(defaultButtonImage: String, activeButtonImage: String) {//, locked: Bool) {
         
-        self.locked = locked
+        //self.locked = locked
         super.init(defaultButtonImage: defaultButtonImage, activeButtonImage: activeButtonImage)
-        if locked {
-            lockCard()
-        }
+//        if locked {
+//            lockCard()
+//        }
     }
     
     required init(coder aDecoder: NSCoder) {

@@ -27,8 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var pauseButton: MenuButton!
-    var blackBack = SKSpriteNode(imageNamed: "blackBack")
+    //var pauseButton: MenuButton!
 
     var gameCamera = SKCameraNode()
     var gameOver = false
@@ -101,7 +100,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //TODO: Posicionar o backButton em um lugar difícil de ser clicado acidentalmente
         
-        pauseButton = MenuButton(defaultButtonImage: "backButton", activeButtonImage: "backButton", labelName: "Pausar", buttonAction: pauseGame)
+        let pauseButton = MenuButton(defaultButtonImage: "pause", activeButtonImage: "pause", labelName: "Pausar", buttonAction: pauseGame)
         
         let sizeButton = CGSize(width: size.width * 0.07, height: size.width * 0.07)
         let labelSize = sizeButton.width / 3
@@ -119,6 +118,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.isPaused = true
         
+        let blackBack = SKSpriteNode(imageNamed: "blackBack")
         blackBack.alpha = 0.7
         blackBack.size = size
         blackBack.position = CGPoint(x: 0, y: 0)
@@ -128,12 +128,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let resumePos = CGPoint(x: 0, y: scene!.size.height/5)
         let backPos = CGPoint(x: 0, y: -scene!.size.height/5)
         
-        let back = Button(defaultButtonImage: "voltar", activeButtonImage: "voltar", buttonAction: backButton)
+        let back = Button(defaultButtonImage: "back", activeButtonImage: "back", buttonAction: backButton)
         back.setSizeAndPosition(sizeButton, position: backPos, areaFactor: 1)
         back.name = "Back"
         back.touchableArea.zPosition = Position.highlighted.rawValue
         
-        let resume = Button(defaultButtonImage: "jogar", activeButtonImage: "jogar", buttonAction: resumeButton)
+        let resume = Button(defaultButtonImage: "play3", activeButtonImage: "play3", buttonAction: resumeButton)
         resume.setSizeAndPosition(sizeButton, position: resumePos, areaFactor: 1)
         resume.name = "Resume"
         resume.touchableArea.zPosition = Position.highlighted.rawValue
