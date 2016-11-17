@@ -31,6 +31,13 @@ class Bathroom: Room {
         let gameScene = self.scene as! GameScene
         gameScene.updateScore(scoreToAdd: ScoreTable.waterTap)
         waterTap.action = nil
+        
+        if let value = defaults.object(forKey: Key.nWaterTap.rawValue) {
+            let number = value as! Int
+            defaults.set(number + 1, forKey: Key.nWaterTap.rawValue)
+        } else {
+            defaults.set(Int(1), forKey: Key.nWaterTap.rawValue)
+        }
     }
     
     func addTrashCan(trashImage: String, trashCanPosition: CGPoint, sizeTrashCan: CGSize) {
@@ -52,5 +59,12 @@ class Bathroom: Room {
             gameScene.updateScore(scoreToAdd: ScoreTable.trash)
         }
         gameScene.player.trashBag?.throwAway(trashCan: trashCan)
+        
+        if let value = defaults.object(forKey: Key.nTrashCan.rawValue) {
+            let number = value as! Int
+            defaults.set(number + 1, forKey: Key.nTrashCan.rawValue)
+        } else {
+            defaults.set(Int(1), forKey: Key.nTrashCan.rawValue)
+        }
     }
 }

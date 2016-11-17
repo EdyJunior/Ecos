@@ -50,7 +50,7 @@ class Player: SKSpriteNode {
     }
 
     func setArrays() {
-        
+
         self.walkingFrames = self.getTextures(character)//Walking//
         //        self.jumpingFrames = self.getTextures("Jumping")
         //        self.idlingFrames = self.getTextures("Idling")

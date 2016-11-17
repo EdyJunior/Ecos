@@ -61,6 +61,19 @@ enum Key: String {
     case trashCanCard = "canCard"
     case tvCard = "tvCard"
     case lampCard = "lampCard"
+    
+    case nWaterTap = "numberOfWaterTaps"
+    case nTrash = "numberOfTrash"
+    case nTrashCan = "numberOfTrashCans"
+}
+
+struct Unlock {
+    
+    let trashCan = 9
+    let trash = 100
+    let waterTap = 10
+    let tvset = 5
+    let lamp = 10
 }
 
 let niceGreen = UIColor.init(red: 23/255, green: 136/255, blue: 23/255, alpha: 1)

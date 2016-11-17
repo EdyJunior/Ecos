@@ -104,6 +104,13 @@ class Room: SKSpriteNode {
         gameScene.player.trashBag!.push(garbage: trash)
         gameScene.updateScore(scoreToAdd: ScoreTable.trash)
         trash.action = nil
+        
+        if let value = defaults.object(forKey: Key.nTrash.rawValue) {
+            let number = value as! Int
+            defaults.set(number + 1, forKey: Key.nTrash.rawValue)
+        } else {
+            defaults.set(Int(1), forKey: Key.nTrash.rawValue)
+        }
     }
     
     func addTrash() {

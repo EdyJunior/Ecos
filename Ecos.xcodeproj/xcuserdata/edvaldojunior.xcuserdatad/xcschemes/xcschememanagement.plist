@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Ecos.xcscheme</key>
+		<key>Ecos.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,6 +12,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>CE2DB33A1DDDFAA800F667F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>CEBE3C101DA698CC004F4937</key>
 		<dict>
 			<key>primary</key>
