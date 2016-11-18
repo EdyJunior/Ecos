@@ -11,6 +11,8 @@ import SpriteKit
 
 class TrashBag: SKNode {
     
+    
+    
     var content = [Button]()
     var currentIndex = 0
     var nextPosition = CGPoint()
@@ -29,6 +31,8 @@ class TrashBag: SKNode {
     }
 
     func push(garbage: Button) {
+        
+        print("teste")
         
         let pos = Int(arc4random_uniform(2))
         let dir: [CGFloat] = [-1.0, 1.0]
