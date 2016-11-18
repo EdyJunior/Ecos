@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import GameScene
 
 class EcosTests: XCTestCase {
     
