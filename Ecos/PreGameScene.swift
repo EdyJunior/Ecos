@@ -22,7 +22,7 @@ class PreGameScene: SKScene {
         previousName = defaults.object(forKey: Key.previousCharacter.rawValue) as! String
         buildScene()
     }
-    
+
     func buildScene() {
         
         let background = SKSpriteNode(imageNamed: "greenBack")
@@ -31,13 +31,13 @@ class PreGameScene: SKScene {
         background.position = CGPoint(x: size.width/2, y: size.height/2)
         background.alpha = 0.75
         addChild(background)
-        
+
         createStartButton()
         createBackButton()
         createLabels()
         createSpritePicker()
     }
-    
+
     func createStartButton() {
         
         let buttonStartSize = CGSize(width: size.width * 0.25, height: size.height * 0.45)
