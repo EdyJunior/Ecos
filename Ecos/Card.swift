@@ -8,15 +8,15 @@
 
 import SpriteKit
 
-class Card: Button {
+class Card: MenuButton {
 
     //var locked: Bool!
     
-    init(defaultButtonImage: String, activeButtonImage: String) {//, locked: Bool) {
+    init(defaultButtonImage: String, activeButtonImage: String, text: String) {//, locked: Bool) {
         
         //self.locked = locked
-        super.init(defaultButtonImage: defaultButtonImage, activeButtonImage: activeButtonImage)
-//        if locked {
+        super.init(defaultButtonImage: defaultButtonImage, activeButtonImage: activeButtonImage, labelName: text)
+        //        if locked {
 //            lockCard()
 //        }
     }
@@ -45,7 +45,7 @@ class Card: Button {
     
     func touchedLockedCard(card: Button) {
         
-        
+        print("Trancado")
     }
     
     func touchedUnlockedCard(card: Button) {

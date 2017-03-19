@@ -24,9 +24,10 @@ class LearnScene: SKScene {
         
         for nameCard in cardsNames {
 
-            let sizeCard = CGSize(width: self.size.width * 0.5, height: self.size.height * 0.8)
-            let card: Card = Card(defaultButtonImage: nameCard, activeButtonImage: nameCard)
-            card.setSizeAndPosition(sizeCard, position: CGPoint.zero, areaFactor: 1)
+            let sizeCard = CGSize(width: self.size.width * 0.25, height: self.size.height * 0.6)
+            let labelPosition = CGPoint(x: 0, y: -sizeCard.height * 0.8)
+            let card: Card = Card(defaultButtonImage: "medal", activeButtonImage: "medal", text: nameCard)
+            card.setSizeAndPosition(sizeCard, position: CGPoint(x: 0, y: scene!.size.height * 0.1), labelSize: sizeCard.height * 0.1, labelPosition: labelPosition)
             
             if let value = defaults.object(forKey: nameCard) {
                 let locked = value as! Bool
