@@ -142,6 +142,21 @@ class Landscape: SKNode {
         room10.addTap(tapPosition: tapPosition, sizeTap: sizeTap)
         room10.addTrashCan(trashImage: "GrandmasTrashCan", trashCanPosition: trashCanPosition, sizeTrashCan: sizeTrashCan)
         
+        let trigger = SKSpriteNode()
+        trigger.size = CGSize(width: sceneSize.width * 0.01, height: sceneSize.height)
+        let endPos = CGPoint(x: sizeR.width * 0.5, y: sizeR.height * 0.06)
+        trigger.position = endPos
+        trigger.zPosition = Position.front.rawValue
+        
+        trigger.physicsBody = SKPhysicsBody(rectangleOf: trigger.size)
+        trigger.physicsBody?.affectedByGravity = false
+        trigger.physicsBody?.allowsRotation = false
+        trigger.physicsBody?.categoryBitMask = BodyType.endTrigger.rawValue
+        trigger.physicsBody?.contactTestBitMask = BodyType.player.rawValue
+        trigger.physicsBody?.collisionBitMask = 0
+        
+        room10.addChild(trigger)
+        
         posR.x += offset
         rooms.append(room10)
         

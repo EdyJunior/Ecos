@@ -15,6 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var playerName = String()
     
     var score: Int = 0 {
+        
         didSet {
             scoreLabel.text = "\(score)"
             defaults.set(score, forKey: Key.lastScore.rawValue)
@@ -27,7 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    //var pauseButton: MenuButton!
+    var pauseButton: MenuButton!
 
     var gameCamera = SKCameraNode()
     var gameOver = false
@@ -83,7 +84,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createLabels() {
         
         scoreLabel = InfoLabel(text: "0")
-        scoreLabel.set(fontSize: size.height * 0.15, position: CGPoint(x: size.width * 0.43, y: -size.height * 0.45), fontColor: niceGreen, zPosition: Position.middle)
+        scoreLabel.set(fontSize: size.height * 0.15, position: CGPoint(x: size.width * 0.43, y: -size.height * 0.45), fontColor: niceGreen, zPosition: Position.top)
         self.gameCamera.addChild(scoreLabel)
         
         if playerName == "Gloria" {
@@ -92,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             playerName = "Gloriosinho"
         }
         playerNameLabel = InfoLabel(text: playerName)
-        playerNameLabel.set(fontSize: size.height * 0.1, position: CGPoint(x: size.width * 0.15, y: -size.height * 0.45) , fontColor: niceGreen, zPosition: Position.middle)
+        playerNameLabel.set(fontSize: size.height * 0.1, position: CGPoint(x: size.width * 0.15, y: -size.height * 0.45) , fontColor: niceGreen, zPosition: Position.top)
         self.gameCamera.addChild(playerNameLabel)
     }
     
@@ -100,7 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //TODO: Posicionar o backButton em um lugar difícil de ser clicado acidentalmente
         
-        let pauseButton = MenuButton(defaultButtonImage: "pause", activeButtonImage: "pause", labelName: "Pausar", buttonAction: pauseGame)
+        pauseButton = MenuButton(defaultButtonImage: "pause", activeButtonImage: "pause", labelName: "Menu", buttonAction: pauseGame)
         
         let sizeButton = CGSize(width: size.width * 0.07, height: size.width * 0.07)
         let labelSize = sizeButton.width / 3
@@ -110,13 +111,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         pauseButton.setSizeAndPosition(sizeButton, position: positionButton, labelSize: labelSize, labelPosition: labelPosition, labelColor: niceGreen)
         
-        pauseButton.zPosition = Position.front.rawValue
+        pauseButton.zPosition = Position.top.rawValue
         self.gameCamera.addChild(pauseButton)
     }
     
     func pauseGame(button: Button) {
         
         self.isPaused = true
+        
+        pauseButton.removeFromParent()
         
         let blackBack = SKSpriteNode(imageNamed: "blackBack")
         blackBack.alpha = 0.7
@@ -133,14 +136,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         back.name = "Back"
         back.touchableArea.zPosition = Position.highlighted.rawValue
         
-        let resume = Button(defaultButtonImage: "play3", activeButtonImage: "play3", buttonAction: resumeButton)
-        resume.setSizeAndPosition(sizeButton, position: resumePos, areaFactor: 1)
-        resume.name = "Resume"
-        resume.touchableArea.zPosition = Position.highlighted.rawValue
-        
         let container = SKNode()
         
-        container.addChild(resume)
+        if !won {
+            let resume = Button(defaultButtonImage: "play3", activeButtonImage: "play3", buttonAction: resumeButton)
+            resume.setSizeAndPosition(sizeButton, position: resumePos, areaFactor: 1)
+            resume.name = "Resume"
+            resume.touchableArea.zPosition = Position.highlighted.rawValue
+            
+            container.addChild(resume)
+        }
+        
         container.addChild(back)
         container.addChild(blackBack)
         gameCamera.addChild(container)
@@ -156,6 +162,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let buttonParent = button.parent
         buttonParent?.removeFromParent()
+        
+        self.gameCamera.addChild(pauseButton)
+        
         self.isPaused = false
     }
     
@@ -229,6 +238,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("dogTrigger")
             secondBody.categoryBitMask = 0
             landscape.tutorial?.start(button: landscape.dog!, text: "Pule o cachorro!")
+        }
+        
+        //End trigger
+        if firstBody.categoryBitMask == BodyType.endTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
+            print("endTrigger")
+            firstBody.categoryBitMask = 0
+            
+            player.removeAllActions()
+            
+            won = true
+            
+            let wonImage = SKSpriteNode(imageNamed: "end")
+            wonImage.size = scene!.size
+            wonImage.position = CGPoint(x: player.position.x, y: size.height / 2)
+            wonImage.zPosition = Position.front.rawValue
+            addChild(wonImage)
+        }
+        if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.endTrigger.rawValue {
+            print("endTrigger")
+            secondBody.categoryBitMask = 0
+            
+            player.removeAllActions()
+            
+            won = true
+            
+            let wonImage = SKSpriteNode(imageNamed: "end")
+            wonImage.size = scene!.size
+            wonImage.position = CGPoint(x: player.position.x, y: size.height / 2)
+            wonImage.zPosition = Position.front.rawValue
+            addChild(wonImage)
         }
     }
     

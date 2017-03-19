@@ -11,7 +11,7 @@ import SpriteKit
 
 class Player: SKSpriteNode {
     
-    var velocity = CGFloat(170)
+    var velocity = CGFloat(470)
     var jumping = false
     let impulse = CGVector(dx: 0, dy: 300)
     var character = String()
@@ -72,5 +72,9 @@ class Player: SKSpriteNode {
                 self.physicsBody?.applyImpulse(self.impulse)
              })]
         ), withKey: "JumpingAnimation")
+    }
+    
+    func stop() {
+        removeAllActions()
     }
 }

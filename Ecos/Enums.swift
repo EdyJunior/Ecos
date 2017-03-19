@@ -19,6 +19,7 @@ enum BodyType: UInt32 {
     case trashTrigger = 33
     case dogTrigger = 34
     case trashCanTrigger = 35
+    case endTrigger = 36
     case ground = 64
     case ceil = 65
     case trash = 128
