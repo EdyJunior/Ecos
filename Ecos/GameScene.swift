@@ -197,52 +197,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Tutorials Triggers
         
         if firstBody.categoryBitMask == BodyType.tapTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
-            print("tapTrigger")
             firstBody.categoryBitMask = 0
             landscape.tutorial?.start(button: landscape.firstBathroom.waterTap!, text: "Desligue a torneira!")
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.tapTrigger.rawValue {
-            print("tapTrigger")
             secondBody.categoryBitMask = 0
             landscape.tutorial?.start(button: landscape.firstBathroom.waterTap!, text: "Desligue a torneira!")
         }
         
         if firstBody.categoryBitMask == BodyType.trashTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
-            print("trashTrigger")
             firstBody.categoryBitMask = 0
             landscape.tutorial?.start(button: landscape.rooms[1].firstGarbage!, text: "Apanhe o lixo!")
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.trashTrigger.rawValue {
-            print("trashTrigger")
             secondBody.categoryBitMask = 0
             landscape.tutorial?.start(button: landscape.rooms[1].firstGarbage!, text: "Apanhe o lixo!")
         }
         
         if firstBody.categoryBitMask == BodyType.trashCanTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
-            print("trashCanTrigger")
             firstBody.categoryBitMask = 0
             landscape.tutorial?.start(button: landscape.firstBathroom.trashCan!, text: "Jogue o lixo na lixeira!")
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.trashCanTrigger.rawValue {
-            print("trashCanTrigger")
             secondBody.categoryBitMask = 0
             landscape.tutorial?.start(button: landscape.firstBathroom.trashCan!, text: "Jogue o lixo na lixeira!")
         }
         
         if firstBody.categoryBitMask == BodyType.dogTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
-            print("dogTrigger")
             firstBody.categoryBitMask = 0
             landscape.tutorial?.start(button: landscape.dog!, text: "Pule o cachorro!")
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.dogTrigger.rawValue {
-            print("dogTrigger")
             secondBody.categoryBitMask = 0
             landscape.tutorial?.start(button: landscape.dog!, text: "Pule o cachorro!")
         }
         
         //End trigger
+        
         if firstBody.categoryBitMask == BodyType.endTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
-            print("endTrigger")
             firstBody.categoryBitMask = 0
             
             player.removeAllActions()
@@ -256,7 +248,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(wonImage)
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.endTrigger.rawValue {
-            print("endTrigger")
             secondBody.categoryBitMask = 0
             
             player.removeAllActions()
