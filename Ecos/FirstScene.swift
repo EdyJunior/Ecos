@@ -65,7 +65,7 @@ class FirstScene: SKScene {
         configButton.action = touchConfig
         infoButton.action = touchInfo
         
-        configButton.defaultButton.run(SKAction.repeatForever(SKAction.rotate(byAngle: 1, duration: 0.01)))
+        configButton.defaultButton.run(SKAction.repeatForever(SKAction.rotate(byAngle: 1, duration: 0.5)))
         learnButton.defaultButton.run(SKAction.repeatForever(SKAction.sequence(
             [SKAction.moveBy(x: 0, y: size.height * 0.1, duration: 0.5),
              SKAction.moveBy(x: 0, y: -size.height * 0.1, duration: 0.5)]

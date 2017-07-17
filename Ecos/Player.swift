@@ -11,7 +11,7 @@ import SpriteKit
 
 class Player: SKSpriteNode {
     
-    var velocity = CGFloat(470)
+    var velocity = CGFloat(270)
     var jumping = false
     let impulse = CGVector(dx: 0, dy: 300)
     var character = String()
