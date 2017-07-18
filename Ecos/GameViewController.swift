@@ -11,16 +11,17 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
+            SoundManager.playSound(withName: "Menu")
             let scene = FirstScene(size: view.bounds.size)
             scene.scaleMode = .aspectFill
-            
+
             view.presentScene(scene)
-            SoundManager.playSound(withName: "Menu")
             
             view.ignoresSiblingOrder = true
         }

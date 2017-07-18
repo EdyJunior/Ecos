@@ -156,6 +156,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func backButton(button: Button) {
         
         let preGameScene = PreGameScene(size: size)
+        SoundManager.playSound(withName: "Menu")
         view?.presentScene(preGameScene, transition: .push(with: .right, duration: 0.5))
     }
     
