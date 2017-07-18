@@ -40,6 +40,7 @@
 		CEBE3C251DA698CC004F4937 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBE3C231DA698CC004F4937 /* LaunchScreen.storyboard */; };
 		CEBE3C2D1DA69A32004F4937 /* FirstScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE3C2C1DA69A32004F4937 /* FirstScene.swift */; };
 		CEBE3C2F1DA69A91004F4937 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE3C2E1DA69A91004F4937 /* Enums.swift */; };
+		CED42DD41F1D0632007D17BE /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED42DD31F1D0632007D17BE /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		CEBE3C261DA698CC004F4937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEBE3C2C1DA69A32004F4937 /* FirstScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstScene.swift; sourceTree = "<group>"; };
 		CEBE3C2E1DA69A91004F4937 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		CED42DD31F1D0632007D17BE /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				CEA77CC41DAFF501005ECCC7 /* SpritePicker.swift */,
 				CE94CCCD1DBC4DF100F3F4B4 /* Card.swift */,
 				CE7D902A1DBD318100675764 /* PListManager.swift */,
+				CED42DD31F1D0632007D17BE /* SoundManager.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 		CEBE3C131DA698CC004F4937 /* Ecos */ = {
 			isa = PBXGroup;
 			children = (
+				CED42DD51F1D07AF007D17BE /* Sounds */,
 				CEA77CC81DB002D6005ECCC7 /* Game Classes */,
 				CE91C4F61DAD2E490070C38A /* Atlas */,
 				CE91C4F11DAD1AC40070C38A /* Util */,
@@ -215,6 +219,13 @@
 				CE7E30281DB6878B00E83A43 /* Others */,
 			);
 			path = Ecos;
+			sourceTree = "<group>";
+		};
+		CED42DD51F1D07AF007D17BE /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +358,7 @@
 				CE3BB84E1DBA991E001286EE /* Bathroom.swift in Sources */,
 				CE94CCCE1DBC4DF100F3F4B4 /* Card.swift in Sources */,
 				CEA77CC71DAFFFD5005ECCC7 /* Player.swift in Sources */,
+				CED42DD41F1D0632007D17BE /* SoundManager.swift in Sources */,
 				CEBE3C2D1DA69A32004F4937 /* FirstScene.swift in Sources */,
 				CE91C5041DAD353F0070C38A /* InfoScene.swift in Sources */,
 				CE3BB8501DBAB588001286EE /* Dog.swift in Sources */,
@@ -549,6 +561,7 @@
 				CE2DB3431DDDFAA800F667F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CEBE3C0C1DA698CC004F4937 /* Build configuration list for PBXProject "Ecos" */ = {
 			isa = XCConfigurationList;

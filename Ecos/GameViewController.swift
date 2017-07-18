@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
             scene.scaleMode = .aspectFill
             
             view.presentScene(scene)
+            SoundManager.playSound(withName: "Menu")
             
             view.ignoresSiblingOrder = true
         }
