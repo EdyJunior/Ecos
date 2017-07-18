@@ -40,6 +40,8 @@
 		CEBE3C251DA698CC004F4937 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBE3C231DA698CC004F4937 /* LaunchScreen.storyboard */; };
 		CEBE3C2D1DA69A32004F4937 /* FirstScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE3C2C1DA69A32004F4937 /* FirstScene.swift */; };
 		CEBE3C2F1DA69A91004F4937 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE3C2E1DA69A91004F4937 /* Enums.swift */; };
+		CECEDB991F1E346100723E5F /* Game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CECEDB971F1E346100723E5F /* Game.mp3 */; };
+		CECEDB9A1F1E346100723E5F /* Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CECEDB981F1E346100723E5F /* Menu.mp3 */; };
 		CED42DD41F1D0632007D17BE /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED42DD31F1D0632007D17BE /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +93,8 @@
 		CEBE3C261DA698CC004F4937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEBE3C2C1DA69A32004F4937 /* FirstScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstScene.swift; sourceTree = "<group>"; };
 		CEBE3C2E1DA69A91004F4937 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		CECEDB971F1E346100723E5F /* Game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Game.mp3; sourceTree = "<group>"; };
+		CECEDB981F1E346100723E5F /* Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Menu.mp3; sourceTree = "<group>"; };
 		CED42DD31F1D0632007D17BE /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,6 +228,8 @@
 		CED42DD51F1D07AF007D17BE /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				CECEDB971F1E346100723E5F /* Game.mp3 */,
+				CECEDB981F1E346100723E5F /* Menu.mp3 */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -273,7 +279,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Edvaldo Junior";
 				TargetAttributes = {
 					CE2DB33A1DDDFAA800F667F7 = {
@@ -320,10 +326,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECEDB991F1E346100723E5F /* Game.mp3 in Resources */,
 				CE91C4F51DAD1DBD0070C38A /* DK Amoebica.otf in Resources */,
 				CEBE3C201DA698CC004F4937 /* Main.storyboard in Resources */,
 				CE91C4FE1DAD2E5F0070C38A /* Car.atlas in Resources */,
 				CEBE3C221DA698CC004F4937 /* Assets.xcassets in Resources */,
+				CECEDB9A1F1E346100723E5F /* Menu.mp3 in Resources */,
 				CE91C5011DAD2E5F0070C38A /* Gloriosinho.atlas in Resources */,
 				CE91C4FF1DAD2E5F0070C38A /* Dog.atlas in Resources */,
 				CE7D902D1DBD396800675764 /* CardList.plist in Resources */,
@@ -452,6 +460,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -501,6 +510,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
