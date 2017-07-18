@@ -68,11 +68,11 @@ enum Key: String {
     case nTrashCan = "numberOfTrashCans"
 }
 
-struct Unlock {
+struct UnlockValues {
     
     let trashCan = 9
     let trash = 100
-    let waterTap = 10
+    let waterTap = 9
     let tvset = 5
     let lamp = 10
 }

@@ -10,9 +10,7 @@ import UIKit
 import SpriteKit
 
 class TrashBag: SKNode {
-    
-    
-    
+
     var content = [Button]()
     var currentIndex = 0
     var nextPosition = CGPoint()
@@ -31,9 +29,7 @@ class TrashBag: SKNode {
     }
 
     func push(garbage: Button) {
-        
-        print("teste")
-        
+
         let pos = Int(arc4random_uniform(2))
         let dir: [CGFloat] = [-1.0, 1.0]
         
@@ -56,6 +52,20 @@ class TrashBag: SKNode {
             })])
         )
         nextPosition.x += size * 0.04
+        
+        if let value = defaults.object(forKey: Key.nTrash.rawValue) {
+            var number = value as! Int
+            number += 1
+            defaults.set(number, forKey: Key.nTrash.rawValue)
+            
+            print("Trash = \(number)\n")
+            
+            let unlock = UnlockValues()
+            if number >= unlock.trash {
+                print("DesB Trash\n")
+                defaults.set(false, forKey: Key.trashCard.rawValue)
+            }
+        }
     }
     
     func throwAway(trashCan: Button) {
@@ -66,6 +76,8 @@ class TrashBag: SKNode {
              SKAction.moveBy(x: size * 0.2, y: -size * 0.1, duration: 0.2)]
         )
         var duration: CGFloat = 0.1
+        
+        let numberOfChildren = self.children.count
         
         for garb in self.children {
             let garbage = garb as! Button
@@ -80,5 +92,19 @@ class TrashBag: SKNode {
             duration += 0.2
         }
         nextPosition.x = -self.size * 0.5
+        
+        if let value = defaults.object(forKey: Key.nTrashCan.rawValue) {
+            var number = value as! Int
+            number += numberOfChildren
+            defaults.set(number, forKey: Key.nTrashCan.rawValue)
+            
+            print("TrashCan = \(number)\n")
+            
+            let unlock = UnlockValues()
+            if number >= unlock.trashCan {
+                print("DesB TrashCan\n")
+                defaults.set(false, forKey: Key.trashCanCard.rawValue)
+            }
+        }
     }
 }

@@ -14,11 +14,8 @@ class Card: MenuButton {
     
     init(defaultButtonImage: String, activeButtonImage: String, text: String) {//, locked: Bool) {
         
-        //self.locked = locked
         super.init(defaultButtonImage: defaultButtonImage, activeButtonImage: activeButtonImage, labelName: text)
-        //        if locked {
-//            lockCard()
-//        }
+        self.action = touchedUnlockedCard
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -44,12 +41,10 @@ class Card: MenuButton {
     }
     
     func touchedLockedCard(card: Button) {
-        
         print("Trancado")
     }
     
     func touchedUnlockedCard(card: Button) {
-        
-        
+        print("Aberto")
     }
 }

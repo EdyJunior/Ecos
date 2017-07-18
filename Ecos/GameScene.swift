@@ -48,6 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func buildScene() {
         
         self.backgroundColor = .black
+        SoundManager.playSound(withName: "Game")
         
         createLandscape()
         createPlayer()

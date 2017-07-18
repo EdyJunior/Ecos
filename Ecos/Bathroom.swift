@@ -33,8 +33,17 @@ class Bathroom: Room {
         waterTap.action = nil
         
         if let value = defaults.object(forKey: Key.nWaterTap.rawValue) {
-            let number = value as! Int
-            defaults.set(number + 1, forKey: Key.nWaterTap.rawValue)
+            var number = value as! Int
+            number += 1
+            defaults.set(number, forKey: Key.nWaterTap.rawValue)
+            
+            print("Tap = \(number)\n")
+            
+            let unlock = UnlockValues()
+            if number >= unlock.waterTap {
+                print("DesB Tap\n")
+                defaults.set(false, forKey: Key.waterTapCard.rawValue)
+            }
         } else {
             defaults.set(Int(1), forKey: Key.nWaterTap.rawValue)
         }
