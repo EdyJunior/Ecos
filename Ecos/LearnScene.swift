@@ -12,7 +12,19 @@ class LearnScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        backgroundColor = .black
+        backgroundColor = .white
+        buildScene()
+    }
+    
+    func buildScene() {
+        
+        let background = SKSpriteNode(imageNamed: "greenBack")
+        background.zPosition = Position.deepest.rawValue
+        background.size = size
+        background.position = CGPoint(x: size.width/2, y: size.height/2)
+        background.alpha = 0.75
+        addChild(background)
+        
         createCardPicker()
         createBackButton()
     }
@@ -43,6 +55,7 @@ class LearnScene: SKScene {
         
         let cardPicker = SpritePicker(withView: view!, withSprites: cards, withNames: cardsNames)
         cardPicker.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        cardPicker.zPosition = Position.front.rawValue
         addChild(cardPicker)
     }
     
@@ -65,6 +78,6 @@ class LearnScene: SKScene {
     func backToMenu(button: Button) {
         
         let first = FirstScene(size: size)
-        view?.presentScene(first, transition: .doorsCloseVertical(withDuration: 0.5))
+        view?.presentScene(first, transition: .fade(withDuration: 0.5))
     }
 }

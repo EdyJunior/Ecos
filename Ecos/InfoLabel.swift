@@ -18,6 +18,6 @@ class InfoLabel: SKLabelNode {
         self.fontColor = color
         self.zPosition = zPosition.rawValue
         
-        self.fontName = "DK Amoebica"
+        self.fontName = "Chubby Cheeks"
     }
 }
