@@ -11,9 +11,9 @@ import SpriteKit
 
 class FirstScene: SKScene {
     
-    var playButton = MenuButton(defaultButtonImage: "play1", activeButtonImage: "play1", labelName: "Jogar!")
-    var configButton = MenuButton(defaultButtonImage: "config", activeButtonImage: "config", labelName: "Configurar")
-    var learnButton = MenuButton(defaultButtonImage: "learn", activeButtonImage: "learn", labelName: "Aprender")
+    var playButton = MenuButton(defaultButtonImage: "play1", activeButtonImage: "play1", labelName: "Play!")
+    var configButton = MenuButton(defaultButtonImage: "config", activeButtonImage: "config", labelName: "Configurate")
+    var learnButton = MenuButton(defaultButtonImage: "learn", activeButtonImage: "learn", labelName: "Medals")
     var infoButton = MenuButton(defaultButtonImage: "info", activeButtonImage: "info", labelName: "Info")
     
     override func didMove(to view: SKView) {
@@ -118,7 +118,9 @@ class FirstScene: SKScene {
     }
     
     func touchConfig(_ button: Button) {
-        print("Config")
+        
+        let configScene = ConfigScene(size: (view?.bounds.size)!)
+        view?.presentScene(configScene, transition: .push(with: .right, duration: 0.5))
     }
     
     func touchLearn(_ button: Button) {
