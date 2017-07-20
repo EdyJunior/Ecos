@@ -16,7 +16,6 @@
 		CE7D902B1DBD318100675764 /* PListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D902A1DBD318100675764 /* PListManager.swift */; };
 		CE7D902D1DBD396800675764 /* CardList.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE7D902C1DBD396800675764 /* CardList.plist */; };
 		CE91C4F31DAD1B6B0070C38A /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91C4F21DAD1B6B0070C38A /* MenuButton.swift */; };
-		CE91C4F51DAD1DBD0070C38A /* DK Amoebica.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4F41DAD1DBD0070C38A /* DK Amoebica.otf */; };
 		CE91C4FD1DAD2E5F0070C38A /* Ball.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4F71DAD2E5F0070C38A /* Ball.atlas */; };
 		CE91C4FE1DAD2E5F0070C38A /* Car.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4F81DAD2E5F0070C38A /* Car.atlas */; };
 		CE91C4FF1DAD2E5F0070C38A /* Dog.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4F91DAD2E5F0070C38A /* Dog.atlas */; };
@@ -42,6 +41,8 @@
 		CEBE3C2F1DA69A91004F4937 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE3C2E1DA69A91004F4937 /* Enums.swift */; };
 		CECEDB991F1E346100723E5F /* Game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CECEDB971F1E346100723E5F /* Game.mp3 */; };
 		CECEDB9A1F1E346100723E5F /* Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CECEDB981F1E346100723E5F /* Menu.mp3 */; };
+		CECEDB9C1F1E4E4500723E5F /* ConfigScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEDB9B1F1E4E4500723E5F /* ConfigScene.swift */; };
+		CECEDB9E1F1E533100723E5F /* CHUBBY.TTF in Resources */ = {isa = PBXBuildFile; fileRef = CECEDB9D1F1E533100723E5F /* CHUBBY.TTF */; };
 		CED42DD41F1D0632007D17BE /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED42DD31F1D0632007D17BE /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +68,6 @@
 		CE7D902A1DBD318100675764 /* PListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListManager.swift; sourceTree = "<group>"; };
 		CE7D902C1DBD396800675764 /* CardList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CardList.plist; sourceTree = "<group>"; };
 		CE91C4F21DAD1B6B0070C38A /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
-		CE91C4F41DAD1DBD0070C38A /* DK Amoebica.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Amoebica.otf"; sourceTree = "<group>"; };
 		CE91C4F71DAD2E5F0070C38A /* Ball.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ball.atlas; sourceTree = "<group>"; };
 		CE91C4F81DAD2E5F0070C38A /* Car.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Car.atlas; sourceTree = "<group>"; };
 		CE91C4F91DAD2E5F0070C38A /* Dog.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Dog.atlas; sourceTree = "<group>"; };
@@ -95,6 +95,8 @@
 		CEBE3C2E1DA69A91004F4937 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		CECEDB971F1E346100723E5F /* Game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Game.mp3; sourceTree = "<group>"; };
 		CECEDB981F1E346100723E5F /* Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Menu.mp3; sourceTree = "<group>"; };
+		CECEDB9B1F1E4E4500723E5F /* ConfigScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigScene.swift; sourceTree = "<group>"; };
+		CECEDB9D1F1E533100723E5F /* CHUBBY.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = CHUBBY.TTF; sourceTree = "<group>"; };
 		CED42DD31F1D0632007D17BE /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,7 +135,7 @@
 				CEBE3C1C1DA698CC004F4937 /* GameViewController.swift */,
 				CEBE3C1E1DA698CC004F4937 /* Main.storyboard */,
 				CEBE3C231DA698CC004F4937 /* LaunchScreen.storyboard */,
-				CE91C4F41DAD1DBD0070C38A /* DK Amoebica.otf */,
+				CECEDB9D1F1E533100723E5F /* CHUBBY.TTF */,
 				CEBE3C261DA698CC004F4937 /* Info.plist */,
 				CE7D902C1DBD396800675764 /* CardList.plist */,
 			);
@@ -148,6 +150,7 @@
 				CE91C5031DAD353F0070C38A /* InfoScene.swift */,
 				CE740ABF1DAE87EC00EB141D /* PreGameScene.swift */,
 				CE94CCCB1DBC4A6900F3F4B4 /* LearnScene.swift */,
+				CECEDB9B1F1E4E4500723E5F /* ConfigScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -327,10 +330,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CECEDB991F1E346100723E5F /* Game.mp3 in Resources */,
-				CE91C4F51DAD1DBD0070C38A /* DK Amoebica.otf in Resources */,
 				CEBE3C201DA698CC004F4937 /* Main.storyboard in Resources */,
 				CE91C4FE1DAD2E5F0070C38A /* Car.atlas in Resources */,
 				CEBE3C221DA698CC004F4937 /* Assets.xcassets in Resources */,
+				CECEDB9E1F1E533100723E5F /* CHUBBY.TTF in Resources */,
 				CECEDB9A1F1E346100723E5F /* Menu.mp3 in Resources */,
 				CE91C5011DAD2E5F0070C38A /* Gloriosinho.atlas in Resources */,
 				CE91C4FF1DAD2E5F0070C38A /* Dog.atlas in Resources */,
@@ -379,6 +382,7 @@
 				CEBE3C151DA698CC004F4937 /* AppDelegate.swift in Sources */,
 				CE7D902B1DBD318100675764 /* PListManager.swift in Sources */,
 				CEA77CC51DAFF501005ECCC7 /* SpritePicker.swift in Sources */,
+				CECEDB9C1F1E4E4500723E5F /* ConfigScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
