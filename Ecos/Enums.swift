@@ -56,6 +56,8 @@ enum Key: String {
     case lastScore = "LastScore"
     case bestScore = "BestScore"
     case previousCharacter = "PreviousCharacter"
+    case speed = "Speed"
+    case fun = "Fun"
     
     case waterTapCard = "tapCard"
     case trashCard = "trashCard"

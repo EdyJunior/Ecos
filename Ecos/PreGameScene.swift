@@ -97,7 +97,7 @@ class PreGameScene: SKScene {
         let charactersNamePos = CGPoint(x: size.width * 0.4, y: size.height * 0.1)
         
         var lastScore = String()
-        if defaults.object(forKey: Key.lastScore.rawValue) == nil{
+        if defaults.object(forKey: Key.lastScore.rawValue) == nil {
             defaults.set(0, forKey: Key.lastScore.rawValue)
             lastScore = "0"
         } else {

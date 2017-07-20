@@ -10,6 +10,13 @@ import SpriteKit
 
 class ConfigScene: SKScene {
 
+    var plusBtn = Button(defaultButtonImage: "plus", activeButtonImage: "plus")
+    var minusBtn = Button(defaultButtonImage: "minus", activeButtonImage: "minus")
+    var checkBox = Button(defaultButtonImage: "checkBox", activeButtonImage: "checkBox")
+    var v = SKSpriteNode(imageNamed: "v")
+    
+    var cells = [SKSpriteNode]()
+    
     override func didMove(to view: SKView) {
         
         self.backgroundColor = .white
@@ -27,6 +34,9 @@ class ConfigScene: SKScene {
         
         createBackButton()
         createLabels()
+        buildControlButtons()
+        buildCells()
+        buildCheckBox()
     }
     
     func createBackButton() {
@@ -53,26 +63,129 @@ class ConfigScene: SKScene {
     
     func createLabels() {
         
-        let labelsSize = size.height * 0.05
+        let speedLabel = InfoLabel(text: "Speed")
+        let funModeLabel = InfoLabel(text: "Fun Mode")
         
-        let lastScorePos = CGPoint(x: size.width * 0.35, y: size.height * 0.85)
-        let bestScorePos = CGPoint(x: size.width * 0.75, y: size.height * 0.85)
-        let charactersNamePos = CGPoint(x: size.width * 0.4, y: size.height * 0.1)
+        let color: UIColor = .white
         
-        var lastScore = String()
-        if defaults.object(forKey: Key.lastScore.rawValue) == nil{
-            defaults.set(0, forKey: Key.lastScore.rawValue)
-            lastScore = "0"
-        } else {
-            lastScore = "\(defaults.object(forKey: Key.lastScore.rawValue) as! Int)"
+        speedLabel.set(fontSize: size.height * 0.1, position: CGPoint(x: size.width/2, y: size.height * 0.87), fontColor: color, zPosition: .front)
+        funModeLabel.set(fontSize: size.height * 0.1, position: CGPoint(x: size.width/2, y: size.height * 0.4), fontColor: color, zPosition: .front)
+        
+        addChild(speedLabel)
+        addChild(funModeLabel)
+    }
+    
+    func buildControlButtons() {
+        
+        let sizePlus = CGSize(width: size.width * 0.07, height: size.height * 0.12)
+        let sizeMinus = CGSize(width: size.width * 0.07, height: size.height * 0.03)
+        let positionPlus = CGPoint(x: frame.width * 0.75, y: frame.height * 0.7)
+        let positionMinus = CGPoint(x: frame.width * 0.25, y: frame.height * 0.7)
+        
+        plusBtn.setSizeAndPosition(sizePlus, position: positionPlus, areaFactor: 1.1)
+        minusBtn.setSizeAndPosition(sizeMinus, position: positionMinus, areaFactor: 1.1)
+        
+        plusBtn.touchableArea.zPosition = Position.top.rawValue
+        minusBtn.touchableArea.zPosition = Position.top.rawValue
+        
+        plusBtn.action = touchPlus
+        minusBtn.action = touchMinus
+        
+        addChild(plusBtn)
+        addChild(minusBtn)
+    }
+    
+    func buildCells() {
+        
+        let w = frame.width
+        let h = frame.height
+        let cellPositions: [CGPoint] = [CGPoint(x: w * 0.35, y: h * 0.7), CGPoint(x: w * 0.45, y: h * 0.7), CGPoint(x: w * 0.55, y: h * 0.7), CGPoint(x: w * 0.65, y: h * 0.7)]
+        
+        if defaults.object(forKey: Key.speed.rawValue) == nil {
+            defaults.set(2, forKey: Key.speed.rawValue)
         }
         
-        var bestScore = String()
-        if defaults.object(forKey: Key.bestScore.rawValue) == nil{
-            defaults.set(0, forKey: Key.bestScore.rawValue)
-            bestScore = "0"
-        } else {
-            bestScore = "\(defaults.object(forKey: Key.bestScore.rawValue) as! Int)"
+        for pos in cellPositions {
+            let cell = SKSpriteNode(imageNamed: "cell")
+            cell.position = pos
+            cell.size = CGSize(width: size.width * 0.075, height: size.width * 0.1)
+            cell.zPosition = Position.front.rawValue
+            cells.append(cell)
+            addChild(cell)
+        }
+        updateCells()
+    }
+    
+    func buildCheckBox() {
+        
+        let w = frame.width
+        let h = frame.height
+        
+        if defaults.object(forKey: Key.fun.rawValue) == nil {
+            defaults.set(false, forKey: Key.fun.rawValue)
+        }
+        
+        checkBox.zPosition = Position.front.rawValue
+        checkBox.setSizeAndPosition(CGSize(width: w * 0.15, height: w * 0.15), position: CGPoint(x: w/2, y: h * 0.2), areaFactor: 1.1)
+        checkBox.action = touchCheck
+        
+        v.position = CGPoint.zero
+        v.zPosition = Position.highlighted.rawValue
+        v.size = CGSize(width: w * 0.15, height: w * 0.15)
+        
+        addChild(checkBox)
+        
+        updateCheck()
+    }
+    
+    func updateCells() {
+        
+        if let val = defaults.object(forKey: Key.speed.rawValue) as? Int {
+            for i in 0..<val {
+                cells[i].texture = SKTexture(imageNamed: "fullCell")
+            }
+            for i in val..<4 {
+                cells[i].texture = SKTexture(imageNamed: "cell")
+            }
+        }
+    }
+    
+    func updateCheck() {
+    
+        if let val = defaults.object(forKey: Key.fun.rawValue) as? Bool {
+            if val {
+                checkBox.touchableArea.addChild(v)
+            } else {
+                v.removeFromParent()
+            }
+        }
+    }
+    
+    func touchPlus(_ button: Button) {
+        
+        if let val = defaults.object(forKey: Key.speed.rawValue) as? Int {
+            if val < 4 {
+                defaults.set(val + 1, forKey: Key.speed.rawValue)
+                updateCells()
+            }
+        }
+    }
+    
+    func touchMinus(_ button: Button) {
+        
+        if let val = defaults.object(forKey: Key.speed.rawValue) as? Int {
+            if val > 1 {
+                defaults.set(val - 1, forKey: Key.speed.rawValue)
+                updateCells()
+            }
+        }
+    }
+    
+    func touchCheck(_ button: Button) {
+        
+        if let val = defaults.object(forKey: Key.fun.rawValue) as? Bool {
+            defaults.set(!val, forKey: Key.fun.rawValue)
+            updateCheck()
         }
     }
 }

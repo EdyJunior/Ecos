@@ -35,6 +35,10 @@ class Player: SKSpriteNode {
         physicsBody?.categoryBitMask = BodyType.player.rawValue
         setArrays()
         
+        if let val = defaults.object(forKey: Key.speed.rawValue) as? Int {
+            self.velocity = CGFloat(val * 135)
+        }
+        
         scene.addChild(self)
     }
     
