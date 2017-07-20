@@ -50,8 +50,8 @@ class Tutorial: NSObject {
         scene.camera!.addChild(self.text)
         scene.addChild(blackBack)
 
-        self.zPos = button.zPosition
-        button.zPosition = Position.highlighted.rawValue
+        self.zPos = button.touchableArea.zPosition
+        button.touchableArea.zPosition = Position.highlighted.rawValue
 
         scene.player.removeAllActions()
 
