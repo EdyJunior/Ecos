@@ -58,6 +58,7 @@ enum Key: String {
     case previousCharacter = "PreviousCharacter"
     case speed = "Speed"
     case fun = "Fun"
+    case tutorial = "Tutorial"
     
     case waterTapCard = "tapCard"
     case trashCard = "trashCard"
