@@ -41,8 +41,8 @@ class Room: SKSpriteNode {
         ground.physicsBody?.allowsRotation = false
         ground.physicsBody?.isDynamic = false
         ground.physicsBody?.categoryBitMask = BodyType.ground.rawValue
-        ground.physicsBody?.contactTestBitMask = BodyType.player.rawValue
-        ground.physicsBody?.collisionBitMask = BodyType.player.rawValue
+        ground.physicsBody?.contactTestBitMask = BodyType.player.rawValue | BodyType.toy.rawValue
+        ground.physicsBody?.collisionBitMask = BodyType.player.rawValue | BodyType.toy.rawValue
         self.addChild(ground)
         
         let ceil = SKSpriteNode()
@@ -56,7 +56,7 @@ class Room: SKSpriteNode {
         ceil.physicsBody?.isDynamic = false
         ceil.physicsBody?.categoryBitMask = BodyType.ceil.rawValue
         ceil.physicsBody?.contactTestBitMask = 0
-        ceil.physicsBody?.collisionBitMask = BodyType.player.rawValue
+        ceil.physicsBody?.collisionBitMask = BodyType.player.rawValue | BodyType.toy.rawValue
         self.addChild(ceil)
     }
     

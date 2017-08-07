@@ -59,6 +59,16 @@ class Landscape: SKNode {
         let room1 = Room(imageNamed: "Room1")
         room1.initialize(size: sizeR, position: posR)
         
+        if let val = defaults.object(forKey: Key.fun.rawValue) as? Bool {
+            if val {
+                let ball = Ball(defaultButtonImage: "ball", activeButtonImage: "ball")
+                ball.action = ball.touchBall
+                ball.setSizeAndPosition(CGSize(width: sceneSize.width * 0.07, height: sceneSize.width * 0.07), position: CGPoint(x: -sceneSize.width, y: sceneSize.height * 0.25), areaFactor: 1.8)
+                ball.initialize()
+                room1.addChild(ball)
+            }
+        }
+        
         posR.x += offset
         rooms.append(room1)
         
