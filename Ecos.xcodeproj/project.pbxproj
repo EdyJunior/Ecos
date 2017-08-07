@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE0EB6EE1DA7C53A00F4554F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EB6ED1DA7C53A00F4554F /* Button.swift */; };
+		CE2CA4D81F2170D100E861DB /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2CA4D71F2170D100E861DB /* Ball.swift */; };
 		CE2DB33E1DDDFAA800F667F7 /* EcosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB33D1DDDFAA800F667F7 /* EcosTests.swift */; };
 		CE3BB84E1DBA991E001286EE /* Bathroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3BB84D1DBA991E001286EE /* Bathroom.swift */; };
 		CE3BB8501DBAB588001286EE /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3BB84F1DBAB588001286EE /* Dog.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		CE0EB6ED1DA7C53A00F4554F /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		CE2CA4D71F2170D100E861DB /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		CE2DB33B1DDDFAA800F667F7 /* EcosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EcosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2DB33D1DDDFAA800F667F7 /* EcosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcosTests.swift; sourceTree = "<group>"; };
 		CE2DB33F1DDDFAA800F667F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				CEADC5F21DB99A1600EAAB18 /* Landscape.swift */,
 				CE3BB84F1DBAB588001286EE /* Dog.swift */,
 				CE3BB8511DBAC81E001286EE /* Tutorial.swift */,
+				CE2CA4D71F2170D100E861DB /* Ball.swift */,
 			);
 			name = "Game Classes";
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE2CA4D81F2170D100E861DB /* Ball.swift in Sources */,
 				CE91C5081DAD42410070C38A /* InfoLabel.swift in Sources */,
 				CE3BB8521DBAC81E001286EE /* Tutorial.swift in Sources */,
 				CEBE3C1B1DA698CC004F4937 /* GameScene.swift in Sources */,
