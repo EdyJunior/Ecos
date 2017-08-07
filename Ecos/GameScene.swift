@@ -62,7 +62,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         landscape.position = CGPoint(x: size.width / 2 + size.width * 1.3, y: size.height / 2)
         landscape.zPosition = Position.deepest.rawValue
         addChild(landscape)
-        landscape.createTutorials()
+        if let val = defaults.object(forKey: Key.tutorial.rawValue) as? Bool {
+            if val {
+                landscape.createTutorials()
+            }
+        } else {
+            defaults.set(true, forKey: Key.tutorial.rawValue)
+            landscape.createTutorials()
+        }
     }
     
     func createPlayer() {
@@ -182,19 +189,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             landscape.render()
         }
         
-        if firstBody.categoryBitMask == BodyType.obstacle.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
-            print("OBSTACulo")
-        }
-        if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.obstacle.rawValue {
-            print("OBSTACulo")
-        }
-        
         if (firstBody.categoryBitMask == BodyType.ground.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue) ||
-           (firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.ground.rawValue){
+           (firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.ground.rawValue) {
             player.jumping = false
         }
         
-        //Tutorials Triggers
+        addTutorialContacts(firstBody: firstBody, secondBody: secondBody)
+        
+        addFinalContacts(firstBody: firstBody, secondBody: secondBody)
+    }
+    
+    func updateScore(scoreToAdd: ScoreTable) {
+        score += scoreToAdd.rawValue
+    }
+    
+    func addTutorialContacts(firstBody: SKPhysicsBody, secondBody: SKPhysicsBody) {
         
         if firstBody.categoryBitMask == BodyType.tapTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
             firstBody.categoryBitMask = 0
@@ -231,8 +240,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody.categoryBitMask = 0
             landscape.tutorial?.start(button: landscape.dog!, text: "Pule o cachorro!")
         }
-        
-        //End trigger
+    }
+    
+    func addFinalContacts(firstBody: SKPhysicsBody, secondBody: SKPhysicsBody) {
         
         if firstBody.categoryBitMask == BodyType.endTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
             firstBody.categoryBitMask = 0
@@ -260,9 +270,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             wonImage.zPosition = Position.front.rawValue
             addChild(wonImage)
         }
-    }
-    
-    func updateScore(scoreToAdd: ScoreTable) {
-        score += scoreToAdd.rawValue
     }
 }
