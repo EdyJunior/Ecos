@@ -18,7 +18,7 @@ class Ball: Button {
         touchableArea.physicsBody?.affectedByGravity = true
         touchableArea.physicsBody?.isDynamic = true
         touchableArea.physicsBody?.restitution = 1
-        touchableArea.physicsBody?.collisionBitMask = BodyType.player.rawValue | BodyType.ground.rawValue | BodyType.limit.rawValue
+        touchableArea.physicsBody?.collisionBitMask = BodyType.player.rawValue | BodyType.ground.rawValue | BodyType.limit.rawValue | BodyType.obstacle.rawValue
         touchableArea.physicsBody?.contactTestBitMask = 0
         
         touchableArea.xScale *= -1

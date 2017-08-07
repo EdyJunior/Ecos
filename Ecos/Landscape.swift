@@ -19,13 +19,13 @@ class Landscape: SKNode {
     var firstBathroom = Bathroom()
     var dog: Dog?
     
-    init(sceneSize: CGSize) {
+    init(scene: GameScene) {
         
-        self.sceneSize = sceneSize
+        self.sceneSize = scene.size
         
         super.init()
         
-        createRooms()
+        createRooms(scene: scene)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,7 +43,7 @@ class Landscape: SKNode {
         }
     }
     
-    func createRooms() {
+    func createRooms(scene: GameScene) {
         
         var posR = CGPoint.zero
         let sizeR = CGSize(width: sceneSize.width * 3, height: sceneSize.height)
@@ -63,9 +63,9 @@ class Landscape: SKNode {
             if val {
                 let ball = Ball(defaultButtonImage: "ball", activeButtonImage: "ball")
                 ball.action = ball.touchBall
-                ball.setSizeAndPosition(CGSize(width: sceneSize.width * 0.07, height: sceneSize.width * 0.07), position: CGPoint(x: -sceneSize.width, y: sceneSize.height * 0.25), areaFactor: 1.8)
+                ball.setSizeAndPosition(CGSize(width: sceneSize.width * 0.07, height: sceneSize.width * 0.07), position: CGPoint(x: scene.size.width * 1.5, y: scene.size.height/2), areaFactor: 1.8)
                 ball.initialize()
-                room1.addChild(ball)
+                scene.addChild(ball)
             }
         }
         

@@ -57,8 +57,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createLandscape() {
-    
-        landscape = Landscape(sceneSize: size)
+        
+        landscape = Landscape(scene: self)
         landscape.position = CGPoint(x: size.width / 2 + size.width * 1.3, y: size.height / 2)
         landscape.zPosition = Position.deepest.rawValue
         addChild(landscape)
@@ -99,9 +99,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createPauseButton() {
-        
-        //TODO: Posicionar o backButton em um lugar difícil de ser clicado acidentalmente
-        
+
         pauseButton = MenuButton(defaultButtonImage: "pause", activeButtonImage: "pause", labelName: "Menu", buttonAction: pauseGame)
         
         let sizeButton = CGSize(width: size.width * 0.07, height: size.width * 0.07)
