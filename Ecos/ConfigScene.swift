@@ -12,9 +12,9 @@ class ConfigScene: SKScene {
 
     var plusBtn = Button(defaultButtonImage: "plus", activeButtonImage: "plus")
     var minusBtn = Button(defaultButtonImage: "minus", activeButtonImage: "minus")
-    var checkBox = Button(defaultButtonImage: "checkBox", activeButtonImage: "checkBox")
-    var v = SKSpriteNode(imageNamed: "v")
-    
+    var funBox = CheckBox(withSize: CGSize.zero, position: CGPoint.zero, andBoolKey: "")
+    var tutorialBox = CheckBox(withSize: CGSize.zero, position: CGPoint.zero, andBoolKey: "")
+        
     var cells = [SKSpriteNode]()
     
     override func didMove(to view: SKView) {
@@ -65,14 +65,17 @@ class ConfigScene: SKScene {
         
         let speedLabel = InfoLabel(text: "Speed")
         let funModeLabel = InfoLabel(text: "Fun Mode")
+        let tutorialModeLabel = InfoLabel(text: "Tutorial Mode")
         
         let color: UIColor = .white
         
         speedLabel.set(fontSize: size.height * 0.1, position: CGPoint(x: size.width/2, y: size.height * 0.87), fontColor: color, zPosition: .front)
-        funModeLabel.set(fontSize: size.height * 0.1, position: CGPoint(x: size.width/2, y: size.height * 0.4), fontColor: color, zPosition: .front)
+        funModeLabel.set(fontSize: size.height * 0.1, position: CGPoint(x: size.width * 0.3, y: size.height * 0.4), fontColor: color, zPosition: .front)
+        tutorialModeLabel.set(fontSize: size.height * 0.1, position: CGPoint(x: size.width * 0.7, y: size.height * 0.4), fontColor: color, zPosition: .front)
         
         addChild(speedLabel)
         addChild(funModeLabel)
+        addChild(tutorialModeLabel)
     }
     
     func buildControlButtons() {
@@ -124,18 +127,15 @@ class ConfigScene: SKScene {
         if defaults.object(forKey: Key.fun.rawValue) == nil {
             defaults.set(false, forKey: Key.fun.rawValue)
         }
+        if defaults.object(forKey: Key.tutorial.rawValue) == nil {
+            defaults.set(true, forKey: Key.tutorial.rawValue)
+        }
         
-        checkBox.zPosition = Position.front.rawValue
-        checkBox.setSizeAndPosition(CGSize(width: w * 0.15, height: w * 0.15), position: CGPoint(x: w/2, y: h * 0.2), areaFactor: 1.1)
-        checkBox.action = touchCheck
+        funBox = CheckBox(withSize: CGSize(width: w * 0.15, height: w * 0.15), position: CGPoint(x: w * 0.3, y: h * 0.2), andBoolKey: Key.fun.rawValue)
+        tutorialBox = CheckBox(withSize: CGSize(width: w * 0.15, height: w * 0.15), position: CGPoint(x: w * 0.7, y: h * 0.2), andBoolKey: Key.tutorial.rawValue)
         
-        v.position = CGPoint.zero
-        v.zPosition = Position.highlighted.rawValue
-        v.size = CGSize(width: w * 0.15, height: w * 0.15)
-        
-        addChild(checkBox)
-        
-        updateCheck()
+        addChild(funBox)
+        addChild(tutorialBox)
     }
     
     func updateCells() {
@@ -146,17 +146,6 @@ class ConfigScene: SKScene {
             }
             for i in val..<4 {
                 cells[i].texture = SKTexture(imageNamed: "cell")
-            }
-        }
-    }
-    
-    func updateCheck() {
-    
-        if let val = defaults.object(forKey: Key.fun.rawValue) as? Bool {
-            if val {
-                checkBox.touchableArea.addChild(v)
-            } else {
-                v.removeFromParent()
             }
         }
     }
@@ -178,14 +167,6 @@ class ConfigScene: SKScene {
                 defaults.set(val - 1, forKey: Key.speed.rawValue)
                 updateCells()
             }
-        }
-    }
-    
-    func touchCheck(_ button: Button) {
-        
-        if let val = defaults.object(forKey: Key.fun.rawValue) as? Bool {
-            defaults.set(!val, forKey: Key.fun.rawValue)
-            updateCheck()
         }
     }
 }

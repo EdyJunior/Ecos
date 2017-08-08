@@ -26,6 +26,8 @@ class CheckBox: Button {
         self.check.position = CGPoint.zero
         self.check.zPosition = Position.highlighted.rawValue
         self.check.size = size
+        
+        self.updateCheck()
     }
     
     required init(coder aDecoder: NSCoder) {
