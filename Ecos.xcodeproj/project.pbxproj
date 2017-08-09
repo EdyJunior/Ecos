@@ -20,13 +20,13 @@
 		CE91C4FD1DAD2E5F0070C38A /* Ball.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4F71DAD2E5F0070C38A /* Ball.atlas */; };
 		CE91C4FE1DAD2E5F0070C38A /* Car.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4F81DAD2E5F0070C38A /* Car.atlas */; };
 		CE91C4FF1DAD2E5F0070C38A /* Dog.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4F91DAD2E5F0070C38A /* Dog.atlas */; };
-		CE91C5001DAD2E5F0070C38A /* Gloria.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4FA1DAD2E5F0070C38A /* Gloria.atlas */; };
-		CE91C5011DAD2E5F0070C38A /* Gloriosinho.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4FB1DAD2E5F0070C38A /* Gloriosinho.atlas */; };
 		CE91C5021DAD2E5F0070C38A /* WaterTaps.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE91C4FC1DAD2E5F0070C38A /* WaterTaps.atlas */; };
 		CE91C5041DAD353F0070C38A /* InfoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91C5031DAD353F0070C38A /* InfoScene.swift */; };
 		CE91C5081DAD42410070C38A /* InfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91C5071DAD42410070C38A /* InfoLabel.swift */; };
 		CE94CCCC1DBC4A6900F3F4B4 /* LearnScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94CCCB1DBC4A6900F3F4B4 /* LearnScene.swift */; };
 		CE94CCCE1DBC4DF100F3F4B4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94CCCD1DBC4DF100F3F4B4 /* Card.swift */; };
+		CE9D9FD41F3A6708004802BB /* Gloria.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE9D9FD21F3A6708004802BB /* Gloria.atlas */; };
+		CE9D9FD71F3A6A5B004802BB /* Gloriosinho.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE9D9FD61F3A6A5B004802BB /* Gloriosinho.atlas */; };
 		CEA77CC51DAFF501005ECCC7 /* SpritePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA77CC41DAFF501005ECCC7 /* SpritePicker.swift */; };
 		CEA77CC71DAFFFD5005ECCC7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA77CC61DAFFFD5005ECCC7 /* Player.swift */; };
 		CEA77CCA1DB002FF005ECCC7 /* TrashBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA77CC91DB002FF005ECCC7 /* TrashBag.swift */; };
@@ -74,13 +74,13 @@
 		CE91C4F71DAD2E5F0070C38A /* Ball.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ball.atlas; sourceTree = "<group>"; };
 		CE91C4F81DAD2E5F0070C38A /* Car.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Car.atlas; sourceTree = "<group>"; };
 		CE91C4F91DAD2E5F0070C38A /* Dog.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Dog.atlas; sourceTree = "<group>"; };
-		CE91C4FA1DAD2E5F0070C38A /* Gloria.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Gloria.atlas; sourceTree = "<group>"; };
-		CE91C4FB1DAD2E5F0070C38A /* Gloriosinho.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Gloriosinho.atlas; sourceTree = "<group>"; };
 		CE91C4FC1DAD2E5F0070C38A /* WaterTaps.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = WaterTaps.atlas; sourceTree = "<group>"; };
 		CE91C5031DAD353F0070C38A /* InfoScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoScene.swift; sourceTree = "<group>"; };
 		CE91C5071DAD42410070C38A /* InfoLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoLabel.swift; sourceTree = "<group>"; };
 		CE94CCCB1DBC4A6900F3F4B4 /* LearnScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnScene.swift; sourceTree = "<group>"; };
 		CE94CCCD1DBC4DF100F3F4B4 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		CE9D9FD21F3A6708004802BB /* Gloria.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Gloria.atlas; sourceTree = "<group>"; };
+		CE9D9FD61F3A6A5B004802BB /* Gloriosinho.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Gloriosinho.atlas; sourceTree = "<group>"; };
 		CEA77CC41DAFF501005ECCC7 /* SpritePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpritePicker.swift; sourceTree = "<group>"; };
 		CEA77CC61DAFFFD5005ECCC7 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		CEA77CC91DB002FF005ECCC7 /* TrashBag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashBag.swift; sourceTree = "<group>"; };
@@ -178,11 +178,11 @@
 		CE91C4F61DAD2E490070C38A /* Atlas */ = {
 			isa = PBXGroup;
 			children = (
+				CE9D9FD61F3A6A5B004802BB /* Gloriosinho.atlas */,
+				CE9D9FD21F3A6708004802BB /* Gloria.atlas */,
 				CE91C4F71DAD2E5F0070C38A /* Ball.atlas */,
 				CE91C4F81DAD2E5F0070C38A /* Car.atlas */,
 				CE91C4F91DAD2E5F0070C38A /* Dog.atlas */,
-				CE91C4FA1DAD2E5F0070C38A /* Gloria.atlas */,
-				CE91C4FB1DAD2E5F0070C38A /* Gloriosinho.atlas */,
 				CE91C4FC1DAD2E5F0070C38A /* WaterTaps.atlas */,
 			);
 			name = Atlas;
@@ -336,18 +336,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				CECEDB991F1E346100723E5F /* Game.mp3 in Resources */,
+				CE9D9FD41F3A6708004802BB /* Gloria.atlas in Resources */,
+				CE9D9FD71F3A6A5B004802BB /* Gloriosinho.atlas in Resources */,
 				CEBE3C201DA698CC004F4937 /* Main.storyboard in Resources */,
 				CE91C4FE1DAD2E5F0070C38A /* Car.atlas in Resources */,
 				CEBE3C221DA698CC004F4937 /* Assets.xcassets in Resources */,
 				CECEDB9E1F1E533100723E5F /* CHUBBY.TTF in Resources */,
 				CECEDB9A1F1E346100723E5F /* Menu.mp3 in Resources */,
-				CE91C5011DAD2E5F0070C38A /* Gloriosinho.atlas in Resources */,
 				CE91C4FF1DAD2E5F0070C38A /* Dog.atlas in Resources */,
 				CE7D902D1DBD396800675764 /* CardList.plist in Resources */,
 				CE91C4FD1DAD2E5F0070C38A /* Ball.atlas in Resources */,
 				CEBE3C251DA698CC004F4937 /* LaunchScreen.storyboard in Resources */,
 				CE91C5021DAD2E5F0070C38A /* WaterTaps.atlas in Resources */,
-				CE91C5001DAD2E5F0070C38A /* Gloria.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
