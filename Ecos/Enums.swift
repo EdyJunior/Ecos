@@ -73,9 +73,9 @@ enum Key: String {
 
 struct UnlockValues {
     
-    let trashCan = 9
-    let trash = 100
-    let waterTap = 9
+    let trashCan = 20
+    let trash = 150
+    let waterTap = 20
     let tvset = 5
     let lamp = 10
 }
