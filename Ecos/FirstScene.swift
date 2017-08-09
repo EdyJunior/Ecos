@@ -11,7 +11,7 @@ import SpriteKit
 
 class FirstScene: SKScene {
     
-    var playButton = MenuButton(defaultButtonImage: "play1", activeButtonImage: "play1", labelName: "Play!")
+    var playButton = MenuButton(defaultButtonImage: "play1", activeButtonImage: "play1", labelName: "Start")
     var configButton = MenuButton(defaultButtonImage: "config", activeButtonImage: "config", labelName: "Configurate")
     var learnButton = MenuButton(defaultButtonImage: "learn", activeButtonImage: "learn", labelName: "Medals")
     var infoButton = MenuButton(defaultButtonImage: "info", activeButtonImage: "info", labelName: "Info")

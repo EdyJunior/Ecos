@@ -46,10 +46,10 @@ class PreGameScene: SKScene {
         let buttonStartSize = CGSize(width: size.width * 0.25, height: size.height * 0.45)
         let buttonStartPosition = CGPoint(x: size.width * 0.85, y: size.height * 0.45)
         
-        let labelStartSize = buttonStartSize.height * 0.1
-        let labelStartposition = CGPoint(x: 0, y: -buttonStartSize.height * 0.65)
+        let labelStartSize = buttonStartSize.height * 0.3
+        let labelStartposition = CGPoint(x: 0, y: -buttonStartSize.height * 0.8)
         
-        let startButton = MenuButton(defaultButtonImage: "play2", activeButtonImage: "play2", labelName: "Começar", buttonAction: touchedStart)
+        let startButton = MenuButton(defaultButtonImage: "play2", activeButtonImage: "play2", labelName: "Play!", buttonAction: touchedStart)
         startButton.setSizeAndPosition(buttonStartSize, position: buttonStartPosition, labelSize: labelStartSize, labelPosition: labelStartposition, labelColor: niceGreen)
         startButton.touchableArea.zPosition = Position.top.rawValue
         
@@ -93,7 +93,7 @@ class PreGameScene: SKScene {
     
     func createLabels() {
         
-        let labelsSize = size.height * 0.05
+        let labelsSize = size.height * 0.07
         
         let lastScorePos = CGPoint(x: size.width * 0.35, y: size.height * 0.85)
         let bestScorePos = CGPoint(x: size.width * 0.75, y: size.height * 0.85)
@@ -107,7 +107,7 @@ class PreGameScene: SKScene {
             lastScore = "\(defaults.object(forKey: Key.lastScore.rawValue) as! Int)"
         }
         
-        lastScoreLabel = InfoLabel(text: "Última pontuação:  \(lastScore)")
+        lastScoreLabel = InfoLabel(text: "Last Score:  \(lastScore)")
         lastScoreLabel.set(fontSize: labelsSize, position: lastScorePos, fontColor: niceGreen, zPosition: .front)
         addChild(lastScoreLabel)
         
@@ -119,7 +119,7 @@ class PreGameScene: SKScene {
             bestScore = "\(defaults.object(forKey: Key.bestScore.rawValue) as! Int)"
         }
 
-        bestScoreLabel = InfoLabel(text: "Melhor pontuação:  \(bestScore)")
+        bestScoreLabel = InfoLabel(text: "Best Score:  \(bestScore)")
         bestScoreLabel.set(fontSize: labelsSize, position: bestScorePos, fontColor: niceGreen, zPosition: .front)
         addChild(bestScoreLabel)
 

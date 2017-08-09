@@ -207,38 +207,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if firstBody.categoryBitMask == BodyType.tapTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
             firstBody.categoryBitMask = 0
-            landscape.tutorial?.start(button: landscape.firstBathroom.waterTap!, text: "Desligue a torneira!")
+            landscape.tutorial?.start(button: landscape.firstBathroom.waterTap!, text: "Turn off the tap!")
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.tapTrigger.rawValue {
             secondBody.categoryBitMask = 0
-            landscape.tutorial?.start(button: landscape.firstBathroom.waterTap!, text: "Desligue a torneira!")
+            landscape.tutorial?.start(button: landscape.firstBathroom.waterTap!, text: "Turn off the tap!")
         }
         
         if firstBody.categoryBitMask == BodyType.trashTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
             firstBody.categoryBitMask = 0
-            landscape.tutorial?.start(button: landscape.rooms[1].firstGarbage!, text: "Apanhe o lixo!")
+            landscape.tutorial?.start(button: landscape.rooms[1].firstGarbage!, text: "Pick up rubbish!")
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.trashTrigger.rawValue {
             secondBody.categoryBitMask = 0
-            landscape.tutorial?.start(button: landscape.rooms[1].firstGarbage!, text: "Apanhe o lixo!")
+            landscape.tutorial?.start(button: landscape.rooms[1].firstGarbage!, text: "Pick up rubbish!")
         }
         
         if firstBody.categoryBitMask == BodyType.trashCanTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
             firstBody.categoryBitMask = 0
-            landscape.tutorial?.start(button: landscape.firstBathroom.trashCan!, text: "Jogue o lixo na lixeira!")
+            landscape.tutorial?.start(button: landscape.firstBathroom.trashCan!, text: "Throw rubbish away!")
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.trashCanTrigger.rawValue {
             secondBody.categoryBitMask = 0
-            landscape.tutorial?.start(button: landscape.firstBathroom.trashCan!, text: "Jogue o lixo na lixeira!")
+            landscape.tutorial?.start(button: landscape.firstBathroom.trashCan!, text: "Throw rubbish away!")
         }
         
         if firstBody.categoryBitMask == BodyType.dogTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
             firstBody.categoryBitMask = 0
-            landscape.tutorial?.start(button: landscape.dog!, text: "Pule o cachorro!")
+            landscape.tutorial?.start(button: landscape.dog!, text: "Jump over the dog!")
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.dogTrigger.rawValue {
             secondBody.categoryBitMask = 0
-            landscape.tutorial?.start(button: landscape.dog!, text: "Pule o cachorro!")
+            landscape.tutorial?.start(button: landscape.dog!, text: "Jump over the dog!")
         }
     }
     
