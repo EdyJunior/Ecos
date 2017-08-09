@@ -19,6 +19,12 @@ class Button: SKNode {
     var action: ((_ button: Button) -> Void)?
     var type: BodyType?
     var enabled: Bool = true
+    var pressed: Bool {
+        didSet {
+            activeButton.isHidden = !pressed
+            defaultButton.isHidden = pressed
+        }
+    }
     
     init(defaultButtonImage: String, activeButtonImage: String, buttonAction: ((_ button: Button) -> Void)? = nil, Type: BodyType? = nil) {
         
@@ -28,6 +34,7 @@ class Button: SKNode {
         activeButton.isHidden = true
         action = buttonAction
         type = Type
+        pressed = false
         
         super.init()
         
@@ -42,8 +49,7 @@ class Button: SKNode {
         
         if touchableArea.contains((touches.first?.location(in: self))!) {
             if action != nil && enabled {
-                activeButton.isHidden = false
-                defaultButton.isHidden = true
+                pressed = !pressed
                 action!(self)
             }
         }
