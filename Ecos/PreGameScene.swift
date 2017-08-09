@@ -14,8 +14,11 @@ class PreGameScene: SKScene {
     var lastScoreLabel = InfoLabel()
     var charactersNameLabel = InfoLabel()
     var previousName = String()
-    var spritePicker: SpritePicker!
-        
+    let charactersNames = ["Gloria", "Gloriosinho"]
+    
+    let gloriaBtn = Button(defaultButtonImage: "Gloria_000", activeButtonImage: "Gloria_000")
+    let gloriosinhoBtn = Button(defaultButtonImage: "Gloriosinho_000", activeButtonImage: "Gloriosinho_000")
+    
     override func didMove(to view: SKView) {
         
         self.backgroundColor = .white
@@ -35,7 +38,7 @@ class PreGameScene: SKScene {
         createStartButton()
         createBackButton()
         createLabels()
-        createSpritePicker()
+        createCharacters()
     }
 
     func createStartButton() {
@@ -115,32 +118,67 @@ class PreGameScene: SKScene {
         } else {
             bestScore = "\(defaults.object(forKey: Key.bestScore.rawValue) as! Int)"
         }
-        
+
         bestScoreLabel = InfoLabel(text: "Melhor pontuação:  \(bestScore)")
         bestScoreLabel.set(fontSize: labelsSize, position: bestScorePos, fontColor: niceGreen, zPosition: .front)
         addChild(bestScoreLabel)
-        
+
         charactersNameLabel = InfoLabel(text: previousName)
         charactersNameLabel.set(fontSize: labelsSize, position: charactersNamePos, fontColor: niceGreen, zPosition: .front)
         addChild(charactersNameLabel)
     }
-    
-    func createSpritePicker() {
+
+    func createCharacters() {
+
+        let buttonNormalSize = CGSize(width: size.width * 0.15, height: size.height * 0.375)
+        let buttonSelectedSize = CGSize(width: size.width * 0.15 * 1.4, height: size.height * 0.375 * 1.4)
         
-        let charactersNames = ["Gloria", "Gloriosinho"]
-        var characters = [SKSpriteNode]()
+        let gloriaPos = CGPoint(x: size.width * 0.25, y: size.height * 0.5)
+        let gloriosinhoPos = CGPoint(x: size.width * 0.45, y: size.height * 0.5)
+
+        gloriaBtn.setSizeAndPosition(buttonNormalSize, position: gloriaPos, areaFactor: 1.0)
+        gloriosinhoBtn.setSizeAndPosition(buttonNormalSize, position: gloriosinhoPos, areaFactor: 1.0)
         
-        for name in charactersNames {
-            let character = SKSpriteNode(imageNamed: "\(name)0")
-            character.size = CGSize(width: size.width * 0.2, height: size.height * 0.5)
-            character.position = CGPoint(x: 0, y: 0)
-            character.zPosition = Position.front.rawValue
-            characters.append(character)
+        gloriaBtn.activeButton.size = buttonSelectedSize
+        gloriosinhoBtn.activeButton.size = buttonSelectedSize
+        
+        gloriaBtn.touchableArea.alpha = previousName == charactersNames[0] ? 1.0 : 0.5
+        gloriosinhoBtn.touchableArea.alpha = previousName == charactersNames[1] ? 1.0 : 0.5
+        
+        gloriaBtn.pressed = previousName == charactersNames[0] ? true : false
+        gloriosinhoBtn.pressed = previousName == charactersNames[1] ? true : false
+
+        gloriaBtn.touchableArea.zPosition = Position.middle.rawValue
+        gloriosinhoBtn.touchableArea.zPosition = Position.middle.rawValue
+
+        gloriaBtn.name = "Gloria"
+        gloriosinhoBtn.name = "Gloriosinho"
+
+        gloriaBtn.action = touchChar
+        gloriosinhoBtn.action = touchChar
+        
+        addChild(gloriaBtn)
+        addChild(gloriosinhoBtn)
+    }
+
+    func touchChar(_ button: Button) {
+        
+        if let name = button.name {
+            if name == "Gloria" {
+                gloriosinhoBtn.touchableArea.alpha = 0.5
+                gloriosinhoBtn.pressed = false
+                
+                gloriaBtn.pressed = true
+                gloriaBtn.touchableArea.alpha = 1.0
+            } else if name == "Gloriosinho" {
+                gloriaBtn.touchableArea.alpha = 0.5
+                gloriaBtn.pressed = false
+                
+                gloriosinhoBtn.pressed = true
+                gloriosinhoBtn.touchableArea.alpha = 1.0
+            }
+            charactersNameLabel.text = name
+            
         }
-        
-        spritePicker = SpritePicker(withView: view!, withSprites: characters, withNames: charactersNames, inSprite: previousName)
-        spritePicker.position = CGPoint(x: size.width * 0.4, y: size.height * 0.5)
-        spritePicker.linkLabels(labels: [charactersNameLabel])
-        addChild(spritePicker)
     }
 }
