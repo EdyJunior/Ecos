@@ -47,7 +47,11 @@ class Player: SKSpriteNode {
         let atlas = SKTextureAtlas(named: atlasName)
         var frames = [SKTexture]()
         
-        for textureName in atlas.textureNames{
+        let names = atlas.textureNames.sorted { (a, b) -> Bool in
+            return a < b
+        }
+        
+        for textureName in names {
             frames.append(atlas.textureNamed(textureName))
         }
         return frames
@@ -64,14 +68,14 @@ class Player: SKSpriteNode {
         
         let step: CGFloat = (scene?.size.width)!/5
         
-        run(SKAction.repeatForever(SKAction.animate(with: walkingFrames, timePerFrame: 0.3)), withKey: "WalkingAnimation")
+        run(SKAction.repeatForever(SKAction.animate(with: walkingFrames, timePerFrame: 0.15)), withKey: "WalkingAnimation")
         run(SKAction.repeatForever(SKAction.moveBy(x: step, y: 0, duration: Double(step)/Double(velocity))), withKey: "WalkingMovement")
     }
     
     func jump() {
         
         run(SKAction.group(
-            [SKAction.animate(with: walkingFrames, timePerFrame: 0.3),
+            [SKAction.animate(with: walkingFrames, timePerFrame: 0.15),
              SKAction.run({ 
                 self.physicsBody?.applyImpulse(self.impulse)
              })]

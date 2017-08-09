@@ -89,7 +89,7 @@ class FirstScene: SKScene {
     func createCharacter() {
         
         let name = defaults.object(forKey: Key.previousCharacter.rawValue) as! String
-        let imageName = name + "0"
+        let imageName = name + "_000"
         let character = SKSpriteNode(imageNamed: imageName)
         character.size = CGSize(width: size.width * 0.2, height: size.height * 0.5)
         character.position = CGPoint(x: size.width * 0.7, y: size.height * 0.65)
@@ -98,12 +98,16 @@ class FirstScene: SKScene {
         let atlas = SKTextureAtlas(named: name)
         var frames = [SKTexture]()
         
-        for textureName in atlas.textureNames {
+        let names = atlas.textureNames.sorted { (a, b) -> Bool in
+            return a < b
+        }
+        
+        for textureName in names {
             frames.append(atlas.textureNamed(textureName))
         }
         character.run(SKAction.repeatForever(
             SKAction.animate(with: frames,
-                             timePerFrame: 0.3,
+                             timePerFrame: 0.15,
                              resize: false,
                              restore: true)
             )
