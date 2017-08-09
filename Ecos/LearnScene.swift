@@ -25,21 +25,22 @@ class LearnScene: SKScene {
         background.alpha = 0.75
         addChild(background)
         
-        createCardPicker()
+        createCards()
         createBackButton()
     }
     
-    func createCardPicker() {
+    func createCards() {
         
         let cardsNames = [Key.waterTapCard.rawValue, Key.trashCard.rawValue, Key.trashCanCard.rawValue]//, Key.tvCard.rawValue, Key.lampCard.rawValue]
-        var cards = [Button]()
+        var pos: CGFloat = 0.2
         
         for nameCard in cardsNames {
-
-            let sizeCard = CGSize(width: self.size.width * 0.25, height: self.size.height * 0.6)
+            
+            let sizeCard = CGSize(width: self.size.width * 0.2, height: self.size.height * 0.48)
             let labelPosition = CGPoint(x: 0, y: -sizeCard.height * 0.8)
             let card: Card = Card(defaultButtonImage: "medal", activeButtonImage: "medal", text: nameCard)
-            card.setSizeAndPosition(sizeCard, position: CGPoint(x: 0, y: scene!.size.height * 0.1), labelSize: sizeCard.height * 0.1, labelPosition: labelPosition)
+            card.setSizeAndPosition(sizeCard, position: CGPoint(x: pos * scene!.size.width, y: scene!.size.height * 0.5), labelSize: sizeCard.height * 0.2, labelPosition: labelPosition)
+            pos += 0.3
             
             if let value = defaults.object(forKey: nameCard) {
                 let locked = value as! Bool
@@ -50,15 +51,12 @@ class LearnScene: SKScene {
                 defaults.set(true, forKey: nameCard)
                 card.lockCard()
             }
-            cards.append(card)
+            card.zPosition = Position.middle.rawValue
+            card.name = nameCard
+            addChild(card)
         }
-        
-        let cardPicker = SpritePicker(withView: view!, withSprites: cards, withNames: cardsNames)
-        cardPicker.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        cardPicker.zPosition = Position.front.rawValue
-        addChild(cardPicker)
     }
-    
+
     func createBackButton() {
         
         let backButton = MenuButton(defaultButtonImage: "backButton", activeButtonImage: "backButton", labelName: "Voltar", buttonAction: backToMenu)
