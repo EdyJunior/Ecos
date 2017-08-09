@@ -29,7 +29,7 @@ class Tutorial: NSObject {
 
         let pos = button.touchableArea.position
         
-        hand.zPosition = Position.highlighted.rawValue
+        hand.zPosition = Position.top.rawValue
         hand.size = CGSize(width: scene.size.width * 0.3, height: scene.size.height * 0.2)
         hand.position = CGPoint(x: -hand.size.width/2, y: pos.y)
         
@@ -37,10 +37,10 @@ class Tutorial: NSObject {
         
         if pos.y > 0 {
             let textPos = CGPoint(x: 0, y: pos.y - hand.size.height)
-            self.text.set(fontSize: scene.size.height * 0.1, position: textPos, fontColor: .white, zPosition: .highlighted)
+            self.text.set(fontSize: scene.size.height * 0.1, position: textPos, fontColor: .white, zPosition: .top)
         } else {
             let textPos = CGPoint(x: 0, y: pos.y + hand.size.height)
-            self.text.set(fontSize: scene.size.height * 0.1, position: textPos, fontColor: .white, zPosition: .highlighted)
+            self.text.set(fontSize: scene.size.height * 0.1, position: textPos, fontColor: .white, zPosition: .top)
         }
         
         blackBack.position = CGPoint(x: scene.player.position.x, y: scene.size.height / 2)
@@ -51,7 +51,7 @@ class Tutorial: NSObject {
         scene.addChild(blackBack)
 
         self.zPos = button.touchableArea.zPosition
-        button.touchableArea.zPosition = Position.highlighted.rawValue
+        button.touchableArea.zPosition = Position.top.rawValue
 
         scene.player.removeAllActions()
 
