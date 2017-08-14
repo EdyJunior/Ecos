@@ -8,26 +8,20 @@
 
 import SpriteKit
 
-class Ball: Button {
+class Ball: SKSpriteNode {
     
     func initialize() {
         
-        touchableArea.physicsBody = SKPhysicsBody(circleOfRadius: touchableArea.size.height / 7)
-        touchableArea.physicsBody?.allowsRotation = true
-        touchableArea.physicsBody?.categoryBitMask = BodyType.toy.rawValue
-        touchableArea.physicsBody?.affectedByGravity = true
-        touchableArea.physicsBody?.isDynamic = true
-        touchableArea.physicsBody?.restitution = 1
-        touchableArea.physicsBody?.collisionBitMask = BodyType.player.rawValue | BodyType.ground.rawValue | BodyType.limit.rawValue | BodyType.obstacle.rawValue
-        touchableArea.physicsBody?.contactTestBitMask = 0
+        physicsBody = SKPhysicsBody(circleOfRadius: size.height / 2)
+        physicsBody?.allowsRotation = true
+        physicsBody?.categoryBitMask = BodyType.toy.rawValue
+        physicsBody?.affectedByGravity = true
+        physicsBody?.isDynamic = true
+        physicsBody?.restitution = 1
+        physicsBody?.collisionBitMask = BodyType.player.rawValue | BodyType.ground.rawValue | BodyType.limit.rawValue | BodyType.obstacle.rawValue | BodyType.toy.rawValue
+        physicsBody?.contactTestBitMask = BodyType.player.rawValue
+        physicsBody?.friction = 0.0
         
-        touchableArea.xScale *= -1
-        touchableArea.zPosition = Position.middle.rawValue
-    }
-    
-    func touchBall(ball: Button) {
-        
-        let gameScene = self.scene as! GameScene
-        gameScene.player.jump()
+        zPosition = Position.middle.rawValue
     }
 }
