@@ -182,16 +182,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if firstBody.categoryBitMask == BodyType.door.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
             firstBody.categoryBitMask = 0
-            landscape.render()
+            landscape.render(self)
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.door.rawValue {
             secondBody.categoryBitMask = 0
-            landscape.render()
+            landscape.render(self)
         }
         
         if (firstBody.categoryBitMask == BodyType.ground.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue) ||
            (firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.ground.rawValue) {
             player.jumping = false
+        }
+        
+        if firstBody.categoryBitMask == BodyType.toy.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
+//            let impulse = CGFloat(arc4random_uniform(20))
+            firstBody.applyForce(CGVector(dx: 20, dy: 45))
+        }
+        if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.toy.rawValue {
+//            let impulse = CGFloat(arc4random_uniform(20))
+            secondBody.applyImpulse(CGVector(dx: 20, dy: 45))
         }
         
         addTutorialContacts(firstBody: firstBody, secondBody: secondBody)

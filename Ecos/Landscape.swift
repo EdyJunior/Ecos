@@ -32,10 +32,25 @@ class Landscape: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func render() {
+    func render(_ scene: GameScene) {
+        
+        let sizeR = CGSize(width: sceneSize.width * 3, height: sceneSize.height)
+        let offset = sizeR.width
         
         if currentIndex + 2 < rooms.count {
             self.addChild(rooms[currentIndex + 2])
+            if let val = defaults.object(forKey: Key.fun.rawValue) as? Bool {
+                if val {
+                    for i in [0.7, 1.5] {
+                        let ball = Ball(imageNamed: "ball")
+                        ball.size = CGSize(width: sceneSize.width * 0.07, height: sceneSize.width * 0.07)
+                        ball.position = CGPoint(x: CGFloat(currentIndex + 1) * offset + scene.size.width * CGFloat(i), y: scene.size.height/2)
+                        ball.initialize()
+                        scene.addChild(ball)
+                    }
+                    
+                }
+            }
             currentIndex += 1
         }
         if currentIndex - 1 > 0 {
@@ -58,16 +73,6 @@ class Landscape: SKNode {
         //Cômodo 1
         let room1 = Room(imageNamed: "Room1")
         room1.initialize(size: sizeR, position: posR)
-        
-        if let val = defaults.object(forKey: Key.fun.rawValue) as? Bool {
-            if val {
-                let ball = Ball(defaultButtonImage: "ball", activeButtonImage: "ball")
-                ball.action = ball.touchBall
-                ball.setSizeAndPosition(CGSize(width: sceneSize.width * 0.07, height: sceneSize.width * 0.07), position: CGPoint(x: scene.size.width * 1.5, y: scene.size.height/2), areaFactor: 1.8)
-                ball.initialize()
-                scene.addChild(ball)
-            }
-        }
         
         posR.x += offset
         rooms.append(room1)
@@ -128,7 +133,7 @@ class Landscape: SKNode {
         //Cômodo 7
         let room7 = Room(imageNamed: "Room7")
         room7.initialize(size: sizeR, position: posR)
-        
+
         posR.x += offset
         rooms.append(room7)
         
@@ -142,7 +147,7 @@ class Landscape: SKNode {
         //Cômodo 9
         let room9 = Room(imageNamed: "Room9")
         room9.initialize(size: sizeR, position: posR)
-        
+
         posR.x += offset
         rooms.append(room9)
         
@@ -173,6 +178,18 @@ class Landscape: SKNode {
         for i in 1..<rooms.count {
             rooms[i].addTrash()
         }
+        
+//        if let val = defaults.object(forKey: Key.fun.rawValue) as? Bool {
+//            if val {
+//                for i in 0..<5 {
+//                    let ball = Ball(imageNamed: "ball")
+//                    ball.size = CGSize(width: sceneSize.width * 0.07, height: sceneSize.width * 0.07)
+//                    ball.position = CGPoint(x: CGFloat(i) * offset + scene.size.width * 1.5, y: scene.size.height/2)
+//                    ball.initialize()
+//                    scene.addChild(ball)
+//                }
+//            }
+//        }
         
         //Inicia renderizando apenas 2 dos 10 cômodos
         self.addChild(rooms[0])
