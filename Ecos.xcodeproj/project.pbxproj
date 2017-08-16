@@ -39,11 +39,13 @@
 		CEBE3C251DA698CC004F4937 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBE3C231DA698CC004F4937 /* LaunchScreen.storyboard */; };
 		CEBE3C2D1DA69A32004F4937 /* FirstScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE3C2C1DA69A32004F4937 /* FirstScene.swift */; };
 		CEBE3C2F1DA69A91004F4937 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE3C2E1DA69A91004F4937 /* Enums.swift */; };
+		CECDAA441F41C53D0087CC9B /* WaterTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDAA431F41C53D0087CC9B /* WaterTap.swift */; };
 		CECEDB991F1E346100723E5F /* Game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CECEDB971F1E346100723E5F /* Game.mp3 */; };
 		CECEDB9A1F1E346100723E5F /* Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CECEDB981F1E346100723E5F /* Menu.mp3 */; };
 		CECEDB9C1F1E4E4500723E5F /* ConfigScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEDB9B1F1E4E4500723E5F /* ConfigScene.swift */; };
 		CECEDB9E1F1E533100723E5F /* CHUBBY.TTF in Resources */ = {isa = PBXBuildFile; fileRef = CECEDB9D1F1E533100723E5F /* CHUBBY.TTF */; };
 		CED42DD41F1D0632007D17BE /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED42DD31F1D0632007D17BE /* SoundManager.swift */; };
+		CEDBCF521F44F61500814657 /* TrashCan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDBCF511F44F61500814657 /* TrashCan.swift */; };
 		CEF35EB51F38AC46004CF9D4 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF35EB41F38AC46004CF9D4 /* CheckBox.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,11 +96,13 @@
 		CEBE3C261DA698CC004F4937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEBE3C2C1DA69A32004F4937 /* FirstScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstScene.swift; sourceTree = "<group>"; };
 		CEBE3C2E1DA69A91004F4937 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		CECDAA431F41C53D0087CC9B /* WaterTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterTap.swift; sourceTree = "<group>"; };
 		CECEDB971F1E346100723E5F /* Game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Game.mp3; sourceTree = "<group>"; };
 		CECEDB981F1E346100723E5F /* Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Menu.mp3; sourceTree = "<group>"; };
 		CECEDB9B1F1E4E4500723E5F /* ConfigScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigScene.swift; sourceTree = "<group>"; };
 		CECEDB9D1F1E533100723E5F /* CHUBBY.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = CHUBBY.TTF; sourceTree = "<group>"; };
 		CED42DD31F1D0632007D17BE /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		CEDBCF511F44F61500814657 /* TrashCan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashCan.swift; sourceTree = "<group>"; };
 		CEF35EB41F38AC46004CF9D4 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +172,8 @@
 				CE7D902A1DBD318100675764 /* PListManager.swift */,
 				CED42DD31F1D0632007D17BE /* SoundManager.swift */,
 				CEF35EB41F38AC46004CF9D4 /* CheckBox.swift */,
+				CECDAA431F41C53D0087CC9B /* WaterTap.swift */,
+				CEDBCF511F44F61500814657 /* TrashCan.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -363,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECDAA441F41C53D0087CC9B /* WaterTap.swift in Sources */,
 				CE2CA4D81F2170D100E861DB /* Ball.swift in Sources */,
 				CE91C5081DAD42410070C38A /* InfoLabel.swift in Sources */,
 				CE3BB8521DBAC81E001286EE /* Tutorial.swift in Sources */,
@@ -375,6 +382,7 @@
 				CE94CCCE1DBC4DF100F3F4B4 /* Card.swift in Sources */,
 				CEA77CC71DAFFFD5005ECCC7 /* Player.swift in Sources */,
 				CED42DD41F1D0632007D17BE /* SoundManager.swift in Sources */,
+				CEDBCF521F44F61500814657 /* TrashCan.swift in Sources */,
 				CEBE3C2D1DA69A32004F4937 /* FirstScene.swift in Sources */,
 				CE91C5041DAD353F0070C38A /* InfoScene.swift in Sources */,
 				CE3BB8501DBAB588001286EE /* Dog.swift in Sources */,
