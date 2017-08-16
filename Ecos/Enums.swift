@@ -76,8 +76,8 @@ struct UnlockValues {
     let trashCan = 20
     let trash = 150
     let waterTap = 20
-    let tvset = 5
-    let lamp = 10
+    let tvset = 20
+    let lamp = 20
 }
 
 let niceGreen = UIColor.init(red: 23/255, green: 136/255, blue: 23/255, alpha: 1)

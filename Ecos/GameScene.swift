@@ -77,7 +77,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let sizePlayer = CGSize(width: size.width * 0.15, height: size.height * 0.4)
         let positonPlayer = CGPoint(x: size.width/2, y: size.height/2)
         
-        player = Player(imageNamed: "\(playerName)0")
+        player = Player(imageNamed: "\(playerName)_000")
         player.initialize(sizePlayer, position: positonPlayer, zPosition: Position.middle.rawValue, scene: self, character: playerName)
         
         player.trashBag = TrashBag(sceneSize: size)

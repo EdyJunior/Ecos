@@ -29,7 +29,7 @@ class Landscape: SKNode {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     func render(_ scene: GameScene) {
@@ -48,7 +48,6 @@ class Landscape: SKNode {
                         ball.initialize()
                         scene.addChild(ball)
                     }
-                    
                 }
             }
             currentIndex += 1
@@ -179,18 +178,6 @@ class Landscape: SKNode {
             rooms[i].addTrash()
         }
         
-//        if let val = defaults.object(forKey: Key.fun.rawValue) as? Bool {
-//            if val {
-//                for i in 0..<5 {
-//                    let ball = Ball(imageNamed: "ball")
-//                    ball.size = CGSize(width: sceneSize.width * 0.07, height: sceneSize.width * 0.07)
-//                    ball.position = CGPoint(x: CGFloat(i) * offset + scene.size.width * 1.5, y: scene.size.height/2)
-//                    ball.initialize()
-//                    scene.addChild(ball)
-//                }
-//            }
-//        }
-        
         //Inicia renderizando apenas 2 dos 10 cômodos
         self.addChild(rooms[0])
         self.addChild(rooms[1])
@@ -198,23 +185,30 @@ class Landscape: SKNode {
     
     func createTutorials() {
         
-        let waterTapPosition = firstBathroom.waterTap!.touchableArea.position
-        let waterTapTrigger = CGPoint(x: waterTapPosition.x - sceneSize.width * 0.15, y: 0)
-        
         tutorial = Tutorial(withScene: self.scene as! GameScene)
-        tutorial?.tutorialTrigger(triggerPosition: waterTapTrigger, buttonType: .tapTrigger, room: firstBathroom)
+        
+        if let firstTap = firstBathroom.waterTap {
+            let waterTapPosition = firstTap.touchableArea.position
+            firstTap.enabled = false
+            let waterTapTrigger = CGPoint(x: waterTapPosition.x - sceneSize.width * 0.15, y: 0)
+            
+            tutorial?.tutorialTrigger(triggerPosition: waterTapTrigger, buttonType: .tapTrigger, room: firstBathroom)
+        }
         
         let garbagePosition = rooms[1].firstGarbage!.touchableArea.position
+        rooms[1].firstGarbage!.enabled = false
         let garbageTrigger = CGPoint(x: garbagePosition.x - sceneSize.width * 0.15, y: 0)
         
         tutorial?.tutorialTrigger(triggerPosition: garbageTrigger, buttonType: .trashTrigger, room: rooms[1])
         
         let trashCanPosition = firstBathroom.trashCan!.touchableArea.position
+        firstBathroom.trashCan!.enabled = false
         let trashCanTrigger = CGPoint(x: trashCanPosition.x - sceneSize.width * 0.15, y: 0)
         
         tutorial?.tutorialTrigger(triggerPosition: trashCanTrigger, buttonType: .trashCanTrigger, room: rooms[1])
         
         let dogPosition = dog!.touchableArea.position
+        dog!.enabled = false
         let dogTrigger = CGPoint(x: dogPosition.x - sceneSize.width * 0.045, y: 0)
         
         tutorial?.tutorialTrigger(triggerPosition: dogTrigger, buttonType: .dogTrigger, room: rooms[2])
