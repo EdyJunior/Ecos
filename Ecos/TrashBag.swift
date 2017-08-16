@@ -25,7 +25,7 @@ class TrashBag: SKNode {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 
     func push(garbage: Button) {
@@ -58,11 +58,8 @@ class TrashBag: SKNode {
             number += 1
             defaults.set(number, forKey: Key.nTrash.rawValue)
             
-            print("Trash = \(number)\n")
-            
             let unlock = UnlockValues()
             if number >= unlock.trash {
-                print("DesB Trash\n")
                 defaults.set(false, forKey: Key.trashCard.rawValue)
             }
         }
@@ -94,17 +91,17 @@ class TrashBag: SKNode {
         nextPosition.x = -self.size * 0.5
         
         if let value = defaults.object(forKey: Key.nTrashCan.rawValue) {
+            
             var number = value as! Int
             number += numberOfChildren
             defaults.set(number, forKey: Key.nTrashCan.rawValue)
             
-            print("TrashCan = \(number)\n")
-            
             let unlock = UnlockValues()
             if number >= unlock.trashCan {
-                print("DesB TrashCan\n")
                 defaults.set(false, forKey: Key.trashCanCard.rawValue)
             }
+        } else {
+            defaults.set(Int(numberOfChildren), forKey: Key.nTrashCan.rawValue)
         }
     }
 }
