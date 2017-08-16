@@ -28,6 +28,7 @@ class Tutorial: NSObject {
     func start(button: Button, text: String) {
 
         let pos = button.touchableArea.position
+        button.enabled = true
         
         hand.zPosition = Position.top.rawValue
         hand.size = CGSize(width: scene.size.width * 0.3, height: scene.size.height * 0.2)
