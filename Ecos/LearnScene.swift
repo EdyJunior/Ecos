@@ -32,13 +32,25 @@ class LearnScene: SKScene {
     func createCards() {
         
         let cardsNames = [Key.waterTapCard.rawValue, Key.trashCard.rawValue, Key.trashCanCard.rawValue]//, Key.tvCard.rawValue, Key.lampCard.rawValue]
+        let cardText = [
+            "Turn off 20",
+            "water taps",
+            "Pick up",
+            "150 trash",
+            "Throw away",
+            "150 trash"
+        ]
+        var i = 0
         var pos: CGFloat = 0.2
         
         for nameCard in cardsNames {
             
             let sizeCard = CGSize(width: self.size.width * 0.2, height: self.size.height * 0.48)
             let labelPosition = CGPoint(x: 0, y: -sizeCard.height * 0.8)
-            let card: Card = Card(defaultButtonImage: "medal", activeButtonImage: "medal", text: nameCard)
+            let card: Card = Card(defaultButtonImage: "medal", activeButtonImage: "medal", text: cardText[i])
+            let label = InfoLabel(text: cardText[i + 1])
+            label.set(fontSize: sizeCard.height * 0.2, position: CGPoint(x: labelPosition.x, y: labelPosition.y - scene!.size.height * 0.08), fontColor: .white, zPosition: .front)
+            i += 2
             card.setSizeAndPosition(sizeCard, position: CGPoint(x: pos * scene!.size.width, y: scene!.size.height * 0.5), labelSize: sizeCard.height * 0.2, labelPosition: labelPosition)
             pos += 0.3
             
@@ -54,6 +66,7 @@ class LearnScene: SKScene {
             card.zPosition = Position.middle.rawValue
             card.name = nameCard
             addChild(card)
+            card.touchableArea.addChild(label)
         }
     }
 
