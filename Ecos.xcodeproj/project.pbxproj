@@ -27,6 +27,7 @@
 		CE94CCCE1DBC4DF100F3F4B4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94CCCD1DBC4DF100F3F4B4 /* Card.swift */; };
 		CE9D9FD41F3A6708004802BB /* Gloria.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE9D9FD21F3A6708004802BB /* Gloria.atlas */; };
 		CE9D9FD71F3A6A5B004802BB /* Gloriosinho.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE9D9FD61F3A6A5B004802BB /* Gloriosinho.atlas */; };
+		CEA52C321F46130400EAC6A7 /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA52C311F46130400EAC6A7 /* EndScene.swift */; };
 		CEA77CC71DAFFFD5005ECCC7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA77CC61DAFFFD5005ECCC7 /* Player.swift */; };
 		CEA77CCA1DB002FF005ECCC7 /* TrashBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA77CC91DB002FF005ECCC7 /* TrashBag.swift */; };
 		CEA77CCC1DB01EB7005ECCC7 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA77CCB1DB01EB7005ECCC7 /* Room.swift */; };
@@ -82,6 +83,7 @@
 		CE94CCCD1DBC4DF100F3F4B4 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		CE9D9FD21F3A6708004802BB /* Gloria.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Gloria.atlas; sourceTree = "<group>"; };
 		CE9D9FD61F3A6A5B004802BB /* Gloriosinho.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Gloriosinho.atlas; sourceTree = "<group>"; };
+		CEA52C311F46130400EAC6A7 /* EndScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
 		CEA77CC61DAFFFD5005ECCC7 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		CEA77CC91DB002FF005ECCC7 /* TrashBag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashBag.swift; sourceTree = "<group>"; };
 		CEA77CCB1DB01EB7005ECCC7 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				CE740ABF1DAE87EC00EB141D /* PreGameScene.swift */,
 				CE94CCCB1DBC4A6900F3F4B4 /* LearnScene.swift */,
 				CECEDB9B1F1E4E4500723E5F /* ConfigScene.swift */,
+				CEA52C311F46130400EAC6A7 /* EndScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				CECDAA441F41C53D0087CC9B /* WaterTap.swift in Sources */,
 				CE2CA4D81F2170D100E861DB /* Ball.swift in Sources */,
 				CE91C5081DAD42410070C38A /* InfoLabel.swift in Sources */,
+				CEA52C321F46130400EAC6A7 /* EndScene.swift in Sources */,
 				CE3BB8521DBAC81E001286EE /* Tutorial.swift in Sources */,
 				CEBE3C1B1DA698CC004F4937 /* GameScene.swift in Sources */,
 				CEF35EB51F38AC46004CF9D4 /* CheckBox.swift in Sources */,
