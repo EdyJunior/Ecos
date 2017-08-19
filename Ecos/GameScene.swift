@@ -42,6 +42,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         playerName = defaults.object(forKey: Key.previousCharacter.rawValue) as! String
         self.camera = self.gameCamera
+        
+        defaults.set(0, forKey: Key.trashInPhase.rawValue)
+        defaults.set(0, forKey: Key.trashCanInPhase.rawValue)
+        defaults.set(0, forKey: Key.waterTapInPhase.rawValue)
+        
         buildScene()
     }
     
@@ -49,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.backgroundColor = .black
         SoundManager.playSound(withName: "Game")
+        defaults.set(0, forKey: Key.lastScore.rawValue)
         
         createLandscape()
         createPlayer()
@@ -195,11 +201,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if firstBody.categoryBitMask == BodyType.toy.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
-//            let impulse = CGFloat(arc4random_uniform(20))
-            firstBody.applyForce(CGVector(dx: 20, dy: 45))
+            firstBody.applyImpulse(CGVector(dx: 20, dy: 45))
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.toy.rawValue {
-//            let impulse = CGFloat(arc4random_uniform(20))
             secondBody.applyImpulse(CGVector(dx: 20, dy: 45))
         }
         
@@ -253,35 +257,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func addFinalContacts(firstBody: SKPhysicsBody, secondBody: SKPhysicsBody) {
         
+        if let trash = defaults.object(forKey: Key.trashInPhase.rawValue),
+           let trashCan = defaults.object(forKey: Key.trashCanInPhase.rawValue),
+           let waterTap = defaults.object(forKey: Key.waterTapInPhase.rawValue) {
+            let tc = trashCan as! Int
+            let tr = trash as! Int
+            let wt = waterTap as! Int
+            
+            if(tc + tr + wt > 0) {
+                won = true
+            }
+        }
+        
         if firstBody.categoryBitMask == BodyType.endTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
             firstBody.categoryBitMask = 0
             
             player.removeAllActions()
-            
-            won = true
-            
+
             let endGameScene = EndScene(size: size, won: won)
             SoundManager.playSound(withName: "Menu")
             view?.presentScene(endGameScene, transition: .reveal(with: .up, duration: 1.0))
-            
-//            let wonImage = SKSpriteNode(imageNamed: "end")
-//            wonImage.size = scene!.size
-//            wonImage.position = CGPoint(x: player.position.x, y: size.height / 2)
-//            wonImage.zPosition = Position.front.rawValue
-//            addChild(wonImage)
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.endTrigger.rawValue {
             secondBody.categoryBitMask = 0
             
             player.removeAllActions()
             
-            won = true
-            
-            let wonImage = SKSpriteNode(imageNamed: "end")
-            wonImage.size = scene!.size
-            wonImage.position = CGPoint(x: player.position.x, y: size.height / 2)
-            wonImage.zPosition = Position.front.rawValue
-            addChild(wonImage)
+            let endGameScene = EndScene(size: size, won: won)
+            SoundManager.playSound(withName: "Menu")
+            view?.presentScene(endGameScene, transition: .reveal(with: .up, duration: 1.0))
         }
     }
 }
