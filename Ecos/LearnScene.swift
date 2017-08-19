@@ -49,9 +49,9 @@ class LearnScene: SKScene {
             let labelPosition = CGPoint(x: 0, y: -sizeCard.height * 0.8)
             let card: Card = Card(defaultButtonImage: "medal", activeButtonImage: "medal", text: cardText[i])
             let label = InfoLabel(text: cardText[i + 1])
-            label.set(fontSize: sizeCard.height * 0.2, position: CGPoint(x: labelPosition.x, y: labelPosition.y - scene!.size.height * 0.08), fontColor: .white, zPosition: .front)
+            label.set(fontSize: sizeCard.height * 0.2, position: CGPoint(x: labelPosition.x, y: labelPosition.y - scene!.size.height * 0.08), fontColor: niceGreen, zPosition: .front)
             i += 2
-            card.setSizeAndPosition(sizeCard, position: CGPoint(x: pos * scene!.size.width, y: scene!.size.height * 0.5), labelSize: sizeCard.height * 0.2, labelPosition: labelPosition)
+            card.setSizeAndPosition(sizeCard, position: CGPoint(x: pos * scene!.size.width, y: scene!.size.height * 0.5), labelSize: sizeCard.height * 0.2, labelPosition: labelPosition, labelColor: niceGreen)
             pos += 0.3
             
             if let value = defaults.object(forKey: nameCard) {
