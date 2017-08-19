@@ -260,11 +260,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             won = true
             
-            let wonImage = SKSpriteNode(imageNamed: "end")
-            wonImage.size = scene!.size
-            wonImage.position = CGPoint(x: player.position.x, y: size.height / 2)
-            wonImage.zPosition = Position.front.rawValue
-            addChild(wonImage)
+            let endGameScene = EndScene(size: size, won: won)
+            SoundManager.playSound(withName: "Menu")
+            view?.presentScene(endGameScene, transition: .reveal(with: .up, duration: 1.0))
+            
+//            let wonImage = SKSpriteNode(imageNamed: "end")
+//            wonImage.size = scene!.size
+//            wonImage.position = CGPoint(x: player.position.x, y: size.height / 2)
+//            wonImage.zPosition = Position.front.rawValue
+//            addChild(wonImage)
         }
         if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.endTrigger.rawValue {
             secondBody.categoryBitMask = 0
