@@ -150,14 +150,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let container = SKNode()
         
-        if !won {
-            let resume = Button(defaultButtonImage: "play3", activeButtonImage: "play3", buttonAction: resumeButton)
-            resume.setSizeAndPosition(sizeButton, position: resumePos, areaFactor: 1)
-            resume.name = "Resume"
-            resume.touchableArea.zPosition = Position.highlighted.rawValue
-            
-            container.addChild(resume)
-        }
+        let resume = Button(defaultButtonImage: "play3", activeButtonImage: "play3", buttonAction: resumeButton)
+        resume.setSizeAndPosition(sizeButton, position: resumePos, areaFactor: 1)
+        resume.name = "Resume"
+        resume.touchableArea.zPosition = Position.highlighted.rawValue
+        
+        container.addChild(resume)
         
         container.addChild(back)
         container.addChild(blackBack)
@@ -256,33 +254,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addFinalContacts(firstBody: SKPhysicsBody, secondBody: SKPhysicsBody) {
-        
-        if let trash = defaults.object(forKey: Key.trashInPhase.rawValue),
-           let trashCan = defaults.object(forKey: Key.trashCanInPhase.rawValue),
-           let waterTap = defaults.object(forKey: Key.waterTapInPhase.rawValue) {
-            let tc = trashCan as! Int
-            let tr = trash as! Int
-            let wt = waterTap as! Int
+
+        if (firstBody.categoryBitMask == BodyType.endTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue) || (firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.endTrigger.rawValue) {
             
-            if(tc + tr + wt > 0) {
-                won = true
+            if let trash = defaults.object(forKey: Key.trashInPhase.rawValue),
+               let trashCan = defaults.object(forKey: Key.trashCanInPhase.rawValue),
+               let waterTap = defaults.object(forKey: Key.waterTapInPhase.rawValue) {
+                let tc = trashCan as! Int
+                let tr = trash as! Int
+                let wt = waterTap as! Int
+                
+                if(tc + tr + wt > 0) {
+                    won = true
+                }
             }
-        }
-        
-        if firstBody.categoryBitMask == BodyType.endTrigger.rawValue && secondBody.categoryBitMask == BodyType.player.rawValue {
+            
             firstBody.categoryBitMask = 0
             
             player.removeAllActions()
 
-            let endGameScene = EndScene(size: size, won: won)
-            SoundManager.playSound(withName: "Menu")
-            view?.presentScene(endGameScene, transition: .reveal(with: .up, duration: 1.0))
-        }
-        if firstBody.categoryBitMask == BodyType.player.rawValue && secondBody.categoryBitMask == BodyType.endTrigger.rawValue {
-            secondBody.categoryBitMask = 0
-            
-            player.removeAllActions()
-            
             let endGameScene = EndScene(size: size, won: won)
             SoundManager.playSound(withName: "Menu")
             view?.presentScene(endGameScene, transition: .reveal(with: .up, duration: 1.0))
