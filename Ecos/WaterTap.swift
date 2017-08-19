@@ -41,5 +41,13 @@ class WaterTap: Button {
         } else {
             defaults.set(Int(1), forKey: Key.nWaterTap.rawValue)
         }
+        
+        if let value = defaults.object(forKey: Key.waterTapInPhase.rawValue) {
+            var number = value as! Int
+            number += 1
+            defaults.set(number, forKey: Key.waterTapInPhase.rawValue)
+        } else {
+            defaults.set(Int(1), forKey: Key.waterTapInPhase.rawValue)
+        }
     }
 }
