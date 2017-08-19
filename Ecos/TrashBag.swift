@@ -62,6 +62,17 @@ class TrashBag: SKNode {
             if number >= unlock.trash {
                 defaults.set(false, forKey: Key.trashCard.rawValue)
             }
+        } else {
+            defaults.set(1, forKey: Key.nTrash.rawValue)
+        }
+        
+        if let value = defaults.object(forKey: Key.trashCanInPhase.rawValue) {
+            var number = value as! Int
+            number += 1
+            defaults.set(number, forKey: Key.trashInPhase.rawValue)
+            
+        } else {
+            defaults.set(1, forKey: Key.trashInPhase.rawValue)
         }
     }
     
@@ -91,7 +102,6 @@ class TrashBag: SKNode {
         nextPosition.x = -self.size * 0.5
         
         if let value = defaults.object(forKey: Key.nTrashCan.rawValue) {
-            
             var number = value as! Int
             number += numberOfChildren
             defaults.set(number, forKey: Key.nTrashCan.rawValue)
@@ -102,6 +112,15 @@ class TrashBag: SKNode {
             }
         } else {
             defaults.set(Int(numberOfChildren), forKey: Key.nTrashCan.rawValue)
+        }
+        
+        if let value = defaults.object(forKey: Key.trashCanInPhase.rawValue) {
+            var number = value as! Int
+            number += numberOfChildren
+            defaults.set(number, forKey: Key.trashCanInPhase.rawValue)
+
+        } else {
+            defaults.set(Int(numberOfChildren), forKey: Key.trashCanInPhase.rawValue)
         }
     }
 }
