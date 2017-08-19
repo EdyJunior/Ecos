@@ -69,6 +69,10 @@ enum Key: String {
     case nWaterTap = "numberOfWaterTaps"
     case nTrash = "numberOfTrash"
     case nTrashCan = "numberOfTrashCans"
+    
+    case waterTapInPhase = "waterTapInPhase"
+    case trashInPhase = "trashInPhase"
+    case trashCanInPhase = "trashCanInPhase"
 }
 
 struct UnlockValues {
