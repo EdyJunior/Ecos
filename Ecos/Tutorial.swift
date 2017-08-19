@@ -14,6 +14,7 @@ class Tutorial: NSObject {
     var hand = SKSpriteNode(imageNamed: "hand")
     var blackBack = SKSpriteNode(imageNamed: "blackBack")
     var text = InfoLabel()
+    var obs = InfoLabel()
     var action: ((Button)->Void)?
     var zPos: CGFloat = 0
 
@@ -35,13 +36,21 @@ class Tutorial: NSObject {
         hand.position = CGPoint(x: -hand.size.width/2, y: pos.y)
         
         self.text = InfoLabel(text: text)
+        self.obs = InfoLabel(text: "You can disable the tutorial in configuration screen")
         
         if pos.y > 0 {
             let textPos = CGPoint(x: 0, y: pos.y - hand.size.height)
             self.text.set(fontSize: scene.size.height * 0.1, position: textPos, fontColor: .white, zPosition: .top)
+            
+            let obsPos = CGPoint(x: 0, y: pos.y - 2 * hand.size.height)
+            self.obs.set(fontSize: scene.size.height * 0.05, position: obsPos, fontColor: .white, zPosition: .top)
+            
         } else {
             let textPos = CGPoint(x: 0, y: pos.y + hand.size.height)
             self.text.set(fontSize: scene.size.height * 0.1, position: textPos, fontColor: .white, zPosition: .top)
+            
+            let obsPos = CGPoint(x: 0, y: pos.y - hand.size.height)
+            self.obs.set(fontSize: scene.size.height * 0.05, position: obsPos, fontColor: .white, zPosition: .top)
         }
         
         blackBack.position = CGPoint(x: scene.player.position.x, y: scene.size.height / 2)
@@ -49,6 +58,7 @@ class Tutorial: NSObject {
 
         scene.camera!.addChild(hand)
         scene.camera!.addChild(self.text)
+        scene.camera!.addChild(obs)
         scene.addChild(blackBack)
 
         self.zPos = button.touchableArea.zPosition
@@ -63,7 +73,7 @@ class Tutorial: NSObject {
 
     func end(button: Button) {
 
-        scene.camera!.removeChildren(in: [hand, text])
+        scene.camera!.removeChildren(in: [hand, text, obs])
         scene.removeChildren(in: [blackBack])
         button.touchableArea.zPosition = self.zPos
         self.action?(button)
