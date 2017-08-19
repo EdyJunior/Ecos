@@ -57,8 +57,8 @@ class EndScene: SKScene {
                 InfoLabel(text: "You saved the World!")
             ]
             labelsPositions = [
-                CGPoint(x: size.width / 2, y: size.height * 0.3),
-                CGPoint(x: size.width / 2, y: size.height * 0.7)
+                CGPoint(x: size.width / 2, y: size.height * 0.7),
+                CGPoint(x: size.width / 2, y: size.height * 0.3)
             ]
             
             for (index, label) in labels.enumerated() {
@@ -67,20 +67,18 @@ class EndScene: SKScene {
             }
         } else {
             labels = [
-                InfoLabel(text: "Well... It seems"),
-                InfoLabel(text: "that you didn't"),
-                InfoLabel(text: "understand the idea."),
-                InfoLabel(text: "Try to set up the"),
-                InfoLabel(text: "tutorial mode in"),
-                InfoLabel(text: "configuration window")
+                InfoLabel(text: "Well... It seems that"),
+                InfoLabel(text: "you didn't understand"),
+                InfoLabel(text: "the idea. Try to set up"),
+                InfoLabel(text: "the tutorial mode in"),
+                InfoLabel(text: "configuration window.")
             ]
             labelsPositions = [
-                CGPoint(x: size.width / 2, y: size.height * 0.15),
-                CGPoint(x: size.width / 2, y: size.height * 0.3),
-                CGPoint(x: size.width / 2, y: size.height * 0.45),
-                CGPoint(x: size.width / 2, y: size.height * 0.6),
-                CGPoint(x: size.width / 2, y: size.height * 0.75),
-                CGPoint(x: size.width / 2, y: size.height * 0.9)
+                CGPoint(x: size.width / 2, y: size.height * 0.85),
+                CGPoint(x: size.width / 2, y: size.height * 0.67),
+                CGPoint(x: size.width / 2, y: size.height * 0.5),
+                CGPoint(x: size.width / 2, y: size.height * 0.33),
+                CGPoint(x: size.width / 2, y: size.height * 0.15)
             ]
             
             for (index, label) in labels.enumerated() {
